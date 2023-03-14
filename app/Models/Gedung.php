@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Gedung extends Model
+{
+    use HasFactory;
+
+    public function ruang()
+    {
+        return $this->hasMany(Ruang::class);
+    }
+
+    public function alat()
+    {
+        return $this->hasMany(Alat::class);
+    }
+
+    public function kendaraan()
+    {
+        return $this->hasMany(Kendaraan::class);
+    }
+
+    public function lokasi()
+    {
+        return $this->belongsTo(Lokasi::class);
+    }
+}

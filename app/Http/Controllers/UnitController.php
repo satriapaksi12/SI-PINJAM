@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Unit;
 use App\Http\Requests\StoreUnitRequest;
 use App\Http\Requests\UpdateUnitRequest;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests\StudentCreateRequest;
+
 
 class UnitController extends Controller
 {
@@ -15,7 +18,8 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        $unit = Unit::all();
+        return view('unit', ['unitList' => $unit]);
     }
 
     /**
@@ -25,7 +29,7 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        return view('unit-add');
     }
 
     /**
@@ -36,7 +40,13 @@ class UnitController extends Controller
      */
     public function store(StoreUnitRequest $request)
     {
-        //
+        $unit = Unit::create($request->all());
+        if ($unit) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data berhasil ditambahkan');
+        }
+
+        return redirect('/unit');
     }
 
     /**
@@ -56,9 +66,10 @@ class UnitController extends Controller
      * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Unit $unit)
+    public function edit(Unit $unit, $id)
     {
-        //
+        $unit = Unit::findOrFail($id);
+        return view('unit-edit',['unit' => $unit]);
     }
 
     /**
@@ -68,9 +79,15 @@ class UnitController extends Controller
      * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUnitRequest $request, Unit $unit)
+    public function update(UpdateUnitRequest $request, Unit $unit,$id)
     {
-        //
+        $unit = Unit::findOrFail($id);
+        $unit->update($request->all());
+        if ($unit) {
+            Session::flash('status-edit', 'success');
+            Session::flash('message-edit', 'Data berhasil diedit');
+        }
+        return redirect('/unit');
     }
 
     /**
@@ -79,8 +96,11 @@ class UnitController extends Controller
      * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Unit $unit)
+    public function destroy(Unit $unit,$id)
     {
-        //
+        $deletedUnit = Unit::findORFail($id);
+        $deletedUnit->delete();
+
+        return redirect('/unit');
     }
 }

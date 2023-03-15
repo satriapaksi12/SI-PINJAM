@@ -196,7 +196,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/unit" class="nav-link">
                         <i class="fas fa-circle nav-icon"></i>
                         <p>Kelola Unit</p>
                     </a>

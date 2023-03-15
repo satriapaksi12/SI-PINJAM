@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
+use App\Models\Unit;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UnitSeeder extends Seeder
 {
@@ -14,6 +17,18 @@ class UnitSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $data = [
+            ['nama_unit' => 'Teknik Informatika'],
+            ['nama_unit' => 'Sekolah Vokasi'],
+            ['nama_unit' => 'Teknik Sipil'],
+            ['nama_unit' => 'Fmipa'],
+        ];
+        foreach ($data as $value) {
+            Unit::insert([
+                'nama_unit' => $value ['nama_unit'],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        }
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,25 @@ Route::get('/login', function () {
     return view('login');
 });
 
-
 Route::get('/register', function () {
     return view('register');
 });
 
+//superadmin
+
+
+//admin
+
+//staff
+
+
+//mahasiswa
+
+
+//kelola unit
+Route::get('/unit',[UnitController::class, 'index']);
+Route::get('/unit-add',[UnitController::class, 'create']);
+Route::post('/unit',[UnitController::class, 'store']);
+Route::get('/unit-edit/{id}',[UnitController::class, 'edit']);
+Route::put('/unit/{id}',[UnitController::class, 'update']);
+Route::delete('/unit-destroy/{id}',[UnitController::class, 'destroy']);

@@ -45,6 +45,6 @@ Route::get('/register', function () {
 Route::get('/unit',[UnitController::class, 'index']);
 Route::get('/unit-add',[UnitController::class, 'create']);
 Route::post('/unit',[UnitController::class, 'store']);
-Route::get('/unit-edit/{id}',[UnitController::class, 'edit']);
+Route::get('/unit-edit',[UnitController::class, 'edit']);
 Route::put('/unit/{id}',[UnitController::class, 'update']);
 Route::delete('/unit-destroy/{id}',[UnitController::class, 'destroy']);

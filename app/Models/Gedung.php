@@ -9,6 +9,9 @@ class Gedung extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nama_gedung','lokasi_id'  // memberi tau kolom mana aja yang boleh diisi
+    ];
     public function ruang()
     {
         return $this->hasMany(Ruang::class);

@@ -203,9 +203,26 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
-                        <p>Kelola Lokasi</p>
+                        <i class="nav-icon fas fa-car"></i>
+                        <p>
+                           Lokasi
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/gedung" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Kelola Gedung</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/lokasi" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Kelola Lokasi Kampus</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">

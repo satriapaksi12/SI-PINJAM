@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\GedungController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\JenisAcaraController;
 use App\Http\Controllers\JenisKendaraanController;
@@ -78,12 +79,20 @@ Route::put('/jenis_kendaraan/{id}',[JenisKendaraanController::class, 'update']);
 Route::delete('/jenis_kendaraan-destroy/{id}',[JenisKendaraanController::class, 'destroy']);
 
 
-//kelola lokasi
-Route::get('/lokasi',[GedungController::class, 'index']);
-Route::get('/lokasi-add',[GedungController::class, 'create']);
-Route::post('/lokasi',[GedungController::class, 'store']);
-Route::get('/lokasi-edit/{id}',[GedungController::class, 'edit']);
-Route::put('/lokasi/{id}',[GedungController::class, 'update']);
-Route::delete('/lokasi-destroy/{id}',[GedungController::class, 'destroy']);
+//kelola gedung
+Route::get('/gedung',[GedungController::class, 'index']);
+Route::get('/gedung-add',[GedungController::class, 'create']);
+Route::post('/gedung',[GedungController::class, 'store']);
+Route::get('/gedung-edit/{id}',[GedungController::class, 'edit']);
+Route::put('/gedung/{id}',[GedungController::class, 'update']);
+Route::delete('/gedung-destroy/{id}',[GedungController::class, 'destroy']);
+
+//kelola lokasi kampus
+Route::get('/lokasi',[LokasiController::class, 'index']);
+Route::get('/lokasi-add',[LokasiController::class, 'create']);
+Route::post('/lokasi',[LokasiController::class, 'store']);
+Route::get('/lokasi-edit/{id}',[LokasiController::class, 'edit']);
+Route::put('/lokasi/{id}',[LokasiController::class, 'update']);
+Route::delete('/lokasi-destroy/{id}',[LokasiController::class, 'destroy']);
 
 

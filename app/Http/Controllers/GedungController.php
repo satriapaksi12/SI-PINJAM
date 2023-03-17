@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gedung;
+use App\Models\Lokasi;
 use App\Http\Requests\StoreGedungRequest;
 use App\Http\Requests\UpdateGedungRequest;
+use App\Http\Requests\StoreLokasiRequest;
+use App\Http\Requests\UpdateLokasiRequest;
+
+use Illuminate\Support\Facades\Session;
 
 class GedungController extends Controller
 {
@@ -15,7 +20,8 @@ class GedungController extends Controller
      */
     public function index()
     {
-        //
+        $gedung = Gedung::with('lokasi')->get();
+        return view('gedung.gedung', ['gedungList' => $gedung]);
     }
 
     /**
@@ -25,7 +31,9 @@ class GedungController extends Controller
      */
     public function create()
     {
-        //
+        $gedung = Gedung::select('id', 'nama_gedung')->get();
+        $lokasi = Lokasi::select('id', 'nama_lokasi')->get();
+        return view('gedung.gedung-add', ['gedung' => $gedung, 'lokasi' => $lokasi]);
     }
 
     /**
@@ -36,7 +44,12 @@ class GedungController extends Controller
      */
     public function store(StoreGedungRequest $request)
     {
-        //
+        $gedung = Gedung::create($request->all());
+        if ($gedung) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data berhasil ditambahkan');
+        }
+        return redirect('/gedung');
     }
 
     /**
@@ -56,9 +69,11 @@ class GedungController extends Controller
      * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gedung $gedung)
+    public function edit(Gedung $gedung,$id)
     {
-        //
+        $gedung = Gedung::with('lokasi')->findOrFail($id);
+        $lokasi =Lokasi::select('id', 'nama_lokasi')->where('id', '!=', $gedung->lokasi_id)->get();
+        return view('gedung.gedung-edit', ['gedung' => $gedung,'lokasi' => $lokasi]);
     }
 
     /**
@@ -68,9 +83,15 @@ class GedungController extends Controller
      * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateGedungRequest $request, Gedung $gedung)
+    public function update(UpdateGedungRequest $request, Gedung $gedung,$id)
     {
-        //
+        $gedung =Gedung::findOrFail($id);
+        $gedung->update($request->all());
+        if ($gedung) {
+            Session::flash('status-edit', 'success');
+            Session::flash('message-edit', 'Data berhasil diedit');
+        }
+        return redirect('/gedung');
     }
 
     /**
@@ -79,8 +100,11 @@ class GedungController extends Controller
      * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gedung $gedung)
+    public function destroy(Gedung $gedung,$id)
     {
-        //
+        $deletedGedung = Gedung::findORFail($id);
+        $deletedGedung->delete();
+
+        return redirect('/gedung');
     }
 }

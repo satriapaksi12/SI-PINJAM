@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Lokasi')
+@section('title', 'Gedung')
 
 @include('component.navbar')
 @section('content')
@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/lokasi-add" class="btn btn-primary">Add Data</a>
+                        <a href="/gedung-add" class="btn btn-primary">Add Data</a>
                     </div>
                     @if (Session::has('status'))
                         <div class="alert alert-success" role="alert">
@@ -31,23 +31,25 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Lokasi Kampus</th>
+                                    <th>Nama Gedung</th>
+                                    <th>Lokasi Kampus</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($lokasiList as $data)
+                                @foreach ($gedungList as $data)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $data->nama_lokasi }}</td>
+                                        <td>{{ $data->nama_gedung }}</td>
+                                        <td>{{ $data->lokasi->nama_lokasi }}</td>
                                         <td>
-                                            <a href="lokasi-edit/{{ $data->id }}" class="btn btn-warning">Edit</a>
-                                            <form action="/lokasi-destroy/{{ $data->id }}" method="post"
+                                            <a href="gedung-edit/{{ $data->id }}" class="btn btn-warning">Edit</a>
+                                            <form action="/gedung-destroy/{{ $data->id }}" method="post"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button
-                                                    onclick="return confirm('Apakah anda ingin menghapus data lokasi yaitu {{ $data->nama_lokasi }} ')"
+                                                    onclick="return confirm('Apakah anda ingin menghapus data periode yaitu {{ $data->tahun_periode }} di {{ $data->lokasi->nama_lokasi }} ')"
                                                     class="btn btn-danger">Delete</button>
                                             </form>
                                         </td>
@@ -59,7 +61,8 @@
                             <tfoot>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Lokasi Kampus</th>
+                                    <th>Nama Gedung</th>
+                                    <th>Lokasi Kampus</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>

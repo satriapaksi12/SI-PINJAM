@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Lokasi;
 use App\Http\Requests\StoreLokasiRequest;
 use App\Http\Requests\UpdateLokasiRequest;
+use Illuminate\Support\Facades\Session;
+
 
 class LokasiController extends Controller
 {
@@ -15,7 +17,8 @@ class LokasiController extends Controller
      */
     public function index()
     {
-        //
+        $lokasi = Lokasi::all();
+        return view('lokasi.lokasi', ['lokasiList' => $lokasi]);
     }
 
     /**
@@ -25,7 +28,7 @@ class LokasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('lokasi.lokasi-add');
     }
 
     /**
@@ -36,7 +39,13 @@ class LokasiController extends Controller
      */
     public function store(StoreLokasiRequest $request)
     {
-        //
+        $lokasi = Lokasi::create($request->all());
+        if ($lokasi) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data berhasil ditambahkan');
+        }
+
+        return redirect('/lokasi');
     }
 
     /**
@@ -56,9 +65,10 @@ class LokasiController extends Controller
      * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lokasi $lokasi)
+    public function edit(Lokasi $lokasi,$id)
     {
-        //
+        $lokasi = Lokasi::findOrFail($id);
+        return view('lokasi.lokasi-edit',['lokasi' => $lokasi]);
     }
 
     /**
@@ -68,9 +78,15 @@ class LokasiController extends Controller
      * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLokasiRequest $request, Lokasi $lokasi)
+    public function update(UpdateLokasiRequest $request, Lokasi $lokasi,$id)
     {
-        //
+        $lokasi = Lokasi::findOrFail($id);
+        $lokasi->update($request->all());
+        if ($lokasi) {
+            Session::flash('status-edit', 'success');
+            Session::flash('message-edit', 'Data berhasil diedit');
+        }
+        return redirect('/lokasi');
     }
 
     /**
@@ -79,8 +95,11 @@ class LokasiController extends Controller
      * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lokasi $lokasi)
+    public function destroy(Lokasi $lokasi,$id)
     {
-        //
+        $deletedLokasi = Lokasi::findORFail($id);
+        $deletedLokasi->delete();
+
+        return redirect('/lokasi');
     }
 }

@@ -19,7 +19,7 @@ class UnitController extends Controller
     public function index()
     {
         $unit = Unit::all();
-        return view('unit', ['unitList' => $unit]);
+        return view('unit.unit', ['unitList' => $unit]);
     }
 
     /**
@@ -29,7 +29,7 @@ class UnitController extends Controller
      */
     public function create()
     {
-        return view('unit-add');
+        return view('unit.unit-add');
     }
 
     /**
@@ -69,7 +69,7 @@ class UnitController extends Controller
     public function edit(Unit $unit, $id)
     {
         $unit = Unit::findOrFail($id);
-        return view('unit-edit',['unit' => $unit]);
+        return view('unit.unit-edit',['unit' => $unit]);
     }
 
     /**

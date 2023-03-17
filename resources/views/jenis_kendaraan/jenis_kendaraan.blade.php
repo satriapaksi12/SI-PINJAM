@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Superadmin | Unit')
+@section('title', 'Jenis Kendaraan')
 
 @include('component.navbar')
 @section('content')
@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/unit-add" class="btn btn-primary">Add Data</a>
+                        <a href="/jenis_kendaraan-add" class="btn btn-primary">Add Data</a>
                     </div>
                     @if (Session::has('status'))
                         <div class="alert alert-success" role="alert">
@@ -31,23 +31,23 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Unit</th>
+                                    <th>Jenis Kendaraan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($unitList as $data)
+                                @foreach ($jeniskendaraanList as $data)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $data->nama_unit }}</td>
+                                        <td>{{ $data->nama_jenis_kendaraan }}</td>
                                         <td>
-                                            <a href="unit-edit/{{ $data->id }}" class="btn btn-warning">Edit</a>
-                                            <form action="/unit-destroy/{{ $data->id }}" method="post"
+                                            <a href="jenis_kendaraan-edit/{{ $data->id }}" class="btn btn-warning">Edit</a>
+                                            <form action="/jenis_kendaraan-destroy/{{ $data->id }}" method="post"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button
-                                                    onclick="return confirm('Apakah anda ingin menghapus data unit yaitu {{ $data->nama_unit }} ')"
+                                                    onclick="return confirm('Apakah anda ingin menghapus data unit yaitu {{ $data->nama_jenis_kendaraan }} ')"
                                                     class="btn btn-danger">Delete</button>
                                             </form>
                                         </td>
@@ -59,7 +59,7 @@
                             <tfoot>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Unit</th>
+                                    <th>Jenis Kendaraan</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>

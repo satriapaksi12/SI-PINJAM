@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Superadmin | Tambah Unit')
+@section('title', 'Tambah Periode')
 
 @include('component.navbar')
 @section('content')
-    <div class="container">
+    <div class="container ">
         <div class="row">
             <div class="col-md-3">
                 @include('component.sidebar')
@@ -13,17 +13,27 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Quick Example</h3>
+                        <h3 class="card-title">TAMBAH PERIODE</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="unit" method="post">
+                    <form action="periode" method="post">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="nama_unit">Tambah Unit</label>
-                                <input type="text" class="form-control"  name="nama_unit"id="nama_unit"
+                                <label for="nama_unit">Tahun Periode</label>
+                                <input type="text" class="form-control"  name="tahun_periode"id="tahun_periode"
                                     placeholder="">
+                            </div>
+                        </div>
+                        <div class="card-body ">
+                            <div class="form-group">
+                            <label for="gender" class="form-label">Semester</label>
+                            <select class="form-control" name="semester" id="semester" >
+                                <option value="">Pilih salah satu</option>
+                                <option value="Ganjil">Ganjil</option>
+                                <option value="Genap">Genap</option>
+                            </select>
                             </div>
                         </div>
                         <!-- /.card-body -->

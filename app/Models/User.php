@@ -61,4 +61,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reservasi_alat::class);
     }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

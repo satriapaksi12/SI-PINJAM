@@ -19,10 +19,11 @@ return new class extends Migration
             $table->string('nomor_induk')->unique();
             $table->string('email');
             $table->string('password');
-            $table->string('role');
             $table->timestamp('email_verified_at')->nullable();
             $table->unsignedBigInteger('unit_id');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
     }
 

@@ -13,7 +13,7 @@ class StoreJenis_acaraRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

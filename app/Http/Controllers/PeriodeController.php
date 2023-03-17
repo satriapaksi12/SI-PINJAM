@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Periode;
 use App\Http\Requests\StorePeriodeRequest;
 use App\Http\Requests\UpdatePeriodeRequest;
+use Illuminate\Support\Facades\Session;
+
 
 class PeriodeController extends Controller
 {
@@ -15,7 +17,8 @@ class PeriodeController extends Controller
      */
     public function index()
     {
-        //
+        $periode = Periode::all();
+        return view('periode.periode', ['periodeList' => $periode]);
     }
 
     /**
@@ -25,7 +28,7 @@ class PeriodeController extends Controller
      */
     public function create()
     {
-        //
+        return view('periode.periode-add');
     }
 
     /**
@@ -36,7 +39,13 @@ class PeriodeController extends Controller
      */
     public function store(StorePeriodeRequest $request)
     {
-        //
+        $periode = Periode::create($request->all());
+        if ($periode) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data berhasil ditambahkan');
+        }
+
+        return redirect('/periode');
     }
 
     /**
@@ -56,9 +65,10 @@ class PeriodeController extends Controller
      * @param  \App\Models\Periode  $periode
      * @return \Illuminate\Http\Response
      */
-    public function edit(Periode $periode)
+    public function edit(Periode $periode_edit,$id)
     {
-        //
+        $periode_edit = Periode::findOrFail($id);
+        return view('periode.periode-edit',['periode' => $periode_edit]);
     }
 
     /**
@@ -68,9 +78,15 @@ class PeriodeController extends Controller
      * @param  \App\Models\Periode  $periode
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePeriodeRequest $request, Periode $periode)
+    public function update(UpdatePeriodeRequest $request, Periode $periode,$id)
     {
-        //
+        $periode =Periode::findOrFail($id);
+        $periode->update($request->all());
+        if ($periode) {
+            Session::flash('status-edit', 'success');
+            Session::flash('message-edit', 'Data berhasil diedit');
+        }
+        return redirect('/periode');
     }
 
     /**
@@ -79,8 +95,11 @@ class PeriodeController extends Controller
      * @param  \App\Models\Periode  $periode
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Periode $periode)
+    public function destroy(Periode $periode,$id)
     {
-        //
+        $deletedPeriode = Periode::findORFail($id);
+        $deletedPeriode->delete();
+
+        return redirect('/periode');
     }
 }

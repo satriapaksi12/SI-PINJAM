@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('no_polisi')->unique();
             $table->integer('kapasitas');
-            $table->integer('jumlah');
             $table->timestamps();
             $table->unsignedBigInteger('gedung_id');
             $table->foreign('gedung_id')->references('id')->on('gedungs')->onDelete('cascade');

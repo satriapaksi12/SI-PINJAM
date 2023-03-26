@@ -6,6 +6,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\GedungController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\JenisAcaraController;
 use App\Http\Controllers\JenisKendaraanController;
 
@@ -103,5 +104,13 @@ Route::post('/sesi',[SesiController::class, 'store']);
 Route::get('/sesi-edit/{id}',[SesiController::class, 'edit']);
 Route::put('/sesi/{id}',[SesiController::class, 'update']);
 Route::delete('/sesi-destroy/{id}',[SesiController::class, 'destroy']);
+
+//kelola kendaraan
+Route::get('/kendaraan',[KendaraanController::class, 'index']);
+Route::get('/kendaraan-add',[KendaraanController::class, 'create']);
+Route::post('/kendaraan',[KendaraanController::class, 'store']);
+Route::get('/kendaraan-edit/{id}',[KendaraanController::class, 'edit']);
+Route::put('/kendaraan/{id}',[KendaraanController::class, 'update']);
+Route::delete('/kendaraan-destroy/{id}',[KendaraanController::class, 'destroy']);
 
 

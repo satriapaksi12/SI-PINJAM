@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Kendaraan extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama_unit','telepon','email'  // memberi tau kolom mana aja yang boleh diisi
+    ];
 
     public function reservasi_kendaraan()
     {

@@ -9,7 +9,7 @@ class Kendaraan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama_unit','telepon','email'  // memberi tau kolom mana aja yang boleh diisi
+        'no_polisi','kapasitas','gedung_id','jenis_kendaraan_id'  // memberi tau kolom mana aja yang boleh diisi
     ];
 
     public function reservasi_kendaraan()

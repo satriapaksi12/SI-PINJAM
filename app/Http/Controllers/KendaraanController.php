@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kendaraan;
+use App\Models\Gedung;
+use App\Models\Lokasi;
 use App\Http\Requests\StoreKendaraanRequest;
 use App\Http\Requests\UpdateKendaraanRequest;
+use App\Models\Jenis_kendaraan;
+use Illuminate\Support\Facades\Session;
+
 
 class KendaraanController extends Controller
 {
@@ -15,7 +20,8 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        //
+        $kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi')->get();
+        return view('kendaraan.kendaraan', ['kendaraanList' => $kendaraan]);
     }
 
     /**
@@ -25,7 +31,10 @@ class KendaraanController extends Controller
      */
     public function create()
     {
-        //
+        $jenis_kendaraan = Jenis_kendaraan::select('id', 'nama_jenis_kendaraan')->get();
+        $gedung = Gedung::select('id', 'nama_gedung','lokasi_id')->get();
+        $lokasi = Lokasi::select('id', 'nama_lokasi')->get();
+        return view('kendaraan.kendaraan-add', ['gedung' => $gedung, 'lokasi' => $lokasi,'jenis_kendaraan' => $jenis_kendaraan]);
     }
 
     /**
@@ -36,7 +45,12 @@ class KendaraanController extends Controller
      */
     public function store(StoreKendaraanRequest $request)
     {
-        //
+        $kendaraan = Kendaraan::create($request->all());
+        if ($kendaraan) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data berhasil ditambahkan');
+        }
+        return redirect('/kendaraan');
     }
 
     /**
@@ -56,9 +70,12 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kendaraan $kendaraan)
+    public function edit(Kendaraan $kendaraan,$id)
     {
-        //
+        $kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi')->findOrFail($id);
+        $lokasi =Lokasi::select('id', 'nama_lokasi')->get();
+        return view('kendaraan.kendaraan-edit', ['kendaraan' => $kendaraan,'lokasi' => $lokasi]);
+
     }
 
     /**
@@ -68,9 +85,19 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKendaraanRequest $request, Kendaraan $kendaraan)
+    public function update(UpdateKendaraanRequest $request, Kendaraan $kendaraan,$id)
     {
-        //
+
+
+        $kendaran =Kendaraan::findOrFail($id);
+        $kendaraan->update($request->all());
+
+        if ($kendaraan) {
+            Session::flash('status-edit', 'success');
+            Session::flash('message-edit', 'Data berhasil diedit');
+        }
+        return redirect('/kendaraan');
+
     }
 
     /**
@@ -79,8 +106,11 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kendaraan $kendaraan)
+    public function destroy(Kendaraan $kendaraan,$id)
     {
-        //
+        $deletedKendaraan = Kendaraan::findORFail($id);
+        $deletedKendaraan->delete();
+
+        return redirect('/kendaraan');
     }
 }

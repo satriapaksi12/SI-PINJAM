@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SesiController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\GedungController;
 use App\Http\Controllers\LokasiController;
@@ -94,5 +95,13 @@ Route::post('/lokasi',[LokasiController::class, 'store']);
 Route::get('/lokasi-edit/{id}',[LokasiController::class, 'edit']);
 Route::put('/lokasi/{id}',[LokasiController::class, 'update']);
 Route::delete('/lokasi-destroy/{id}',[LokasiController::class, 'destroy']);
+
+//kelola sesi
+Route::get('/sesi',[SesiController::class, 'index']);
+Route::get('/sesi-add',[SesiController::class, 'create']);
+Route::post('/sesi',[SesiController::class, 'store']);
+Route::get('/sesi-edit/{id}',[SesiController::class, 'edit']);
+Route::put('/sesi/{id}',[SesiController::class, 'update']);
+Route::delete('/sesi-destroy/{id}',[SesiController::class, 'destroy']);
 
 

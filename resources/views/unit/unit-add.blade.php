@@ -25,6 +25,16 @@
                                 <input type="text" class="form-control"  name="nama_unit"id="nama_unit"
                                     placeholder="">
                             </div>
+                            <div class="form-group">
+                                <label for="nama_unit">No Telepon</label>
+                                <input type="text" class="form-control"  name="telepon"id="telepon"
+                                    placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_unit">Email</label>
+                                <input type="text" class="form-control"  name="email"id="email"
+                                    placeholder="">
+                            </div>
                         </div>
                         <!-- /.card-body -->
 

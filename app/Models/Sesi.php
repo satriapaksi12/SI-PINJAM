@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sesi extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'sesi','hari','jam_mulai','jam_selesai'  // memberi tau kolom mana aja yang boleh diisi
+    ];
 
     public function reservasi_ruang()
     {

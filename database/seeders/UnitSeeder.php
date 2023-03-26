@@ -26,8 +26,6 @@ class UnitSeeder extends Seeder
         foreach ($data as $value) {
             Unit::insert([
                 'nama_unit' => $value ['nama_unit'],
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
             ]);
         }
     }

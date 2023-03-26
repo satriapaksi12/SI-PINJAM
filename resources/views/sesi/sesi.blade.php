@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Unit')
+@section('title', 'Sesi')
 
 @include('component.navbar')
 @section('content')
@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/unit-add" class="btn btn-primary">Add Data</a>
+                        <a href="/sesi-add" class="btn btn-primary">Add Data</a>
                     </div>
                     @if (Session::has('status'))
                         <div class="alert alert-success" role="alert">
@@ -31,27 +31,26 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Unit</th>
-                                    <th>No Telepon</th>
-                                    <th>Email</th>
-                                    <th>Action</th>
+                                    <th>Nama Sesi</th>
+                                    <th>Hari</th>
+                                    <th>Jam</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($unitList as $data)
+                                @foreach ($sesiList as $data)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $data->nama_unit }}</td>
-                                        <td>{{ $data->telepon }}</td>
-                                        <td>{{ $data->email }}</td>
+                                        <td>{{ $data->sesi }}</td>
+                                        <td>{{ $data->hari }}</td>
+                                        <td>{{ $data->jam_mulai }} - {{ $data->jam_selesai }}</td>
                                         <td>
-                                            <a href="unit-edit/{{ $data->id }}" class="btn btn-warning">Edit</a>
-                                            <form action="/unit-destroy/{{ $data->id }}" method="post"
+                                            <a href="sesi-edit/{{ $data->id }}" class="btn btn-warning">Edit</a>
+                                            <form action="/sesi-destroy/{{ $data->id }}" method="post"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button
-                                                    onclick="return confirm('Apakah anda ingin menghapus data unit yaitu {{ $data->nama_unit }} ')"
+                                                    onclick="return confirm('Apakah anda ingin menghapus data sesi yaitu {{ $data->sesi }} hari {{ $data->hari }} jam  {{ $data->jam_mulai }} sampai {{ $data->jam_selesai }} ')"
                                                     class="btn btn-danger">Delete</button>
                                             </form>
                                         </td>
@@ -63,10 +62,9 @@
                             <tfoot>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Unit</th>
-                                    <th>No Telepon</th>
-                                    <th>Email</th>
-                                    <th>Action</th>
+                                    <th>Nama Sesi</th>
+                                    <th>Hari</th>
+                                    <th>Jam</th>
                                 </tr>
                             </tfoot>
                         </table>

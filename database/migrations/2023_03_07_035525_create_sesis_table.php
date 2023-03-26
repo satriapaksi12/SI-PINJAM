@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('sesi');
             $table->string('hari');
-            $table->time('jam');
+            $table->string('jam_mulai');
+            $table->string('jam_selesai');
             $table->timestamps();
         });
     }

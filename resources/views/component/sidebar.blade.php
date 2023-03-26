@@ -178,7 +178,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/sesi" class="nav-link">
                         <i class="fas fa-clock nav-icon"></i>
                         <p>Kelola Sesi</p>
                     </a>

@@ -69,7 +69,7 @@ class GedungController extends Controller
      * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gedung $gedung,$id)
+    public function edit(Gedung $gedung ,Lokasi $lokasi,$id)
     {
         $gedung = Gedung::with('lokasi')->findOrFail($id);
         $lokasi =Lokasi::select('id', 'nama_lokasi')->where('id', '!=', $gedung->lokasi_id)->get();
@@ -85,13 +85,17 @@ class GedungController extends Controller
      */
     public function update(UpdateGedungRequest $request, Gedung $gedung,$id)
     {
+        // dd($request->all());
         $gedung =Gedung::findOrFail($id);
         $gedung->update($request->all());
+
         if ($gedung) {
             Session::flash('status-edit', 'success');
             Session::flash('message-edit', 'Data berhasil diedit');
         }
         return redirect('/gedung');
+
+
     }
 
     /**

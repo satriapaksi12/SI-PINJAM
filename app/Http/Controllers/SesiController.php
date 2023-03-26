@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sesi;
 use App\Http\Requests\StoreSesiRequest;
 use App\Http\Requests\UpdateSesiRequest;
+use Illuminate\Support\Facades\Session;
 
 class SesiController extends Controller
 {
@@ -15,7 +16,8 @@ class SesiController extends Controller
      */
     public function index()
     {
-        //
+        $sesi = Sesi::all();
+        return view('sesi.sesi', ['sesiList' => $sesi]);
     }
 
     /**
@@ -25,7 +27,7 @@ class SesiController extends Controller
      */
     public function create()
     {
-        //
+        return view('sesi.sesi-add');
     }
 
     /**
@@ -36,7 +38,13 @@ class SesiController extends Controller
      */
     public function store(StoreSesiRequest $request)
     {
-        //
+        $sesi = Sesi::create($request->all());
+        if ($sesi) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data berhasil ditambahkan');
+        }
+
+        return redirect('/sesi');
     }
 
     /**
@@ -56,9 +64,10 @@ class SesiController extends Controller
      * @param  \App\Models\Sesi  $sesi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sesi $sesi)
+    public function edit(Sesi $sesi,$id)
     {
-        //
+        $sesi = Sesi::findOrFail($id);
+        return view('sesi.sesi-edit',['sesi' => $sesi]);
     }
 
     /**
@@ -68,9 +77,15 @@ class SesiController extends Controller
      * @param  \App\Models\Sesi  $sesi
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSesiRequest $request, Sesi $sesi)
+    public function update(UpdateSesiRequest $request, Sesi $sesi,$id)
     {
-        //
+        $sesi =Sesi::findOrFail($id);
+        $sesi->update($request->all());
+        if ($sesi) {
+            Session::flash('status-edit', 'success');
+            Session::flash('message-edit', 'Data berhasil diedit');
+        }
+        return redirect('/sesi');
     }
 
     /**
@@ -79,8 +94,11 @@ class SesiController extends Controller
      * @param  \App\Models\Sesi  $sesi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sesi $sesi)
+    public function destroy(Sesi $sesi,$id)
     {
-        //
+        $deletedSesi = Sesi::findORFail($id);
+        $deletedSesi->delete();
+
+        return redirect('/sesi');
     }
 }

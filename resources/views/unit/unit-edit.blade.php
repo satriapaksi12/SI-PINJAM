@@ -26,6 +26,16 @@
                                 <input type="text" class="form-control" name="nama_unit"id="nama_unit"
                                     value="{{ $unit->nama_unit }}" placeholder="">
                             </div>
+                            <div class="form-group">
+                                <label for="nama_unit">No Telepon</label>
+                                <input type="text" class="form-control" name="telepon"id="telepon"
+                                    value="{{ $unit->telepon }}" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_unit">Email</label>
+                                <input type="text" class="form-control" name="email"id="email"
+                                    value="{{ $unit->email }}" placeholder="">
+                            </div>
                         </div>
                         <!-- /.card-body -->
 

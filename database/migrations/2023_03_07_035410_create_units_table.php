@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string('nama_unit')->unique();
+            $table->string('telepon');
+            $table->string('email');
             $table->timestamps();
         });
     }

@@ -30,10 +30,10 @@
                         <div class="card-body ">
                             <div class="form-group">
                                 <label for="gender" class="form-label">Lokasi Kampus</label>
-                                <select class="form-control" name="nama_lokasi" id="lokasi_id">
-                                    <option value="{{ $lokasi->nama_lokasi }}">{{ $lokasi->nama_lokasi }}</option>
+                                <select class="form-control" name="lokasi_id" id="lokasi_id">
+                                    <option value="{{ $gedung->lokasi->id }}">{{  $gedung->lokasi->nama_lokasi }}</option>
                                     @foreach ($lokasi as $data )
-                                    <option value="{{ $lokasi->nama_lokasi }}">{{ $lokasi->nama_lokasi }}</option>
+                                    <option value="{{  $data->id }}">{{ $data->nama_lokasi }}</option>
                                     @endforeach
                                 </select>
                             </div>

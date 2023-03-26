@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nomor_induk')->unique();
             $table->string('email');
             $table->string('password');
+            $table->string('image', 255)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->unsignedBigInteger('unit_id');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');

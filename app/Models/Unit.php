@@ -10,7 +10,7 @@ class Unit extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_unit'  // memberi tau kolom mana aja yang boleh diisi
+        'nama_unit','telepon','email'  // memberi tau kolom mana aja yang boleh diisi
     ];
     public function user(){
         //Nama model, fk yang di tabel yang dituju, id  dari tabel asal

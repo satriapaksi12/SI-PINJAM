@@ -1,13 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('title', 'Edit Kemdaraan')
 
-@include('component.navbar')
 @section('content')
     <div class="container ">
         <div class="row">
             <div class="col-md-3">
-                @include('component.sidebar')
             </div>
             <div class="col-md-12">
                 <!-- general form elements -->
@@ -38,9 +36,9 @@
                             <div class="form-group">
                             <label for="gender" class="form-label">Jenis Kendaraan</label>
                             <select class="form-control" name="jenis_kendaraan_id" id="jenis_kendaraan_id" >
-                                <option value="{{ $kendaraan->jenis_kendaraan->id }}">{{  $kendaraan->jenis_kendaraan->nama_jenis_kendaraan }}</option>
-                                @foreach ($kendaraan -> jenis_kendaraan as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_jenis_kendaraan }}</option>
+                                {{-- <option value="{{ $jenis_kendaraan->id }}">{{  $kendaraan->$jenis_kendaraan->nama_jenis_kendaraan }}</option> --}}
+                                @foreach ($jenis_kendaraan as $id => $name)
+                                    <option value="{{ $id }}" {{ $kendaraan->jenis_kendaraan_id == $id ? 'selected' : '' }}>{{ $name }}</option>
                                 @endforeach
                             </select>
                             </div>
@@ -49,10 +47,10 @@
                             <div class="form-group">
                             <label for="gender" class="form-label">Lokasi</label>
                             <select class="form-control" name="gedung_id" id="gedung_id" >
-                                <option value="{{ $kendaraan->$gedung->id }}">{{  $kendaraan->gedung->nama_gedung }} - {{  $kendaraan->gedung->lokasi->nama_lokasi }}</option>
-                                @foreach ($kendaraan->gedung as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_gedung }} - {{ $item->lokasi->nama_lokasi }}</option>
-                                @endforeach
+                                <option value="{{ $kendaraan->gedung->id }}">{{  $kendaraan->gedung->nama_gedung }} - {{  $kendaraan->gedung->lokasi->nama_lokasi }}</option>
+                                {{-- @foreach ($kendaraan as $item)
+                                    <option value="{{ $item->gedung->id }}">{{ $item->gedung->nama_gedung }} - {{ $item->gedunng->lokasi->nama_lokasi }}</option>
+                                @endforeach --}}
                             </select>
                             </div>
                         </div>

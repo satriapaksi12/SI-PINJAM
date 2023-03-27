@@ -1,21 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
-@section('title', 'Superadmin | Dashboard')
-
-@include('component.navbar')
+@section('title', 'Dashboard')
+@section('fitur', 'Dashboard')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                @include('component.sidebar')
-            </div>
-            <div class="col-md-9">
-                <h1>Welcome </h1>
-                <p>This is the dashboard page.</p>
-                <div class="container">
-                    <figure> @include('component.ikon_welcome')</figure>
-                </div>
-            </div>
-        </div>
-    </div>
+    <h1>Welcome </h1>
+    <p>This is the dashboard page.</p>
 @endsection

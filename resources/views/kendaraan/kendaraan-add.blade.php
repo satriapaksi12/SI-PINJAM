@@ -1,13 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('title', 'Tambah Kendaraan')
 
-@include('component.navbar')
 @section('content')
     <div class="container ">
         <div class="row">
             <div class="col-md-3">
-                @include('component.sidebar')
             </div>
             <div class="col-md-12">
                 <!-- general form elements -->

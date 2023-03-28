@@ -99,7 +99,12 @@ class UnitController extends Controller
     {
         $deletedUnit = Unit::findORFail($id);
         $deletedUnit->delete();
-
+        if ($deletedUnit) {
+            Session::flash('status-delete', 'success');
+            Session::flash('message-delete', 'Data berhasil dihapus');
+        }
         return redirect('/unit');
+
+        
     }
 }

@@ -100,6 +100,11 @@ class PeriodeController extends Controller
         $deletedPeriode = Periode::findORFail($id);
         $deletedPeriode->delete();
 
+        if ($periode) {
+            Session::flash('status-delete', 'success');
+            Session::flash('message-delete', 'Data berhasil dihapus');
+        }
+
         return redirect('/periode');
     }
 }

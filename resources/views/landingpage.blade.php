@@ -78,8 +78,8 @@
                     data-aos="fade-up" data-aos-delay="200">
                     <h1>SISTEM INFORMASI PEMINJAMAN SARANA DAN PRASARANA </h1>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="/login"><button type="button"  class="btn btn-primary btn-lg mx-1">Login</button></a>
-                        <a href="/register"><button type="button" class="btn btn-success btn-lg mx-1">Register</button></a>
+                        <a href="/login"><button type="button"  class="btn btn-warning btn-lg mx-1">Mulai Pinjam <i class="bi bi-arrow-right"></i></button></a>
+                       
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">

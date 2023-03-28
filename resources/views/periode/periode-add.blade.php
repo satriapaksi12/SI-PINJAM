@@ -27,7 +27,7 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset class="form-group">
-                                                <select class="form-select" name="semester" id="semester">
+                                                <select class="form-select" name="hari" id="hari">
                                                     <option value="Ganjil">Ganjil</option>
                                                     <option value="Genap">Genap</option>
                                                 </select>

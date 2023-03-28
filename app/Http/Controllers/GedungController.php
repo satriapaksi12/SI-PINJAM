@@ -109,6 +109,11 @@ class GedungController extends Controller
         $deletedGedung = Gedung::findORFail($id);
         $deletedGedung->delete();
 
+        if ($deletedGedung) {
+            Session::flash('status-delete', 'success');
+            Session::flash('message-delete', 'Data berhasil dihapus');
+        }
+
         return redirect('/gedung');
     }
 }

@@ -1,50 +1,64 @@
 @extends('layouts.app2')
 
-@section('title', 'Edit Periode')
+@section('title', 'Edit Gedung')
+@section('fitur', 'EDIT GEDUNG')
 
 @section('content')
-    <div class="container ">
-        <div class="row">
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-12">
-                <!-- general form elements -->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">EDIT GEDUNG</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    <form action="/gedung/{{ $gedung->id }}" method="post">
-                        @csrf
-                        @method('PUT')
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="nama_unit">Nama Gedung</label>
-                                <input type="text" class="form-control" name="nama_gedung"id="nama_gedung" value="{{ $gedung->nama_gedung }}"
-                                    placeholder="">
-                            </div>
-                        </div>
-                        <div class="card-body ">
-                            <div class="form-group">
-                                <label for="gender" class="form-label">Lokasi Kampus</label>
-                                <select class="form-control" name="lokasi_id" id="lokasi_id">
-                                    <option value="{{ $gedung->lokasi->id }}">{{  $gedung->lokasi->nama_lokasi }}</option>
-                                    @foreach ($lokasi as $data )
-                                    <option value="{{  $data->id }}">{{ $data->nama_lokasi }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
+    <section id="basic-horizontal-layouts">
+        <div class="row match-height">
+            <div class="col-md-12 col-12">
+                <div class="card">
 
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form action="/gedung/{{ $gedung->id }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Nama Gedung</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" name="nama_gedung"id="nama_gedung" class="form-control"
+                                                value="{{ $gedung->nama_gedung }}" placeholder="">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Lokasi Kampus</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <fieldset class="form-group">
+                                                <select class="form-select"name="lokasi_id" id="lokasi_id">
+                                                    <option value="{{ $gedung->lokasi->id }}">
+                                                        {{ $gedung->lokasi->nama_lokasi }}</option>
+                                                    @foreach ($lokasi as $data)
+                                                        <option value="{{ $data->id }}">{{ $data->nama_lokasi }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </fieldset>
+                                        </div>
+
+
+                                        <div class="col-sm-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
-                <!-- /.card -->
             </div>
         </div>
-    </div>
+    </section>
 @endsection
+
+
+
+
+
+
+
+

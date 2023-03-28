@@ -23,35 +23,31 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <a href="/unit-add" class="btn btn-primary">Add Data</a>
+                <a href="/lokasi-add" class="btn btn-primary">Add Data</a>
             </div>
             <div class="card-body">
                 <table class="table" id="table1">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Unit</th>
-                            <th>No Telepon</th>
-                            <th>Email</th>
+                            <th>Nama Lokasi Kampus</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($unitList as $data)
+                        @foreach ($lokasiList as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $data->nama_unit }}</td>
-                                <td>{{ $data->telepon }}</td>
-                                <td>{{ $data->email }}</td>
+                                <td>{{ $data->nama_lokasi }}</td>
                                 <td>
 
-                                    <a href="unit-edit/{{ $data->id }}" class="btn icon btn-warning"><i
+                                    <a href="lokasi-edit/{{ $data->id }}" class="btn icon btn-warning"><i
                                             class="bi bi-pencil"></i></a>
-                                    <form action="/unit-destroy/{{ $data->id }}" method="post" class="d-inline">
+                                    <form action="/lokasi-destroy/{{ $data->id }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button
-                                            onclick="return confirm('Apakah anda ingin menghapus data unit yaitu {{ $data->nama_unit }} ')"
+                                            onclick="return confirm('Apakah anda ingin menghapus data lokasi  {{ $data->nama_lokasi }} ')"
                                             class="btn icon btn-danger"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </td>
@@ -67,69 +63,3 @@
     </section>
     <!-- Basic Tables end -->
 @endsection
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <a href="/lokasi-add" class="btn btn-primary">Add Data</a>
-                </div>
-                @if (Session::has('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('message') }}
-                    </div>
-                @endif
-
-                @if (Session::has('status-edit'))
-                    <div class="alert alert-warning" role="alert">
-                        {{ Session::get('message-edit') }}
-                    </div>
-                @endif
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Lokasi Kampus</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($lokasiList as $data)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data->nama_lokasi }}</td>
-                                    <td>
-                                        <a href="lokasi-edit/{{ $data->id }}" class="btn btn-warning">Edit</a>
-                                        <form action="/lokasi-destroy/{{ $data->id }}" method="post"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button
-                                                onclick="return confirm('Apakah anda ingin menghapus data lokasi yaitu {{ $data->nama_lokasi }} ')"
-                                                class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-
-                                </tr>
-                            @endforeach
-
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Lokasi Kampus</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-        </div>
-    </div>
-</div>

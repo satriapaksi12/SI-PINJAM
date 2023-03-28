@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEKOLAH VOKASI | @yield('title')</title>
 
-    <link rel="stylesheet" href="tmp_dashboard2/dist/assets/css/main/app.css">
-    <link rel="stylesheet" href="tmp_dashboard2/dist/assets/css/main/app-dark.css">
-    <link rel="shortcut icon" href="tmp_dashboard2/dist/assets/images/logo/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="tmp_dashboard2/dist/assets/images/logo/favicon.png" type="image/png">
+    <link rel="stylesheet" href="{{asset('tmp_dashboard2/dist/assets/css/main/app.css')}}">
+    <link rel="stylesheet" href="{{asset('tmp_dashboard2/dist/assets/css/main/app-dark.css')}}">
+    <link rel="shortcut icon" href="{{asset('tmp_dashboard2/dist/assets/images/logo/favicon.svg')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('tmp_dashboard2/dist/assets/images/logo/favicon.png')}}" type="image/png">
 
-    <link rel="stylesheet" href="tmp_dashboard2/dist/assets/css/shared/iconly.css">
+    <link rel="stylesheet" href="{{asset('tmp_dashboard2/dist/assets/css/shared/iconly.css')}}">
 
 </head>
 
@@ -116,12 +116,12 @@
         </div>
     </div>
 
-    <script src="tmp_dashboard2/dist/assets/js/bootstrap.js"></script>
-    <script src="tmp_dashboard2/dist/assets/js/app.js"></script>
+    <script src="{{asset('tmp_dashboard2/dist/assets/js/bootstrap.js')}}"></script>
+    <script src="{{asset('tmp_dashboard2/dist/assets/js/app.js')}}"></script>
 
     <!-- Need: Apexcharts -->
-    <script src="tmp_dashboard2/dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
-    <script src="tmp_dashboard2/dist/assets/js/pages/dashboard.js"></script>
+    <script src="{{asset('tmp_dashboard2/dist/assets/extensions/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('tmp_dashboard2/dist/assets/js/pages/dashboard.js')}}"></script>
 
 
 

@@ -98,6 +98,10 @@ class SesiController extends Controller
     {
         $deletedSesi = Sesi::findORFail($id);
         $deletedSesi->delete();
+        if ($deletedSesi) {
+            Session::flash('status-delete', 'success');
+            Session::flash('message-delete', 'Data berhasil dihapus');
+        }
 
         return redirect('/sesi');
     }

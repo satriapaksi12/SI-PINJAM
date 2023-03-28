@@ -100,6 +100,11 @@ class LokasiController extends Controller
         $deletedLokasi = Lokasi::findORFail($id);
         $deletedLokasi->delete();
 
+        if ($deletedLokasi) {
+            Session::flash('status-delete', 'success');
+            Session::flash('message-delete', 'Data berhasil dihapus');
+        }
+
         return redirect('/lokasi');
     }
 }

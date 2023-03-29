@@ -37,6 +37,10 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/reservasi-kendaraan', function () {
+    return view('reservasi-kendaraan');
+});
+
 //superadmin
 
 

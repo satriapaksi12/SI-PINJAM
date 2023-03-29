@@ -101,7 +101,10 @@ class JenisAcaraController extends Controller
     {
         $deletedJenisacara = Jenis_acara::findORFail($id);
         $deletedJenisacara->delete();
-
+        if ($deletedJenisacara) {
+            Session::flash('status-delete', 'success');
+            Session::flash('message-delete', 'Data berhasil dihapus');
+        }
         return redirect('/jenis_acara');
     }
 }

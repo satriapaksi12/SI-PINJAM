@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             JenisKendaraanSeeder::class,
             JenisAcaraSeeder::class,
             GedungSeeder::class,
+            KendaraanSeeder::class,
         ]);
     }
 }

@@ -76,7 +76,8 @@ class KendaraanController extends Controller
         $data = [
             'kendaraan' => Kendaraan::with('jenis_kendaraan','gedung.lokasi')->findOrFail($id),
             'jenis_kendaraan' => Jenis_kendaraan::pluck('nama_jenis_kendaraan','id'),
-            'gedung' => Gedung::pluck('id','nama_gedung'),
+            'gedung' => Gedung::get(),
+            // 'gedung' => Gedung::pluck('id','nama_gedung','lokasi_id')->first(),
             'lokasi' => Lokasi::select('id', 'nama_lokasi')->get(),
         ];
 
@@ -95,8 +96,9 @@ class KendaraanController extends Controller
     {
 
 
-        $kendaran =Kendaraan::findOrFail($id);
+        $kendaraan =Kendaraan::findOrFail($id);
         $kendaraan->update($request->all());
+
 
         if ($kendaraan) {
             Session::flash('status-edit', 'success');
@@ -116,6 +118,11 @@ class KendaraanController extends Controller
     {
         $deletedKendaraan = Kendaraan::findORFail($id);
         $deletedKendaraan->delete();
+
+        if ($deletedKendaraan) {
+            Session::flash('status-delete', 'success');
+            Session::flash('message-delete', 'Data berhasil dihapus');
+        }
 
         return redirect('/kendaraan');
     }

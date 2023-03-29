@@ -104,6 +104,11 @@ class JenisKendaraanController extends Controller
         $deletedJeniskendaraan = Jenis_kendaraan::findORFail($id);
         $deletedJeniskendaraan->delete();
 
+        if ($deletedJeniskendaraan) {
+            Session::flash('status-delete', 'success');
+            Session::flash('message-delete', 'Data berhasil dihapus');
+        }
+
         return redirect('/jenis_kendaraan');
     }
 

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Reservasi_kendaraan;
 use App\Http\Requests\StoreReservasi_kendaraanRequest;
 use App\Http\Requests\UpdateReservasi_kendaraanRequest;

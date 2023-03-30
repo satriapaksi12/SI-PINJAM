@@ -9,6 +9,7 @@ use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\JenisAcaraController;
 use App\Http\Controllers\JenisKendaraanController;
+use App\Http\Controllers\ReservasiKendaraanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +38,7 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/reservasi-kendaraan', function () {
-    return view('reservasi-kendaraan');
-});
+
 
 //superadmin
 
@@ -116,5 +115,15 @@ Route::post('/kendaraan',[KendaraanController::class, 'store']);
 Route::get('/kendaraan-edit/{id}',[KendaraanController::class, 'edit']);
 Route::put('/kendaraan/{id}',[KendaraanController::class, 'update']);
 Route::delete('/kendaraan-destroy/{id}',[KendaraanController::class, 'destroy']);
+
+
+//Reservasi  kendaraan
+Route::get('/reservasi-kendaraan',[ReservasiKendaraanController::class, 'index']);
+// Route::get('/kendaraan-add',[KendaraanController::class, 'create']);
+// Route::post('/kendaraan',[KendaraanController::class, 'store']);
+// Route::get('/kendaraan-edit/{id}',[KendaraanController::class, 'edit']);
+// Route::put('/kendaraan/{id}',[KendaraanController::class, 'update']);
+// Route::delete('/kendaraan-destroy/{id}',[KendaraanController::class, 'destroy']);
+
 
 

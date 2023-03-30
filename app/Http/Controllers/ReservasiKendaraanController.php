@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Reservasi_kendaraan;
+use App\Models\Kendaraan;
+
+
 use App\Http\Requests\StoreReservasi_kendaraanRequest;
 use App\Http\Requests\UpdateReservasi_kendaraanRequest;
 
@@ -14,7 +17,8 @@ class ReservasiKendaraanController extends Controller
      */
     public function index()
     {
-        //
+        $reservasi_kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi')->get();
+        return view('reservasi-kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
 
     /**

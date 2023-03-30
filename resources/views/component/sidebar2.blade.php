@@ -71,7 +71,7 @@
                     <a href="/kendaraan">Kelola Kendaraan</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-button.html">Reservasi Kendaraan</a>
+                    <a href="/reservasi-kendaraan">Reservasi Kendaraan</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="component-card.html">Daftar Reservasi</a>

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Alat extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama_alat','no_inventaris','foto_alat_id','gedung_id'  // memberi tau kolom mana aja yang boleh diisi
+    ];
 
     public function reservasi_alat()
     {
@@ -21,6 +24,6 @@ class Alat extends Model
 
     public function foto_alat()
     {
-        return $this->hasMany(Foto_alat::class);
+        return $this->hasMany(Foto_alat::class, 'id', 'foto_alat_id');
     }
 }

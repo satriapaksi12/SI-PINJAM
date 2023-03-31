@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('nama_alat');
             $table->string('no_inventaris');
-            $table->integer('jumlah');
             $table->timestamps();
             $table->unsignedBigInteger('foto_alat_id');
             $table->foreign('foto_alat_id')->references('id')->on('foto_alats')->onDelete('cascade');

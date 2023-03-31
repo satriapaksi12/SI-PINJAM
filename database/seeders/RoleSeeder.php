@@ -26,21 +26,13 @@ class RoleSeeder extends Seeder
             ['nama_role' => 'Mahasiswa'],
         ];
 
-        DB::table('roles')->insert([
-            [
-                'nama_role' => 'Superadmin'
-            ],
-            [
-                'nama_role' => 'Admin'
-            ],
-            [
-                'nama_role' => 'Staff'
-            ],
-            [
-                'nama_role' => 'Mahasiswa'
-            ],
-
-        ]);
+        foreach ($data as $value) {
+            Role::insert([
+                'nama_role' => $value['nama_role'],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        }
 
     }
 }

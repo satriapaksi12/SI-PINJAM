@@ -20,14 +20,20 @@
                     <a href="/" class="no-underline">
                         <h2 class="form-title">Login</h2>
                     </a>
-                    <form method="POST" class="register-form" id="login-form">
+                    @if (Session::has('status'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('message') }}
+                        </div>
+                    @endif
+                    <form method="post" class="register-form">
+                        @csrf
                         <div class="form-group">
                             <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" name="your_name" id="your_name" placeholder="Your Name" />
+                            <input type="text" name="email" id="email" placeholder="Email" />
                         </div>
                         <div class="form-group">
                             <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="your_pass" id="your_pass" placeholder="Password" />
+                            <input type="password" name="password" id="password" placeholder="Password" />
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
@@ -35,7 +41,7 @@
                                 me</label>
                         </div>
                         <div class="form-group form-button">
-                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                            <input type="submit" class="form-submit" value="Log in" />
                         </div>
                     </form>
                     <div class="social-login">

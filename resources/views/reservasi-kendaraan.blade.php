@@ -16,8 +16,27 @@
 
                     <div class="card">
                         <div class="card-content">
-                            <img class="card-img-top img-fluid" src="img/fortuner.jpg" alt="Card image cap"
-                                style="height: 12rem" />
+                            @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'mobil')
+                            <img class="card-img-top img-fluid" src="img/mobil.png" alt="Card image cap"
+                            style="height: 12rem" />
+                            @endif
+                            @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'motor')
+                            <img class="card-img-top img-fluid" src="img/motor.png" alt="Card image cap"
+                            style="height: 12rem" />
+                            @endif
+                            @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'ambulance')
+                            <img class="card-img-top img-fluid" src="img/ambulance.png" alt="Card image cap"
+                            style="height: 12rem" />
+                            @endif
+                            @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'truck')
+                            <img class="card-img-top img-fluid" src="img/truck.png" alt="Card image cap"
+                            style="height: 12rem" />
+                            @endif
+                            @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'bus')
+                            <img class="card-img-top img-fluid" src="img/bus.png" alt="Card image cap"
+                            style="height: 12rem" />
+                            @endif
+
                             <div class="card-body">
 
                                 <h4 class="card-title">{{ $data->no_polisi }}</h4>

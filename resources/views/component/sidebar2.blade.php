@@ -25,6 +25,12 @@
                     <a href="component-breadcrumb.html">Kelola Ruangan</a>
                 </li>
                 <li class="submenu-item ">
+                    <a href="/jenis_acara">Kelola Jenis Acara</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="/sesi">Kelola Sesi</a>
+                </li>
+                <li class="submenu-item ">
                     <a href="component-button.html">Reservasi Ruangan</a>
                 </li>
                 <li class="submenu-item ">
@@ -45,7 +51,7 @@
                     <a href="component-badge.html">Kelola Reservasi</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-breadcrumb.html">Kelola Alat</a>
+                    <a href="/alat">Kelola Alat</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="component-button.html">Reservasi Alat</a>
@@ -71,31 +77,15 @@
                     <a href="/kendaraan">Kelola Kendaraan</a>
                 </li>
                 <li class="submenu-item ">
+                    <a href="/jenis_kendaraan">Kelola Jenis Kendaraan</a>
+                </li>
+                <li class="submenu-item ">
                     <a href="/reservasi-kendaraan">Reservasi Kendaraan</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="component-card.html">Daftar Reservasi</a>
                 </li>
             </ul>
-        </li>
-        <li class="sidebar-item  ">
-            <a href="/jenis_acara" class='sidebar-link'>
-                <i class="bi bi-journals"></i>
-                <span>Kelola Jenis Acara</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item  ">
-            <a href="/jenis_kendaraan" class='sidebar-link'>
-                <i class="bi bi-truck-front"></i>
-                <span>Kelola Jenis Kendaraan</span>
-            </a>
-        </li>
-        <li class="sidebar-item  ">
-            <a href="/sesi" class='sidebar-link'>
-                <i class="bi bi-clock"></i>
-                <span>Kelola Sesi</span>
-            </a>
         </li>
         <li class="sidebar-item  ">
             <a href="/periode" class='sidebar-link'>

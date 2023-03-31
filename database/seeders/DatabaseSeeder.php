@@ -31,6 +31,10 @@ class DatabaseSeeder extends Seeder
             JenisAcaraSeeder::class,
             GedungSeeder::class,
             KendaraanSeeder::class,
+            FotoAlatSeeder::class,
+            AlatSeeder::class,
+            RoleSeeder::class,
+            Userseeder::class
         ]);
     }
 }

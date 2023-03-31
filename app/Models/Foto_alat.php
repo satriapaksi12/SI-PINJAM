@@ -10,6 +10,6 @@ class Foto_alat extends Model
     use HasFactory;
     public function alat()
     {
-        return $this->belongsTo(Alat::class);
+        return $this->belongsTo(Alat::class, 'alat_id', 'id');
     }
 }

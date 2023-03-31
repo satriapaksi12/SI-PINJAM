@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-    protected $guarded = [
-        'id'  // memberi tau kolom mana aja yang boleh diisi
+    protected $fillable = [
+        'nama_role'  // memberi tau kolom mana aja yang boleh diisi
     ];
     public function user()
     {

@@ -106,7 +106,9 @@
                                         <div class="col-md-8 form-group">
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="status" id="status">
-                                                   
+                                                    <option value="">Pilih salah satu</option>
+                                                    <option value="Laki-laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
                                                 </select>
                                             </fieldset>
                                         </div>

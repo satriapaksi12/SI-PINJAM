@@ -34,7 +34,9 @@ class DatabaseSeeder extends Seeder
             FotoAlatSeeder::class,
             AlatSeeder::class,
             RoleSeeder::class,
-            Userseeder::class
+            Userseeder::class,
+            FotoRuangSeeder::class,
+            RuangSeeder::class
         ]);
     }
 }

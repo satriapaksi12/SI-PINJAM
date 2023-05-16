@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Reservasi_alat extends Model
 {
     use HasFactory;
+    protected $guarded = [
+        'id',
+
+    ];
 
     public function user()
     {
@@ -16,7 +20,7 @@ class Reservasi_alat extends Model
 
     public function unit()
     {
-        return $this->belongsTo(Sesi::class);
+        return $this->belongsTo(Unit::class);
     }
 
     public function alat()

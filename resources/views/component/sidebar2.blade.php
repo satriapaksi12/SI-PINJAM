@@ -19,19 +19,7 @@
                     <a href="component-alert.html">Cek Jadwal</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-badge.html">Kelola Reservasi</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-breadcrumb.html">Kelola Ruangan</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/jenis_acara">Kelola Jenis Acara</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/sesi">Kelola Sesi</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-button.html">Reservasi Ruangan</a>
+                    <a href="/reservasi-ruang">Tambah Reservasi </a>
                 </li>
                 <li class="submenu-item ">
                     <a href="component-card.html">Daftar Reservasi</a>
@@ -48,13 +36,7 @@
                     <a href="component-alert.html">Cek Jadwal</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-badge.html">Kelola Reservasi</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/alat">Kelola Alat</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-button.html">Reservasi Alat</a>
+                    <a href="/reservasi-alat">Tambah Reservasi </a>
                 </li>
                 <li class="submenu-item ">
                     <a href="component-card.html">Daftar Reservasi</a>
@@ -71,45 +53,85 @@
                     <a href="component-alert.html">Cek Jadwal</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-badge.html">Kelola Reservasi</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/kendaraan">Kelola Kendaraan</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/jenis_kendaraan">Kelola Jenis Kendaraan</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/reservasi-kendaraan">Reservasi Kendaraan</a>
+                    <a href="/reservasi-kendaraan">Tambah Reservasi </a>
                 </li>
                 <li class="submenu-item ">
                     <a href="component-card.html">Daftar Reservasi</a>
                 </li>
             </ul>
         </li>
+        <li class="sidebar-title">Kelola Data Master</li>
+
+        <li class="sidebar-item  has-sub">
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-collection"></i>
+                <span>Kelola Aset</span>
+            </a>
+            <ul class="submenu ">
+                <li class="submenu-item ">
+                    <a href="/ruang"> Ruangan</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="/kendaraan">Kendaraan</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="/alat">Alat</a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-item  has-sub">
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-clipboard-check"></i>
+                <span>Kelola Reservasi</span>
+            </a>
+            <ul class="submenu ">
+                <li class="submenu-item ">
+                    <a href="">Reservasi Ruangan</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="">Reservasi Kendaraan</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="/daftarreservasi-alat">Reservasi Alat</a>
+                </li>
+            </ul>
+        </li>
         <li class="sidebar-item  ">
             <a href="/periode" class='sidebar-link'>
-                <i class="bi bi-calendar"></i>
+                <i class="bi bi-calendar3"></i>
                 <span>Kelola Periode</span>
             </a>
         </li>
         <li class="sidebar-item  ">
-            <a href="form-layout.html" class='sidebar-link'>
-                <i class="bi bi-people-fill"></i>
-                <span>Kelola User</span>
+            <a href="/sesi" class='sidebar-link'>
+                <i class="bi bi-clock"></i>
+                <span>Kelola Sesi</span>
             </a>
         </li>
+        <li class="sidebar-item  ">
+            <a href="/jenis_acara" class='sidebar-link'>
+                <i class="bi bi-calendar"></i>
+                <span>Kelola Jenis Acara</span>
+            </a>
+        </li>
+        <li class="sidebar-item  ">
+            <a href="/jenis_kendaraan" class='sidebar-link'>
+                <i class="bi bi-calendar"></i>
+                <span>Kelola Jenis Kendaraan</span>
+            </a>
+        </li>
+
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-geo-alt-fill"></i>
-                <span> Lokasi</span>
+                <span> Kelola Lokasi</span>
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="/gedung">Kelola Gedung</a>
+                    <a href="/gedung">Gedung</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/lokasi">Kelola Lokasi Kampus</a>
+                    <a href="/lokasi">Lokasi Kampus</a>
                 </li>
             </ul>
         </li>
@@ -118,6 +140,23 @@
                 <i class="bi bi-mortarboard"></i>
                 <span>Kelola Unit</span>
             </a>
+        </li>
+        <li class="sidebar-item  has-sub">
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-people-fill"></i>
+                <span>Kelola User</span>
+            </a>
+            <ul class="submenu ">
+                <li class="submenu-item ">
+                    <a href="/user"> User Aktif</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="/user-deleted"> User Non-Aktif</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="/role"> Role</a>
+                </li>
+            </ul>
         </li>
     </ul>
 </div>

@@ -17,24 +17,24 @@
                     <div class="card">
                         <div class="card-content">
                             @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'mobil')
-                            <img class="card-img-top img-fluid" src="img/mobil.png" alt="Card image cap"
-                            style="height: 12rem" />
+                                <img class="card-img-top img-fluid" src="img/mobil.png" alt="Card image cap"
+                                    style="height: 12rem" />
                             @endif
                             @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'motor')
-                            <img class="card-img-top img-fluid" src="img/motor.png" alt="Card image cap"
-                            style="height: 12rem" />
+                                <img class="card-img-top img-fluid" src="img/motor.png" alt="Card image cap"
+                                    style="height: 12rem" />
                             @endif
                             @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'ambulance')
-                            <img class="card-img-top img-fluid" src="img/ambulance.png" alt="Card image cap"
-                            style="height: 12rem" />
+                                <img class="card-img-top img-fluid" src="img/ambulance.png" alt="Card image cap"
+                                    style="height: 12rem" />
                             @endif
                             @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'truck')
-                            <img class="card-img-top img-fluid" src="img/truck.png" alt="Card image cap"
-                            style="height: 12rem" />
+                                <img class="card-img-top img-fluid" src="img/truck.png" alt="Card image cap"
+                                    style="height: 12rem" />
                             @endif
                             @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'bus')
-                            <img class="card-img-top img-fluid" src="img/bus.png" alt="Card image cap"
-                            style="height: 12rem" />
+                                <img class="card-img-top img-fluid" src="img/bus.png" alt="Card image cap"
+                                    style="height: 12rem" />
                             @endif
 
                             <div class="card-body">
@@ -59,14 +59,15 @@
                                             <th scope="row">Lokasi</th>
                                             <td> : </td>
                                             <td colspan="2">
-                                               {{ $data->gedung->nama_gedung }} - {{ $data->gedung->lokasi->nama_lokasi }}
+                                                {{ $data->gedung->nama_gedung }} - {{ $data->gedung->lokasi->nama_lokasi }}
                                             </td>
 
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div class=" d-flex justify-content-end">
-                                    <button type="submit"class="btn btn-primary block">Reservasi</button>
+                                    <a href="/reservasi-kendaraan-add/{{ $data->id }}"><button
+                                            type="submit"class="btn btn-primary block">Reservasi</button></a>
                                 </div>
 
                             </div>

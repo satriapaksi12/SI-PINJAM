@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservasi_ruang;
 use App\Http\Requests\StoreReservasi_ruangRequest;
 use App\Http\Requests\UpdateReservasi_ruangRequest;
+use App\Models\Ruang;
 
 class ReservasiRuangController extends Controller
 {
@@ -15,7 +16,8 @@ class ReservasiRuangController extends Controller
      */
     public function index()
     {
-        //
+        $reservasi_ruang = Ruang::with('foto_ruang','gedung.lokasi')->get();
+        return view('reservasi-ruangan', ['reservasi_ruang' => $reservasi_ruang]);
     }
 
     /**

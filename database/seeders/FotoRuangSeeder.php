@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
+use App\Models\Foto_ruang;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class FotoRuangSeeder extends Seeder
 {
@@ -14,6 +16,18 @@ class FotoRuangSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $data = [
+            ['nama_foto' => '1',],
+            ['nama_foto' => '1',],
+
+        ];
+
+        foreach ($data as $value) {
+            Foto_ruang::insert([
+                'nama_foto' => $value['nama_foto'],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        }
     }
 }

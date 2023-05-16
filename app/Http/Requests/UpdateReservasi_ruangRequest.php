@@ -13,7 +13,7 @@ class UpdateReservasi_ruangRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

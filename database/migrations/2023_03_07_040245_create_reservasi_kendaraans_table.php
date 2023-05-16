@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('alasan')->nullable();
             $table->string('surat')->nullable();
             $table->string('penanggung_jawab');
-            $table->string('status');
+            $table->string('status')->nullable();;
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->date('jam_mulai');
-            $table->date('jam_selesai');
+            $table->time('jam_mulai');
+            $table->time('jam_selesai');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

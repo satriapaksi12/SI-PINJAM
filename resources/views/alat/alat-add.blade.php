@@ -18,15 +18,15 @@
                                             <label>No Inventaris</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" name="no_polisi"id="no_polisi"
-                                                class="form-control" placeholder="No Polisi">
+                                            <input type="text" name="no_inventaris"id="no_inventaris"
+                                                class="form-control" placeholder="No Inventaris">
                                         </div>
                                         <div class="col-md-4">
                                             <label>Nama Alat</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="number"name="kapasitas"id="kapasitas"
-                                                class="form-control" placeholder="Kapasitas">
+                                            <input type="textr"name="nama_alat"id="nama_alat"
+                                                class="form-control" placeholder="Nama Alat">
                                         </div>
 
                                         <div class="col-md-4">
@@ -42,12 +42,11 @@
                                                 </select>
                                             </fieldset>
                                         </div>
-                                        <input class="form-control" type="file" id="formFile">
                                         <div class="col-md-4">
                                             <label>Foto Alat</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input class="form-control" type="file" name="foto_alat_id"id="foto_alat_id">
+                                            <input class="form-control" type="file" name="foto_alat_id"id="foto_alat_id" multiple>
                                         </div>
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>

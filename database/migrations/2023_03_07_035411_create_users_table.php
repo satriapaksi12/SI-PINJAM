@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nomor_induk')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('nama_foto')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

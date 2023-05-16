@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('surat')->nullable();
             $table->string('kelas')->nullable();
             $table->string('penanggung_jawab');
-            $table->string('status');
+            $table->string('status')->nullable();;
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->timestamps();

@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Reservasi_kendaraan;
+use App\Models\Unit;
+use App\Models\User;
+
+
 use App\Models\Kendaraan;
-
-
+use App\Models\Reservasi_kendaraan;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreReservasi_kendaraanRequest;
 use App\Http\Requests\UpdateReservasi_kendaraanRequest;
 
@@ -26,9 +29,12 @@ class ReservasiKendaraanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $user = User::with('unit')->get();
+        $unit = Unit::all();
+        $kendaraan = Kendaraan::with('gedung.lokasi','jenis_kendaraan')->findOrFail($id);
+        return view('tambah_reservasi_kendaraan', ['user' => $user, 'unit' => $unit, 'kendaraan' => $kendaraan]);
     }
 
     /**
@@ -39,7 +45,26 @@ class ReservasiKendaraanController extends Controller
      */
     public function store(StoreReservasi_kendaraanRequest $request)
     {
-        //
+        $reservasi_kendaraan = new Reservasi_kendaraan();
+        $reservasi_kendaraan->kegiatan = $request->kegiatan;
+        $reservasi_kendaraan->alasan = $request->alasan;
+        $reservasi_kendaraan->surat = $request->surat;
+        $reservasi_kendaraan->penanggung_jawab = $request->penanggung_jawab;
+        $reservasi_kendaraan->status = $request->status;
+        $reservasi_kendaraan->tanggal_mulai = $request->tanggal_mulai;
+        $reservasi_kendaraan->tanggal_selesai = $request->tanggal_selesai;
+        $reservasi_kendaraan->jam_mulai = $request->jam_mulai;
+        $reservasi_kendaraan->jam_selesai = $request->jam_selesai;
+        $reservasi_kendaraan->user_id = $request->user_id;
+        $reservasi_kendaraan->unit_id = $request->unit_id;
+        $reservasi_kendaraan->kendaraan_id = $request->kendaraan_id;
+        $reservasi_kendaraan->save();
+        if ($reservasi_kendaraan) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Data berhasil ditambahkan');
+        }
+
+
     }
 
     /**

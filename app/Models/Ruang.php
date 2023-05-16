@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ruang extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama_ruang','kapasitas','fasilitas','foto_ruang_id','gedung_id'  // memberi tau kolom mana aja yang boleh diisi
+    ];
 
     public function reservasi_ruang(){
         //Nama model, fk yang di tabel yang dituju, id  dari tabel asal
@@ -16,7 +19,7 @@ class Ruang extends Model
 
     public function foto_ruang()
     {
-        return $this->hasMany(Foto_ruang::class);
+        return $this->hasMany(Foto_ruang::class, 'id', 'foto_ruang_id');
     }
 
 

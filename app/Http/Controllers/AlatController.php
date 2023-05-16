@@ -47,14 +47,26 @@ class AlatController extends Controller
      */
     public function store(StoreAlatRequest $request)
     {
+
+        $foto = $request->foto_alat_id;
+        $name = $foto->hashName();
+        $foto->move(public_path('/img/'), $name);
+        $namaFoto = 'img/' . $name;
+
+        Foto_alat::create([
+            'nama_foto' => $namaFoto,
+        ]);
+
+        $foto = Foto_alat::where('nama_foto', $namaFoto)->first();
+
         $alat = new Alat();
         $alat->no_inventaris = $request->no_inventaris;
         $alat->nama_alat = $request->nama_alat;
-        $alat->foto_alat_id = $request->foto_alat_id;
+        $alat->foto_alat_id = $foto->id;
         $alat->gedung_id = $request->gedung_id;
         $alat->save();
 
-        
+
         if ($alat) {
             Session::flash('status', 'success');
             Session::flash('message', 'Data berhasil ditambahkan');

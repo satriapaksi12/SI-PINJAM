@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('alasan')->nullable();
             $table->string('surat')->nullable();
             $table->string('penanggung_jawab');
-            $table->string('status')->nullable();;
+            $table->string('status')->nullable();
+            $table->string('no_reservasi')->unique();
+            $table->string('no_telepon');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->time('jam_mulai');

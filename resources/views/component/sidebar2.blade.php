@@ -39,7 +39,7 @@
                     <a href="/reservasi-alat">Tambah Reservasi </a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-card.html">Daftar Reservasi</a>
+                    <a href="/daftar-reservasi-alat">Daftar Reservasi</a>
                 </li>
             </ul>
         </li>
@@ -56,7 +56,7 @@
                     <a href="/reservasi-kendaraan">Tambah Reservasi </a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-card.html">Daftar Reservasi</a>
+                    <a href="/daftar-reservasi-kendaraan">Daftar Reservasi</a>
                 </li>
             </ul>
         </li>
@@ -89,10 +89,10 @@
                     <a href="">Reservasi Ruangan</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="">Reservasi Kendaraan</a>
+                    <a href="/kelola-reservasi-kendaraan">Reservasi Kendaraan</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/daftarreservasi-alat">Reservasi Alat</a>
+                    <a href="/kelola-reservasi-alat">Reservasi Alat</a>
                 </li>
             </ul>
         </li>

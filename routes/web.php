@@ -126,8 +126,12 @@ Route::delete('/kendaraan-destroy/{id}',[KendaraanController::class, 'destroy'])
 Route::get('/reservasi-kendaraan',[ReservasiKendaraanController::class, 'index'])->middleware('auth');
 Route::get('/reservasi-kendaraan-add/{id}',[ReservasiKendaraanController::class, 'create'])->middleware('auth');
 Route::post('/reservasi-kendaraan',[ReservasiKendaraanController::class, 'store'])->middleware('auth');
-
-
+Route::get('/kelola-reservasi-kendaraan',[ReservasiKendaraanController::class, 'kelolaReservasi'])->middleware('auth');
+Route::get('/validasi-reservasi-kendaraan/{id}',[ReservasiKendaraanController::class, 'validasi'])->middleware('auth');
+Route::put('/validasi-reservasi-kendaraan/{id}',[ReservasiKendaraanController::class, 'simpanValidasi'])->middleware('auth');
+Route::get('/detail-reservasi-kendaraan/{id}',[ReservasiKendaraanController::class, 'detailReservasi'])->middleware('auth');
+Route::get('/detail-reservasi-kendaraan-cetak/{id}',[ReservasiKendaraanController::class, 'cetakReservasi'])->middleware('auth');
+Route::get('/daftar-reservasi-kendaraan',[ReservasiKendaraanController::class, 'daftarReservasi'])->middleware('auth');
 //kelola alat
 Route::get('/alat',[AlatController::class, 'index'])->middleware('auth');
 Route::get('/alat/{id}',[AlatController::class, 'show'])->middleware('auth');
@@ -137,18 +141,16 @@ Route::get('/alat-edit/{id}',[AlatController::class, 'edit'])->middleware('auth'
 Route::put('/alat/{id}',[AlatController::class, 'update'])->middleware('auth');
 Route::delete('/alat-destroy/{id}',[AlatController::class, 'destroy'])->middleware('auth');
 
-
-
-
 //Reservasi  alat
 Route::get('/reservasi-alat',[ReservasiAlatController::class, 'index'])->middleware('auth');
 Route::get('/reservasi-alat-add/{id}',[ReservasiAlatController::class, 'create'])->middleware('auth');
 Route::post('/reservasi-alat',[ReservasiAlatController::class, 'store'])->middleware('auth');
-Route::get('/daftarreservasi-alat',[ReservasiAlatController::class, 'daftarReservasi'])->middleware('auth');
+Route::get('/kelola-reservasi-alat',[ReservasiAlatController::class, 'kelolaReservasi'])->middleware('auth');
 Route::get('/validasi-reservasi-alat/{id}',[ReservasiAlatController::class, 'validasi'])->middleware('auth');
-// Route::put('/kendaraan/{id}',[KendaraanController::class, 'update']);
-// Route::delete('/kendaraan-destroy/{id}',[KendaraanController::class, 'destroy']);
-
+Route::put('/validasi-reservasi-alat/{id}',[ReservasiAlatController::class, 'simpanValidasi'])->middleware('auth');
+Route::get('/detail-reservasi-alat/{id}',[ReservasiAlatController::class, 'detailReservasi'])->middleware('auth');
+Route::get('/detail-reservasi-alat-cetak/{id}',[ReservasiAlatController::class, 'cetakReservasi'])->middleware('auth');
+Route::get('/daftar-reservasi-alat',[ReservasiAlatController::class, 'daftarReservasi'])->middleware('auth');
 //kelola role
 Route::get('/role',[RoleController::class, 'index'])->middleware('auth');
 Route::get('/role-add',[RoleController::class, 'create'])->middleware('auth');
@@ -181,3 +183,10 @@ Route::delete('/ruang-destroy/{id}',[RuangController::class, 'destroy'])->middle
 
 //Reservasi  ruangan
 Route::get('/reservasi-ruang',[ReservasiRuangController::class, 'index'])->middleware('auth');
+Route::get('/reservasi-ruang-add/{id}',[ReservasiRuangController::class, 'create'])->middleware('auth');
+Route::post('/reservasi-ruang',[ReservasiRuangController::class, 'store'])->middleware('auth');
+Route::get('/kelola-reservasi-ruang',[ReservasiRuangController::class, 'kelolaReservasi'])->middleware('auth');
+Route::get('/validasi-reservasi-ruang/{id}',[ReservasiRuangController::class, 'validasi'])->middleware('auth');
+Route::put('/validasi-reservasi-ruang/{id}',[ReservasiRuangController::class, 'simpanValidasi'])->middleware('auth');
+Route::get('/detail-reservasi-ruang/{id}',[ReservasiRuangController::class, 'detailReservasi'])->middleware('auth');
+Route::get('/detail-reservasi-ruang-cetak/{id}',[ReservasiRuangController::class, 'cetakReservasi'])->middleware('auth');

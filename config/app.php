@@ -181,14 +181,14 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
-        /*
+        Elibyy\TCPDF\ServiceProvider::class,        /*
          * Package Service Providers...
          */
 
         /*
          * Application Service Providers...
          */
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -210,6 +210,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-    ])->toArray(),
+        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class
+        ])->toArray(),
 
 ];
+$app->register(Elibyy\TCPDF\ServiceProvider::class);
+class_alias(Elibyy\TCPDF\Facades\TCPDF::class, 'PDF');

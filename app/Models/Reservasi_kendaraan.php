@@ -20,7 +20,7 @@ class Reservasi_kendaraan extends Model
 
     public function unit()
     {
-        return $this->belongsTo(Sesi::class);
+        return $this->belongsTo(Unit::class);
     }
 
     public function kendaraan()

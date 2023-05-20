@@ -16,6 +16,13 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
+                                            <label>Nomor Reservasi</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <b><input type="text"name="no_reservasi"id="no_reservasi" class="form-control"
+                                                value="{{ $reservasi_alat->no_reservasi }}" readonly></b>
+                                        </div>
+                                        <div class="col-md-4">
                                             <label>Nama Alat</label>
                                         </div>
                                         <div class="col-md-8 form-group">
@@ -48,6 +55,8 @@
                                         <div class="col-md-8 form-group">
                                             <input type="text" name="user_id"id="user_id" class="form-control"
                                                 value="{{ Auth::user()->nama }}"readonly>
+                                            <input type="text"name="user_id"id="user_id" class="form-control"
+                                                value="{{ Auth::user()->id }}" hidden>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Penanggungjawab</label>
@@ -58,11 +67,21 @@
                                                 value="{{ $reservasi_alat->penanggung_jawab }}"readonly>
                                         </div>
                                         <div class="col-md-4">
+                                            <label>No Telepon Penanggungjawab</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" name="no_telepon"id="no_telepon"
+                                                class="form-control"
+                                                value="{{ $reservasi_alat->no_telepon }}"readonly>
+                                        </div>
+                                        <div class="col-md-4">
                                             <label>Unit Penanggungjawab</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text"name="unit_id"id="unit_id" class="form-control"
                                                 value="{{ $reservasi_alat->unit->nama_unit }}" readonly>
+                                            <input type="text"name="unit_id"id="unit_id" class="form-control"
+                                                value="{{ $reservasi_alat->unit->id }}" hidden>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Kegiatan</label>
@@ -97,9 +116,15 @@
                                             <label>Jam Selesai</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="time" name="jam_selesai"id="jam_selesai" class="form-control"
-                                                value="{{ $reservasi_alat->jam_selesai }}" readonly>
+                                            <input type="time" name="jam_selesai"id="jam_selesai"
+                                                class="form-control" value="{{ $reservasi_alat->jam_selesai }}" readonly>
                                         </div>
+                                        {{-- <div class="col-md-4">
+                                            <label>Surat</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <a href="{{ $reservasi_alat->surat }}">Link Surat</a>
+                                        </div> --}}
                                         <div class="col-md-4">
                                             <label>Status</label>
                                         </div>
@@ -107,10 +132,16 @@
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="status" id="status">
                                                     <option value="">Pilih salah satu</option>
-                                                    <option value="Laki-laki">Laki-laki</option>
-                                                    <option value="Perempuan">Perempuan</option>
+                                                    <option value="disetujui">Disetujui</option>
+                                                    <option value="ditolak">Ditolak</option>
                                                 </select>
                                             </fieldset>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Alasan Penolakan</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <textarea name="alasan"id="alasan" class="form-control"></textarea>
                                         </div>
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Validasi</button>

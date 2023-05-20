@@ -44,7 +44,7 @@
                                     </tbody>
                                 </table>
                                 <div class=" d-flex justify-content-end">
-                                    <button type="submit"class="btn btn-primary block">Reservasi</button>
+                                    <a href="/reservasi-ruang-add/{{ $data->id }}"><button type="submit"class="btn btn-primary block">Reservasi</button></a>
                                 </div>
 
                             </div>

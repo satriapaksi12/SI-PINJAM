@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+
+use PDF;
+use View;
 use App\Models\Alat;
 use App\Models\Unit;
 use App\Models\User;
 use App\Models\Reservasi_alat;
+use Elibyy\TCPDF\Facades\TCPDF;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreReservasi_alatRequest;
 use App\Http\Requests\UpdateReservasi_alatRequest;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ReservasiAlatController extends Controller
 {
@@ -21,7 +27,7 @@ class ReservasiAlatController extends Controller
     public function index()
     {
         $reservasi_alat = Alat::with('foto_alat', 'gedung.lokasi')->get();
-        return view('reservasi-alat', ['reservasi_alat' => $reservasi_alat]);
+        return view('reservasi_alat.reservasi-alat', ['reservasi_alat' => $reservasi_alat]);
     }
 
     /**
@@ -34,7 +40,7 @@ class ReservasiAlatController extends Controller
         $user = User::with('unit')->get();
         $unit = Unit::all();
         $alat = Alat::with('gedung.lokasi', 'foto_alat')->findOrFail($id);
-        return view('tambah_reservasi_alat', ['user' => $user, 'unit' => $unit, 'alat' => $alat]);
+        return view('reservasi_alat.tambah_reservasi_alat', ['user' => $user, 'unit' => $unit, 'alat' => $alat]);
     }
 
     /**
@@ -51,12 +57,23 @@ class ReservasiAlatController extends Controller
         $surat->move(public_path('/surat/'), $name);
         $namaSurat = 'surat/' . $name;
 
+        $config = [
+            'table' => 'reservasi_alats',
+            'field' => 'no_reservasi',
+            'length' => '12',
+            'prefix' => 'SV02-',
+        ];
+
+        // now use it
+        $no_reservasi = IdGenerator::generate($config);
 
 
         $reservasi_alat = new Reservasi_alat();
         $reservasi_alat->kegiatan = $request->kegiatan;
         $reservasi_alat->alasan = $request->alasan;
         $reservasi_alat->surat = $namaSurat;
+        $reservasi_alat->no_telepon = $request->no_telepon;
+        $reservasi_alat->no_reservasi = $no_reservasi;
         $reservasi_alat->penanggung_jawab = $request->penanggung_jawab;
         $reservasi_alat->status = $request->status;
         $reservasi_alat->tanggal_mulai = $request->tanggal_mulai;
@@ -67,15 +84,24 @@ class ReservasiAlatController extends Controller
         $reservasi_alat->unit_id = $request->unit_id;
         $reservasi_alat->alat_id = $request->alat_id;
         $reservasi_alat->save();
-        if ($reservasi_alat) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Data berhasil ditambahkan');
-        }
+        // if ($reservasi_alat) {
+        //     Session::flash('status', 'success');
+        //     Session::flash('message', 'Data berhasil ditambahkan');
+        // }
+
+        return redirect('/reservasi-alat');
     }
+    public function kelolaReservasi()
+    {
+        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi','user')->get();
+        return view('reservasi_alat.kelola_reservasi_alat', ['reservasi_alat' => $reservasi_alat]);
+    }
+
     public function daftarReservasi()
     {
-        $reservasi_alat = Reservasi_alat::with('unit', 'alat')->get();
-        return view('daftar_reservasi_alat', ['reservasi_alat' => $reservasi_alat]);
+        $user =  Auth::user()->id;
+        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi','user')->where('user_id', $user)->get();
+        return view('reservasi_alat.daftar_reservasi_alat', ['reservasi_alat' => $reservasi_alat]);
     }
     /**
      * Display the specified resource.
@@ -83,10 +109,17 @@ class ReservasiAlatController extends Controller
      * @param  \App\Models\Reservasi_alat  $reservasi_alat
      * @return \Illuminate\Http\Response
      */
-    public function validasi(Reservasi_alat $reservasi_alat,$id)
+    public function validasi(Reservasi_alat $reservasi_alat, $id)
     {
-        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi','user')->findOrFail($id);
-        return view('validasi_reservasi_alat', ['reservasi_alat' => $reservasi_alat]);
+        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->findOrFail($id);
+        return view('reservasi_alat.validasi_reservasi_alat', ['reservasi_alat' => $reservasi_alat]);
+    }
+
+    public function simpanValidasi(UpdateReservasi_alatRequest $request, Reservasi_alat $reservasi_alat, $id)
+    {
+        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->findOrFail($id);
+        $reservasi_alat->update($request->all());
+        return redirect('/kelola-reservasi-alat');
     }
 
     /**
@@ -95,6 +128,42 @@ class ReservasiAlatController extends Controller
      * @param  \App\Models\Reservasi_alat  $reservasi_alat
      * @return \Illuminate\Http\Response
      */
+
+    public function detailReservasi(Reservasi_alat $reservasi_alat, $id)
+    {
+        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->findOrFail($id);
+        return view('reservasi_alat.detail_reservasi_alat', ['reservasi_alat' => $reservasi_alat]);
+    }
+
+    public function cetakReservasi(Reservasi_alat $reservasi_alat,$id)
+    {
+
+        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->findOrFail($id);
+        $filename = 'cetak-bukti-reservasi.pdf';
+
+        $data = [
+            'title' => 'Cetak Bukti Reservasi Alat Sekolah Vokasi UNS',
+            'reservasi_alat' => $reservasi_alat
+        ];
+
+        $html = view()->make('reservasi_alat.cetak_bukti_reservasi_alat', $data)->render();
+
+        $pdf = new TCPDF;
+
+        $pdf::SetTitle('Cetak Bukti Reservasi');
+        $pdf::AddPage();
+        $pdf::writeHTML($html, true, false, true, false, '');
+
+        $pdf::Output(public_path($filename), 'F');
+
+        return response()->download(public_path($filename));
+    }
+
+
+
+
+
+
     public function edit(Reservasi_alat $reservasi_alat)
     {
         //

@@ -27,7 +27,7 @@ class Reservasi_ruang extends Model
 
     public function unit()
     {
-        return $this->belongsTo(Sesi::class);
+        return $this->belongsTo(Unit::class);
     }
 
     public function jenis_acara()

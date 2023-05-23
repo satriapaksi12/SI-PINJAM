@@ -1,9 +1,9 @@
 @extends('layouts.app2')
 
-@section('title', 'KELOLA RESERVASI RUANGAN')
-@section('fitur', 'KELOLA RESERVASI RUANGAN')
-@section('link', '/kelola reservasi ruangan')
-@section('nama link', 'Kelola Reservasi Ruangan')
+@section('title', 'DAFTAR RESERVASI RUANGAN')
+@section('fitur', 'DAFTAR RESERVASI RUANGAN')
+@section('link', '/daftar reservasi ruang')
+@section('nama link', 'Daftar Reservasi Ruangan')
 
 @section('content')
     @if (Session::has('status'))
@@ -49,16 +49,8 @@
                                 <td>{{ $data->tanggal_selesai }}</td>
                                 <td>{{ $data->status }}</td>
                                 <td>
-                                    @if ($data->status != null)
-                                        <a href="/detail-reservasi-ruang/{{$data->id}}" class="btn icon btn-primary"><i class="bi bi-eye"></i></a>
-                                        <a href="validasi-reservasi-ruang/{{ $data->id }}"
-                                            class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
-                                    @else
-                                    <a href="validasi-reservasi-ruang/{{ $data->id }}"
-                                        class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
-                                @endif
-
-
+                                    <a href="/detail-reservasi-ruang/{{ $data->id }}" class="btn icon btn-primary"><i
+                                            class="bi bi-eye"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -42,9 +42,9 @@
                                         <div class="col-md-8 form-group">
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="role_id" id="role_id">
-                                                    <option value=" ">{{ $role->nama_role }}</option>
+
                                                     @foreach ($role as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->nama_role }}</option>
+                                                        <option value="{{ $item->id }}" {{ $user->role_id == $item->id? 'selected':''}} >{{ $item->nama_role }}</option>
                                                     @endforeach
                                                 </select>
                                             </fieldset>
@@ -55,9 +55,8 @@
                                         <div class="col-md-8 form-group">
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="unit_id" id="unit_id">
-                                                    <option value=" ">{{ $unit->nama_unit }}</option>
                                                     @foreach ($unit as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->nama_unit }} </option>
+                                                        <option value="{{ $item->id }}"{{ $user->unit_id == $item->id? 'selected':''}}>{{ $item->nama_unit }} </option>
                                                     @endforeach
                                                 </select>
                                             </fieldset>

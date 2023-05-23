@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Reservasi_ruang extends Model
 {
     use HasFactory;
+    protected $guarded = [
+        'id',
 
+    ];
 
     public function user()
     {

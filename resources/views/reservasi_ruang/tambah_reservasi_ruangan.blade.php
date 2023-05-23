@@ -67,8 +67,24 @@
                                             <label>Jenis Acara</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <script>
+                                                function toggleFormInput() {
+                                                    var dropdown = document.getElementById("dropdown");
+                                                    var formInputs = document.getElementsByClassName("formInput");
+                                                    for (var i = 0; i < formInputs.length; i++) {
+                                                        var formInput = formInputs[i];
+
+                                                        if (dropdown.value === "1") {
+                                                            formInput.style.display = "block"; // Show form input
+                                                        } else {
+                                                            formInput.style.display = "none"; // Hide form input
+                                                        }
+                                                    }
+                                                }
+                                            </script>
                                             <fieldset class="form-group">
-                                                <select class="form-select" name="jenis_acara_id" id="jenis_acara_id">
+                                                <select class="form-select" name="jenis_acara_id" id="dropdown"
+                                                    onchange="toggleFormInput()">
                                                     @foreach ($jenis_acara as $item)
                                                         <option value="{{ $item->id }}">{{ $item->nama_jenis_acara }}
                                                         </option>
@@ -76,21 +92,18 @@
                                                 </select>
                                             </fieldset>
                                         </div>
-
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 formInput">
                                             <label>Surat Kegiatan</label>
                                         </div>
-                                        <div class="col-md-8 form-group">
+                                        <div class="col-md-8 form-group formInput">
                                             <input class="form-control" type="file" name="surat" id="surat">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 formInput">
                                             <label>Kelas</label>
                                         </div>
-                                        <div class="col-md-8 form-group">
+                                        <div class="col-md-8 form-group formInput">
                                             <input type="text" name="kelas"id="kelas" class="form-control">
                                         </div>
-
-
                                         <div class="col-md-4">
                                             <label>Peminjam</label>
                                         </div>
@@ -130,37 +143,82 @@
                                         <div class="col-md-8 form-group">
                                             <input type="text" name="kegiatan"id="kegiatan" class="form-control">
                                         </div>
+                                        <script>
+                                            function checkTanggalMulai() {
+                                                moment.locale('id');
+                                                var tanggalMulaiInput = document.getElementById('tanggal_mulai');
+                                                var tanggalSelesaiInput = document.getElementById('tanggal_selesai');
+
+                                                var tanggalMulai = moment(tanggalMulaiInput.value);
+                                                var tanggalSelesai = moment(tanggalSelesaiInput.value);
+
+                                                var namaHariMulai = tanggalMulai.format('dddd');
+                                                var namaHariSelesai = tanggalSelesai.format('dddd');
+
+                                                var currentDay = moment(tanggalMulai);
+                                                var dayRange = [];
+
+                                                while (currentDay.isSameOrBefore(tanggalSelesai)) {
+                                                    dayRange.push(currentDay.format('dddd'));
+                                                    currentDay.add(1, 'day');
+                                                }
+
+                                                console.log(dayRange);
+
+                                                var sesiHariLabels = document.querySelectorAll('.sesiHariLabel');
+
+                                                sesiHariLabels.forEach(function(sesiHariLabel) {
+                                                    var sesiHariText = sesiHariLabel.textContent;
+                                                    var sesiHariLabelDay = sesiHariText.match(/Hari ([\w]+)/)[1];
+
+                                                    if (dayRange.includes(sesiHariLabelDay)) {
+                                                        sesiHariLabel.style.display = 'block';
+                                                    } else {
+                                                        sesiHariLabel.style.display = 'none';
+                                                    }
+                                                });
+                                            }
+                                        </script>
                                         <div class="col-md-4">
                                             <label>Tanggal Mulai</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="date" name="tanggal_mulai"id="tanggal_mulai"
+                                            <input type="date" name="tanggal_mulai" id="tanggal_mulai"
                                                 class="form-control">
                                         </div>
                                         <div class="col-md-4">
                                             <label>Tanggal Selesai</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="date" name="tanggal_selesai"id="tanggal_selesai"
-                                                class="form-control">
+                                            <input type="date" onchange="checkTanggalMulai()"
+                                                name="tanggal_selesai"id="tanggal_selesai" class="form-control">
                                         </div>
                                         <div class="col-md-4">
                                             <label>Sesi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <div class="form-check">
-                                                @foreach ($sesiMulai as $item)
+                                            {{-- <div class="form-check">
+                                                @foreach ($sesi as $item)
                                                     <input class="form-check-input" type="checkbox"
                                                         value="{{ $item->id }}" name="sesi_id" id="sesi_id">
-                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                    <label id="sesiHari" class="form-check-label" for="flexCheckDefault">
+                                                        Sesi {{ $item->sesi }} Hari {{ $item->hari }}
+                                                        {{ $item->jam_mulai }} - {{ $item->jam_selesai }}
+                                                    </label>
+                                                @endforeach
+                                            </div> --}}
+                                            <div class="form-check sesiHari">
+                                                @foreach ($sesi as $item)
+                                                    <input class="form-check-input" type="checkbox"
+                                                        value="{{ $item->id }}" name="sesi_id" id="sesi_id">
+                                                    <label class="form-check-label sesiHariLabel" for="flexCheckDefault">
                                                         Sesi {{ $item->sesi }} Hari {{ $item->hari }}
                                                         {{ $item->jam_mulai }} - {{ $item->jam_selesai }}
                                                     </label>
                                                 @endforeach
                                             </div>
-
                                         </div>
-                                        <div class="col-sm-12 d-flex justify-content-end">
+                                        <div cass="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
                                             <button type="reset"
                                                 class="btn btn-light-secondary me-1 mb-1">Reset</button>
@@ -174,7 +232,5 @@
             </div>
         </div>
     </section>
-
-
 
 @endsection

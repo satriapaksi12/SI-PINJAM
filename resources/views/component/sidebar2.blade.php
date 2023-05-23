@@ -22,7 +22,7 @@
                     <a href="/reservasi-ruang">Tambah Reservasi </a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-card.html">Daftar Reservasi</a>
+                    <a href="/daftar-reservasi-ruang">Daftar Reservasi</a>
                 </li>
             </ul>
         </li>
@@ -86,7 +86,7 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="">Reservasi Ruangan</a>
+                    <a href="/kelola-reservasi-ruang">Reservasi Ruangan</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="/kelola-reservasi-kendaraan">Reservasi Kendaraan</a>

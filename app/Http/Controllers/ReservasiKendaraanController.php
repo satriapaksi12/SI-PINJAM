@@ -88,7 +88,7 @@ class ReservasiKendaraanController extends Controller
         //     Session::flash('message', 'Data berhasil ditambahkan');
         // }
 
-        return redirect('/reservasi-kendaraan');
+        return redirect('/daftar-reservasi-kendaraan');
 
     }
 

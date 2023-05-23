@@ -99,10 +99,11 @@ class UserController extends Controller
      */
     public function edit(User $user, $id)
     {
-        $unit = User::with('role', 'unit')->findOrFail($id);
-        $role = Role::all();
+        $user = User::with('role', 'unit')->findOrFail($id);
         $unit = Unit::all();
-        return view('user.user-edit', ['user' => $user, 'role' => $role, 'unit' => $unit]);
+        $role = Role::all();
+
+        return view('user.user-edit', ['user' => $user,'unit' => $unit,'role' => $role]);
     }
 
     /**
@@ -116,7 +117,7 @@ class UserController extends Controller
     {
 
         $data = $request->all();
-        dd($data);
+       
         $user = User::with('role', 'unit')->findOrFail($id);
         if ($request->nama_foto) {
             if ($user->nama_foto != null) {

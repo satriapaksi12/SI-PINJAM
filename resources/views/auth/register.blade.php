@@ -13,10 +13,10 @@
                     }
                 </style>
                 <div class="signup-form">
-                    <a href="/" class="no-underline">
+                    <a href="" class="no-underline">
                         <h2 class="form-title">Register</h2>
                     </a>
-                    <form method="POST" class="register-form" id="register-form">
+                    <form method="POST" action="register" class="register-form">
                         @csrf
                         <div class="form-group">
                             <label for="Nama"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group form-button">
-                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                            <input type="submit"  class="form-submit" value="Register" />
                         </div>
                     </form>
                 </div>

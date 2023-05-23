@@ -89,7 +89,7 @@ class ReservasiAlatController extends Controller
         //     Session::flash('message', 'Data berhasil ditambahkan');
         // }
 
-        return redirect('/reservasi-alat');
+        return redirect('/daftar-reservasi-alat');
     }
     public function kelolaReservasi()
     {

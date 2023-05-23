@@ -17,6 +17,7 @@ use App\Http\Controllers\ReservasiAlatController;
 use App\Http\Controllers\JenisKendaraanController;
 use App\Http\Controllers\ReservasiRuangController;
 use App\Http\Controllers\ReservasiKendaraanController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware('auth');
+})->middleware('auth', 'verified');
 
 // Route::get('/login', function () {
 //     return view('login');
@@ -48,13 +49,23 @@ Route::get('/dashboard', function () {
 
 
 //login
-Route::get('/login',[AuthController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/login',[AuthController::class, 'authenticating'])->middleware('guest');
+Route::get('/login',[AuthController::class, 'login'])->name('login');
+Route::post('/login',[AuthController::class, 'authenticating']);
 //logout
 Route::get('/logout',[AuthController::class, 'logout'])->middleware('auth');
 
 //Register
-Route::get('/register',[AuthController::class, 'register'])->name('register')->middleware('guest');
+Route::get('/register',[AuthController::class, 'register']);
+Route::post('/register',[AuthController::class, 'registerProses']);
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/login');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
 
 //kelola unit
 Route::get('/unit',[UnitController::class, 'index'])->middleware('auth');
@@ -190,3 +201,4 @@ Route::get('/validasi-reservasi-ruang/{id}',[ReservasiRuangController::class, 'v
 Route::put('/validasi-reservasi-ruang/{id}',[ReservasiRuangController::class, 'simpanValidasi'])->middleware('auth');
 Route::get('/detail-reservasi-ruang/{id}',[ReservasiRuangController::class, 'detailReservasi'])->middleware('auth');
 Route::get('/detail-reservasi-ruang-cetak/{id}',[ReservasiRuangController::class, 'cetakReservasi'])->middleware('auth');
+Route::get('/daftar-reservasi-ruang',[ReservasiRuangController::class, 'daftarReservasi'])->middleware('auth');

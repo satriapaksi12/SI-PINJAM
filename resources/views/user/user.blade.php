@@ -51,7 +51,9 @@
                                 <td>{{ $data->nomor_induk }}</td>
                                 <td>{{ $data->nama }}</td>
                                 <td>{{ $data->unit->nama_unit}}</td>
+                                <td>{{ $data->role->nama_role}}</td>
                                 <td>
+
                                     <a href="user/{{ $data->id }}" class="btn icon btn-info"><i
                                         class="bi bi-eye"></i></a>
                                     <a href="user-edit/{{ $data->id }}" class="btn icon btn-warning"><i

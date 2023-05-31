@@ -75,7 +75,7 @@ class ReservasiAlatController extends Controller
         $reservasi_alat->no_telepon = $request->no_telepon;
         $reservasi_alat->no_reservasi = $no_reservasi;
         $reservasi_alat->penanggung_jawab = $request->penanggung_jawab;
-        $reservasi_alat->status = $request->status;
+        $reservasi_alat->status = "Proses Validasi";
         $reservasi_alat->tanggal_mulai = $request->tanggal_mulai;
         $reservasi_alat->tanggal_selesai = $request->tanggal_selesai;
         $reservasi_alat->jam_mulai = $request->jam_mulai;

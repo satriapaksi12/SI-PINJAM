@@ -70,14 +70,24 @@
                                             <script>
                                                 function toggleFormInput() {
                                                     var dropdown = document.getElementById("dropdown");
-                                                    var formInputs = document.getElementsByClassName("formInput");
-                                                    for (var i = 0; i < formInputs.length; i++) {
-                                                        var formInput = formInputs[i];
+                                                    var formInputs1 = document.getElementsByClassName("formInput1");
+                                                    var formInputs2 = document.getElementsByClassName("formInput2");
+                                                    for (var i = 0; i < formInputs1.length; i++) {
+                                                        var formInput1 = formInputs1[i];
 
                                                         if (dropdown.value === "1") {
-                                                            formInput.style.display = "block"; // Show form input
+                                                            formInput1.style.display = "none";
                                                         } else {
-                                                            formInput.style.display = "none"; // Hide form input
+                                                            formInput1.style.display = "block";
+                                                        }
+                                                    }
+                                                    for (var i = 0; i < formInputs2.length; i++) {
+                                                        var formInput2 = formInputs2[i];
+
+                                                        if (dropdown.value === "2") {
+                                                            formInput2.style.display = "none";
+                                                        } else {
+                                                            formInput2.style.display = "block";
                                                         }
                                                     }
                                                 }
@@ -92,16 +102,16 @@
                                                 </select>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-4 formInput">
+                                        <div class="col-md-4 formInput1">
                                             <label>Surat Kegiatan</label>
                                         </div>
-                                        <div class="col-md-8 form-group formInput">
+                                        <div class="col-md-8 form-group formInput1">
                                             <input class="form-control" type="file" name="surat" id="surat">
                                         </div>
-                                        <div class="col-md-4 formInput">
+                                        <div class="col-md-4 formInput2">
                                             <label>Kelas</label>
                                         </div>
-                                        <div class="col-md-8 form-group formInput">
+                                        <div class="col-md-8 form-group formInput2">
                                             <input type="text" name="kelas"id="kelas" class="form-control">
                                         </div>
                                         <div class="col-md-4">
@@ -197,20 +207,11 @@
                                             <label>Sesi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            {{-- <div class="form-check">
-                                                @foreach ($sesi as $item)
-                                                    <input class="form-check-input" type="checkbox"
-                                                        value="{{ $item->id }}" name="sesi_id" id="sesi_id">
-                                                    <label id="sesiHari" class="form-check-label" for="flexCheckDefault">
-                                                        Sesi {{ $item->sesi }} Hari {{ $item->hari }}
-                                                        {{ $item->jam_mulai }} - {{ $item->jam_selesai }}
-                                                    </label>
-                                                @endforeach
-                                            </div> --}}
+
                                             <div class="form-check sesiHari">
                                                 @foreach ($sesi as $item)
                                                     <input class="form-check-input" type="checkbox"
-                                                        value="{{ $item->id }}" name="sesi_id" id="sesi_id">
+                                                        value="{{ $item->id }}" name="sesi_id[]" id="sesi_id[]">
                                                     <label class="form-check-label sesiHariLabel" for="flexCheckDefault">
                                                         Sesi {{ $item->sesi }} Hari {{ $item->hari }}
                                                         {{ $item->jam_mulai }} - {{ $item->jam_selesai }}

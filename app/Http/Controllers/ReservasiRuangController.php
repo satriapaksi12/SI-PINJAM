@@ -65,11 +65,20 @@ class ReservasiRuangController extends Controller
     {
 
 
-
-        $surat = $request->surat;
-        $name = $surat->hashName();
-        $surat->move(public_path('/surat/'), $name);
-        $namaSurat = 'surat/' . $name;
+        if ($request->hasFile('surat')) {
+            $surat = $request->file('surat');
+            $name = $surat->hashName();
+            $surat->move(public_path('/surat/'), $name);
+            $namaSurat = 'surat/' . $name;
+        } else {
+            // Handle jika file surat tidak ada
+            // Misalnya, berikan nilai default atau berikan pesan kesalahan kepada pengguna
+            $namaSurat = "Tidak ada Surat";
+        }
+        // $surat = $request->surat;
+        // $name = $surat->hashName();
+        // $surat->move(public_path('/surat/'), $name);
+        // $namaSurat = 'surat/' . $name;
 
         $config = [
             'table' => 'reservasi_ruangs',
@@ -87,10 +96,11 @@ class ReservasiRuangController extends Controller
             $reservasi_ruang->kegiatan = $request->kegiatan;
             $reservasi_ruang->alasan = $request->alasan;
             $reservasi_ruang->surat = $namaSurat;
+            $reservasi_ruang->surat = $namaSurat;
             $reservasi_ruang->no_telepon = $request->no_telepon;
             $reservasi_ruang->no_reservasi = $no_reservasi;
             $reservasi_ruang->penanggung_jawab = $request->penanggung_jawab;
-            $reservasi_ruang->status = $request->status;
+            $reservasi_ruang->status = "Proses Validasi";
             $reservasi_ruang->kelas = $request->kelas;
             $reservasi_ruang->tanggal_mulai = $request->tanggal_mulai;
             $reservasi_ruang->tanggal_selesai = $request->tanggal_selesai;
@@ -102,14 +112,18 @@ class ReservasiRuangController extends Controller
             $reservasi_ruang->save();
             // Simpan relasi dengan Sesi
             $reservasi_ruang->sesi()->attach($request->sesi_id);
+            // $reservasi_ruang->sesi()->sync($request->sesi_id);
+
         } elseif ($request->jenis_acara_id == 2) {
             $reservasi_ruang = new Reservasi_ruang();
             $reservasi_ruang->kegiatan = $request->kegiatan;
             $reservasi_ruang->alasan = $request->alasan;
+            $reservasi_ruang->surat = $namaSurat;
             $reservasi_ruang->no_telepon = $request->no_telepon;
             $reservasi_ruang->no_reservasi = $no_reservasi;
             $reservasi_ruang->penanggung_jawab = $request->penanggung_jawab;
-            $reservasi_ruang->status = $request->status;
+            $reservasi_ruang->status = "Proses Validasi";
+            $reservasi_ruang->kelas = $request->kelas;
             $reservasi_ruang->tanggal_mulai = $request->tanggal_mulai;
             $reservasi_ruang->tanggal_selesai = $request->tanggal_selesai;
             $reservasi_ruang->user_id = Auth::user()->id;
@@ -119,14 +133,13 @@ class ReservasiRuangController extends Controller
             $reservasi_ruang->periode_id = $request->periode_id;
             $reservasi_ruang->save();
             // Simpan relasi dengan Sesi
-
             $reservasi_ruang->sesi()->attach($request->sesi_id);
+            // $reservasi_ruang->sesi()->sync($request->sesi_id);
+
         }
 
 
-            return redirect('/daftar-reservasi-ruang');
-      
-
+        return redirect('/daftar-reservasi-ruang');
     }
 
     public function kelolaReservasi()

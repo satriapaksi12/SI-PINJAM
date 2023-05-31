@@ -44,19 +44,20 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->no_reservasi }}</td>
                                 <td>{{ $data->periode->tahun_periode }} - {{ $data->periode->semester }}</td>
-                                <td>{{ $data->ruang->nama_ruang}}</td>
+                                <td>{{ $data->ruang->nama_ruang }}</td>
                                 <td>{{ $data->tanggal_mulai }}</td>
                                 <td>{{ $data->tanggal_selesai }}</td>
                                 <td>{{ $data->status }}</td>
                                 <td>
-                                    @if ($data->status != null)
-                                        <a href="/detail-reservasi-ruang/{{$data->id}}" class="btn icon btn-primary"><i class="bi bi-eye"></i></a>
+                                    @if ($data->status == 'Proses Validasi')
                                         <a href="validasi-reservasi-ruang/{{ $data->id }}"
                                             class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
                                     @else
-                                    <a href="validasi-reservasi-ruang/{{ $data->id }}"
-                                        class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
-                                @endif
+                                        <a href="/detail-reservasi-ruang/{{ $data->id }}"
+                                            class="btn icon btn-primary"><i class="bi bi-eye"></i></a>
+                                        <a href="validasi-reservasi-ruang/{{ $data->id }}"
+                                            class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
+                                    @endif
 
 
                                 </td>

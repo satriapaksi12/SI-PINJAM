@@ -206,6 +206,7 @@
                                     <td>Jam Selesai</td>
                                     <td>{{ $reservasi_kendaraan->jam_selesai }}</td>
                                 </tr>
+                                
                                 <tr>
                                     <td>Status</td>
                                     <td>{{ $reservasi_kendaraan->status }}</td>

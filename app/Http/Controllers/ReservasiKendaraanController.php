@@ -74,7 +74,7 @@ class ReservasiKendaraanController extends Controller
         $reservasi_kendaraan->no_telepon = $request->no_telepon;
         $reservasi_kendaraan->no_reservasi = $no_reservasi;
         $reservasi_kendaraan->penanggung_jawab = $request->penanggung_jawab;
-        $reservasi_kendaraan->status = $request->status;
+        $reservasi_kendaraan->status = "Proses Validasi";
         $reservasi_kendaraan->tanggal_mulai = $request->tanggal_mulai;
         $reservasi_kendaraan->tanggal_selesai = $request->tanggal_selesai;
         $reservasi_kendaraan->jam_mulai = $request->jam_mulai;

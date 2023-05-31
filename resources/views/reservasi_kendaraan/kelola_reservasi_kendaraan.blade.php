@@ -54,14 +54,15 @@
 
                                 <td>{{ $data->status }}</td>
                                 <td>
-                                    @if ($data->status != null)
-                                        <a href="/detail-reservasi-kendaraan/{{$data->id}}" class="btn icon btn-primary"><i class="bi bi-eye"></i></a>
+                                    @if ($data->status == 'Proses Validasi')
                                         <a href="validasi-reservasi-kendaraan/{{ $data->id }}"
                                             class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
                                     @else
-                                    <a href="validasi-reservasi-kendaraan/{{ $data->id }}"
-                                        class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
-                                @endif
+                                        <a href="/detail-reservasi-kendaraan/{{ $data->id }}"
+                                            class="btn icon btn-primary"><i class="bi bi-eye"></i></a>
+                                        <a href="validasi-reservasi-kendaraan/{{ $data->id }}"
+                                            class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
+                                    @endif
 
 
                                 </td>

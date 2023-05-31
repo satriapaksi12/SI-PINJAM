@@ -177,11 +177,22 @@
                                     </tr>
                                     <tr>
                                         <td width="150px">Periode</td>
-                                        <td>{{ $reservasi_ruang->periode->tahun_periode }} - {{ $reservasi_ruang->periode->semester }}</td>
+                                        <td>{{ $reservasi_ruang->periode->tahun_periode }} -
+                                            {{ $reservasi_ruang->periode->semester }}</td>
                                     </tr>
                                     <tr>
                                         <td width="150px">Jenis Acara</td>
                                         <td>{{ $reservasi_ruang->jenis_acara->nama_jenis_acara }}</td>
+                                    </tr>
+                                    <tr>
+                                        @if ($reservasi_ruang->kelas == null)
+                                            <td>Kelas</td>
+                                            <td>Tidak Ada Kelas Yang Dipilih</td>
+                                        @endif
+                                        @if ($reservasi_ruang->kelas != null)
+                                            <td>Kelas</td>
+                                            <td>{{ $reservasi_ruang->kelas }}</td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <td>Peminjam</td>
@@ -217,11 +228,13 @@
                                             <ul>
                                                 @foreach ($reservasi_ruang->sesi as $item)
                                                     <li>{{ $item->sesi }} - Hari {{ $item->hari }}
-                                                        ({{ $item->jam_mulai }} - {{ $item->jam_selesai }})</li>
+                                                        ({{ $item->jam_mulai }} - {{ $item->jam_selesai }})
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </td>
                                     </tr>
+                                   
                                     <tr>
                                         <td>Status</td>
                                         <td>{{ $reservasi_ruang->status }}</td>

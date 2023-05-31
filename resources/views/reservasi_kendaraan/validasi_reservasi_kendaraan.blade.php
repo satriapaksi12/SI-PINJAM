@@ -54,9 +54,9 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" name="user_id"id="user_id" class="form-control"
-                                                value="{{ Auth::user()->nama }}"readonly>
+                                                value="{{ $reservasi_kendaraan->user->nama }}"readonly>
                                             <input type="text"name="user_id"id="user_id" class="form-control"
-                                                value="{{ Auth::user()->id }}" hidden>
+                                                value="{{ $reservasi_kendaraan->user->id }}" hidden>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Penanggungjawab</label>
@@ -132,8 +132,9 @@
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="status" id="status">
                                                     <option value="">Pilih salah satu</option>
-                                                    <option value="disetujui">Disetujui</option>
-                                                    <option value="ditolak">Ditolak</option>
+                                                    <option value="Proses Validasi">Proses Validasi</option>
+                                                    <option value="Disetujui">Disetujui</option>
+                                                    <option value="Ditolak">Ditolak</option>
                                                 </select>
                                             </fieldset>
                                         </div>

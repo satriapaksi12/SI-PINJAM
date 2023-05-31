@@ -52,9 +52,9 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" name="user_id"id="user_id" class="form-control"
-                                                value="{{ Auth::user()->nama }}"readonly>
+                                                value="{{ $reservasi_kendaraan->user->nama }}"readonly>
                                             <input type="text"name="user_id"id="user_id" class="form-control"
-                                                value="{{ Auth::user()->id }}" hidden>
+                                                value="{{ $reservasi_kendaraan->user->id }}" hidden>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Penanggungjawab</label>

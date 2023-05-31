@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlatController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\UnitController;
@@ -34,9 +35,7 @@ Route::get('/', function () {
     return view('landingpage');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth', 'verified');
+Route::get('/dashboard', [HomeController::class, 'index'])->middleware('auth', 'verified');
 
 // Route::get('/login', function () {
 //     return view('login');

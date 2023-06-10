@@ -194,49 +194,11 @@ class ReservasiRuangController extends Controller
 
         return response()->download(public_path($filename));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Reservasi_ruang  $reservasi_ruang
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reservasi_ruang $reservasi_ruang)
+    public function cekJadwal()
     {
-        //
+        $ruang = Ruang::with('gedung.lokasi','foto_ruang')->get();
+        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->latest()->get();
+        return view('reservasi_ruang.cekJadwal_ruangan', ['reservasi_ruang' => $reservasi_ruang,'ruang'=>$ruang]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Reservasi_ruang  $reservasi_ruang
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reservasi_ruang $reservasi_ruang)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateReservasi_ruangRequest  $request
-     * @param  \App\Models\Reservasi_ruang  $reservasi_ruang
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateReservasi_ruangRequest $request, Reservasi_ruang $reservasi_ruang)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Reservasi_ruang  $reservasi_ruang
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Reservasi_ruang $reservasi_ruang)
-    {
-        //
-    }
+    
 }

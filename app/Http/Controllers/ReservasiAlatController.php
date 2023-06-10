@@ -159,36 +159,10 @@ class ReservasiAlatController extends Controller
         return response()->download(public_path($filename));
     }
 
-
-
-
-
-
-    public function edit(Reservasi_alat $reservasi_alat)
+    public function cekJadwal()
     {
-        //
+        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi','user')->latest()->get();
+        return view('reservasi_alat.cekJadwal_alat', ['reservasi_alat' => $reservasi_alat]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateReservasi_alatRequest  $request
-     * @param  \App\Models\Reservasi_alat  $reservasi_alat
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateReservasi_alatRequest $request, Reservasi_alat $reservasi_alat)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Reservasi_alat  $reservasi_alat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Reservasi_alat $reservasi_alat)
-    {
-        //
-    }
 }

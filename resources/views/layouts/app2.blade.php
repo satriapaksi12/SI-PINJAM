@@ -21,9 +21,27 @@
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
+                        <style>
+                            .logo {
+                                display: flex;
+                                align-items: center;
+                            }
+
+                            .logo img {
+                                width: 30px;
+                                height: 30px;
+                                margin-right: 5px;
+                            }
+
+                            .logo h4 {
+                                font-weight: bold;
+                                color: #fa8907;
+                            }
+                        </style>
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('tmp_dashboard2/dist/assets/images/logo/logo.svg') }}" alt="Logo"
-                                    srcset=""></a>
+                            {{-- <a href="index.html"><img src="{{ asset('tmp_dashboard2/dist/assets/images/logo/logo.svg') }}" alt="Logo"
+                                    srcset=""></a> --}}
+                            <h4 class="color">SI PINJAM</h4>
                         </div>
 
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">

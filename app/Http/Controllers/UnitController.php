@@ -48,16 +48,7 @@ class UnitController extends Controller
         return redirect('/unit');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Unit  $unit
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Unit $unit)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -105,6 +96,6 @@ class UnitController extends Controller
         }
         return redirect('/unit');
 
-        
+
     }
 }

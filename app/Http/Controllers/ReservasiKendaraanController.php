@@ -144,48 +144,11 @@ class ReservasiKendaraanController extends Controller
 
         return response()->download(public_path($filename));
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Reservasi_kendaraan  $reservasi_kendaraan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reservasi_kendaraan $reservasi_kendaraan)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Reservasi_kendaraan  $reservasi_kendaraan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reservasi_kendaraan $reservasi_kendaraan)
+    public function cekJadwal()
     {
-        //
+        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->latest()->get();
+        return view('reservasi_kendaraan.cekJadwal_kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateReservasi_kendaraanRequest  $request
-     * @param  \App\Models\Reservasi_kendaraan  $reservasi_kendaraan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateReservasi_kendaraanRequest $request, Reservasi_kendaraan $reservasi_kendaraan)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Reservasi_kendaraan  $reservasi_kendaraan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Reservasi_kendaraan $reservasi_kendaraan)
-    {
-        //
-    }
+   
 }

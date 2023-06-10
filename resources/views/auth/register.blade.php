@@ -35,16 +35,13 @@
                             <input type="password" name="password" id="password" placeholder="Password" />
                         </div>
                         <div class="form-group">
-                            <label for="Nama Unit"><i class="zmdi zmdi-lock-outline"></i></label>
-
+                            <label for="Nama Unit"><i class="zmdi zmdi-account "></i></label>
                                 <select class="form-select" name="unit_id" id="unit_id">
                                     @foreach ($unit as $item)
                                         <option value="{{ $item->id }}">{{ $item->nama_unit }} </option>
                                     @endforeach
                                 </select>
-
                         </div>
-
                         <div class="form-group form-button">
                             <input type="submit"  class="form-submit" value="Register" />
                         </div>

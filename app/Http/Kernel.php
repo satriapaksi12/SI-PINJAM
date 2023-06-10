@@ -63,5 +63,9 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'must-superadmin' => \App\Http\Middleware\MustSuperadmin::class,
+        'must-superadmin-or-admin' => \App\Http\Middleware\MustSuperadminOrAdmin::class,
+        'forbidden-umum' => \App\Http\Middleware\ForbiddenUmum::class,
+        'forbidden-umum-or-mahasiswa' => \App\Http\Middleware\ForbiddenUmumOrMahasiswa::class,
     ];
 }

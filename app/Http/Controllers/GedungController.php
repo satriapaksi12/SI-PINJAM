@@ -51,18 +51,6 @@ class GedungController extends Controller
         }
         return redirect('/gedung');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Gedung  $gedung
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Gedung $gedung)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *

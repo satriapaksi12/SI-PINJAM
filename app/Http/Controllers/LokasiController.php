@@ -48,16 +48,7 @@ class LokasiController extends Controller
         return redirect('/lokasi');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Lokasi  $lokasi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Lokasi $lokasi)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.

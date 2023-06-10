@@ -48,17 +48,6 @@ class JenisAcaraController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Jenis_acara  $jenis_acara
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Jenis_acara $jenis_acara)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Jenis_acara  $jenis_acara

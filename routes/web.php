@@ -67,137 +67,143 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 
 //kelola unit
-Route::get('/unit',[UnitController::class, 'index'])->middleware('auth');
-Route::get('/unit-add',[UnitController::class, 'create'])->middleware('auth');
-Route::post('/unit',[UnitController::class, 'store'])->middleware('auth');
-Route::get('/unit-edit/{id}',[UnitController::class, 'edit'])->middleware('auth');
-Route::put('/unit/{id}',[UnitController::class, 'update'])->middleware('auth');
-Route::delete('/unit-destroy/{id}',[UnitController::class, 'destroy'])->middleware('auth');
+Route::get('/unit',[UnitController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/unit-add',[UnitController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/unit',[UnitController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/unit-edit/{id}',[UnitController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/unit/{id}',[UnitController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/unit-destroy/{id}',[UnitController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 //kelola periode
-Route::get('/periode',[PeriodeController::class, 'index'])->middleware('auth');
-Route::get('/periode-add',[PeriodeController::class, 'create'])->middleware('auth');
-Route::post('/periode',[PeriodeController::class, 'store'])->middleware('auth');
-Route::get('/periode-edit/{id}',[PeriodeController::class, 'edit'])->middleware('auth');
-Route::put('/periode/{id}',[PeriodeController::class, 'update'])->middleware('auth');
-Route::delete('/periode-destroy/{id}',[PeriodeController::class, 'destroy'])->middleware('auth');
+Route::get('/periode',[PeriodeController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/periode-add',[PeriodeController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/periode',[PeriodeController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/periode-edit/{id}',[PeriodeController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/periode/{id}',[PeriodeController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/periode-destroy/{id}',[PeriodeController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 //kelola jenis acara
-Route::get('/jenis_acara',[JenisAcaraController::class, 'index'])->middleware('auth');
-Route::get('/jenis_acara-add',[JenisAcaraController::class, 'create'])->middleware('auth');
-Route::post('/jenis_acara',[JenisAcaraController::class, 'store'])->middleware('auth');
-Route::get('/jenis_acara-edit/{id}',[JenisAcaraController::class, 'edit'])->middleware('auth');
-Route::put('/jenis_acara/{id}',[JenisAcaraController::class, 'update'])->middleware('auth');
-Route::delete('/jenis_acara-destroy/{id}',[JenisAcaraController::class, 'destroy'])->middleware('auth');
+Route::get('/jenis_acara',[JenisAcaraController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/jenis_acara-add',[JenisAcaraController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/jenis_acara',[JenisAcaraController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/jenis_acara-edit/{id}',[JenisAcaraController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/jenis_acara/{id}',[JenisAcaraController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/jenis_acara-destroy/{id}',[JenisAcaraController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 //kelola jenis kendaraan
-Route::get('/jenis_kendaraan',[JenisKendaraanController::class, 'index'])->middleware('auth');
-Route::get('/jenis_kendaraan-add',[JenisKendaraanController::class, 'create'])->middleware('auth');
-Route::post('/jenis_kendaraan',[JenisKendaraanController::class, 'store'])->middleware('auth');
-Route::get('/jenis_kendaraan-edit/{id}',[JenisKendaraanController::class, 'edit'])->middleware('auth');
-Route::put('/jenis_kendaraan/{id}',[JenisKendaraanController::class, 'update'])->middleware('auth');
-Route::delete('/jenis_kendaraan-destroy/{id}',[JenisKendaraanController::class, 'destroy'])->middleware('auth');
+Route::get('/jenis_kendaraan',[JenisKendaraanController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/jenis_kendaraan-add',[JenisKendaraanController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/jenis_kendaraan',[JenisKendaraanController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/jenis_kendaraan-edit/{id}',[JenisKendaraanController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/jenis_kendaraan/{id}',[JenisKendaraanController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/jenis_kendaraan-destroy/{id}',[JenisKendaraanController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 
 //kelola gedung
-Route::get('/gedung',[GedungController::class, 'index'])->middleware('auth');
-Route::get('/gedung-add',[GedungController::class, 'create'])->middleware('auth');
-Route::post('/gedung',[GedungController::class, 'store'])->middleware('auth');
-Route::get('/gedung-edit/{id}',[GedungController::class, 'edit'])->middleware('auth');
-Route::put('/gedung/{id}',[GedungController::class, 'update'])->middleware('auth');
-Route::delete('/gedung-destroy/{id}',[GedungController::class, 'destroy'])->middleware('auth');
+Route::get('/gedung',[GedungController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/gedung-add',[GedungController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/gedung',[GedungController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/gedung-edit/{id}',[GedungController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/gedung/{id}',[GedungController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/gedung-destroy/{id}',[GedungController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 //kelola lokasi kampus
-Route::get('/lokasi',[LokasiController::class, 'index'])->middleware('auth');
-Route::get('/lokasi-add',[LokasiController::class, 'create'])->middleware('auth');
-Route::post('/lokasi',[LokasiController::class, 'store'])->middleware('auth');
-Route::get('/lokasi-edit/{id}',[LokasiController::class, 'edit'])->middleware('auth');
-Route::put('/lokasi/{id}',[LokasiController::class, 'update'])->middleware('auth');
-Route::delete('/lokasi-destroy/{id}',[LokasiController::class, 'destroy'])->middleware('auth');
+Route::get('/lokasi',[LokasiController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/lokasi-add',[LokasiController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/lokasi',[LokasiController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/lokasi-edit/{id}',[LokasiController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/lokasi/{id}',[LokasiController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/lokasi-destroy/{id}',[LokasiController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 //kelola sesi
-Route::get('/sesi',[SesiController::class, 'index'])->middleware('auth');
-Route::get('/sesi-add',[SesiController::class, 'create'])->middleware('auth');
-Route::post('/sesi',[SesiController::class, 'store'])->middleware('auth');
-Route::get('/sesi-edit/{id}',[SesiController::class, 'edit'])->middleware('auth');
-Route::put('/sesi/{id}',[SesiController::class, 'update'])->middleware('auth');
-Route::delete('/sesi-destroy/{id}',[SesiController::class, 'destroy'])->middleware('auth');
+Route::get('/sesi',[SesiController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/sesi-add',[SesiController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/sesi',[SesiController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/sesi-edit/{id}',[SesiController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/sesi/{id}',[SesiController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/sesi-destroy/{id}',[SesiController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 //kelola kendaraan
-Route::get('/kendaraan',[KendaraanController::class, 'index'])->middleware('auth');
-Route::get('/kendaraan-add',[KendaraanController::class, 'create'])->middleware('auth');
-Route::post('/kendaraan',[KendaraanController::class, 'store'])->middleware('auth');
-Route::get('/kendaraan-edit/{id}',[KendaraanController::class, 'edit'])->middleware('auth');
-Route::put('/kendaraan/{id}',[KendaraanController::class, 'update'])->middleware('auth');
-Route::delete('/kendaraan-destroy/{id}',[KendaraanController::class, 'destroy'])->middleware('auth');
+Route::get('/kendaraan',[KendaraanController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/kendaraan-add',[KendaraanController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/kendaraan',[KendaraanController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/kendaraan-edit/{id}',[KendaraanController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/kendaraan/{id}',[KendaraanController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/kendaraan-destroy/{id}',[KendaraanController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 
 //Reservasi  kendaraan
-Route::get('/reservasi-kendaraan',[ReservasiKendaraanController::class, 'index'])->middleware('auth');
-Route::get('/reservasi-kendaraan-add/{id}',[ReservasiKendaraanController::class, 'create'])->middleware('auth');
-Route::post('/reservasi-kendaraan',[ReservasiKendaraanController::class, 'store'])->middleware('auth');
-Route::get('/kelola-reservasi-kendaraan',[ReservasiKendaraanController::class, 'kelolaReservasi'])->middleware('auth');
-Route::get('/validasi-reservasi-kendaraan/{id}',[ReservasiKendaraanController::class, 'validasi'])->middleware('auth');
-Route::put('/validasi-reservasi-kendaraan/{id}',[ReservasiKendaraanController::class, 'simpanValidasi'])->middleware('auth');
-Route::get('/detail-reservasi-kendaraan/{id}',[ReservasiKendaraanController::class, 'detailReservasi'])->middleware('auth');
-Route::get('/detail-reservasi-kendaraan-cetak/{id}',[ReservasiKendaraanController::class, 'cetakReservasi'])->middleware('auth');
-Route::get('/daftar-reservasi-kendaraan',[ReservasiKendaraanController::class, 'daftarReservasi'])->middleware('auth');
+Route::get('/reservasi-kendaraan',[ReservasiKendaraanController::class, 'index'])->middleware(['auth','forbidden-umum-or-mahasiswa']);
+Route::get('/reservasi-kendaraan-add/{id}',[ReservasiKendaraanController::class, 'create'])->middleware(['auth','forbidden-umum-or-mahasiswa']);
+Route::post('/reservasi-kendaraan',[ReservasiKendaraanController::class, 'store'])->middleware(['auth','forbidden-umum-or-mahasiswa']);
+Route::get('/kelola-reservasi-kendaraan',[ReservasiKendaraanController::class, 'kelolaReservasi'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/validasi-reservasi-kendaraan/{id}',[ReservasiKendaraanController::class, 'validasi'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/validasi-reservasi-kendaraan/{id}',[ReservasiKendaraanController::class, 'simpanValidasi'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/detail-reservasi-kendaraan/{id}',[ReservasiKendaraanController::class, 'detailReservasi'])->middleware(['auth','forbidden-umum-or-mahasiswa']);
+Route::get('/detail-reservasi-kendaraan-cetak/{id}',[ReservasiKendaraanController::class, 'cetakReservasi'])->middleware(['auth','forbidden-umum-or-mahasiswa']);
+Route::get('/daftar-reservasi-kendaraan',[ReservasiKendaraanController::class, 'daftarReservasi'])->middleware(['auth','forbidden-umum-or-mahasiswa']);
+Route::get('/cekJadwal_kendaraan',[ReservasiKendaraanController::class, 'cekJadwal'])->middleware('auth');
+
 //kelola alat
-Route::get('/alat',[AlatController::class, 'index'])->middleware('auth');
-Route::get('/alat/{id}',[AlatController::class, 'show'])->middleware('auth');
-Route::get('/alat-add',[AlatController::class, 'create'])->middleware('auth');
-Route::post('/alat',[AlatController::class, 'store'])->middleware('auth');
-Route::get('/alat-edit/{id}',[AlatController::class, 'edit'])->middleware('auth');
-Route::put('/alat/{id}',[AlatController::class, 'update'])->middleware('auth');
-Route::delete('/alat-destroy/{id}',[AlatController::class, 'destroy'])->middleware('auth');
+Route::get('/alat',[AlatController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/alat/{id}',[AlatController::class, 'show'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/alat-add',[AlatController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/alat',[AlatController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/alat-edit/{id}',[AlatController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/alat/{id}',[AlatController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/alat-destroy/{id}',[AlatController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 //Reservasi  alat
-Route::get('/reservasi-alat',[ReservasiAlatController::class, 'index'])->middleware('auth');
-Route::get('/reservasi-alat-add/{id}',[ReservasiAlatController::class, 'create'])->middleware('auth');
-Route::post('/reservasi-alat',[ReservasiAlatController::class, 'store'])->middleware('auth');
-Route::get('/kelola-reservasi-alat',[ReservasiAlatController::class, 'kelolaReservasi'])->middleware('auth');
-Route::get('/validasi-reservasi-alat/{id}',[ReservasiAlatController::class, 'validasi'])->middleware('auth');
-Route::put('/validasi-reservasi-alat/{id}',[ReservasiAlatController::class, 'simpanValidasi'])->middleware('auth');
-Route::get('/detail-reservasi-alat/{id}',[ReservasiAlatController::class, 'detailReservasi'])->middleware('auth');
-Route::get('/detail-reservasi-alat-cetak/{id}',[ReservasiAlatController::class, 'cetakReservasi'])->middleware('auth');
-Route::get('/daftar-reservasi-alat',[ReservasiAlatController::class, 'daftarReservasi'])->middleware('auth');
+Route::get('/reservasi-alat',[ReservasiAlatController::class, 'index'])->middleware(['auth','forbidden-umum']);
+Route::get('/reservasi-alat-add/{id}',[ReservasiAlatController::class, 'create'])->middleware(['auth','forbidden-umum']);
+Route::post('/reservasi-alat',[ReservasiAlatController::class, 'store'])->middleware(['auth','forbidden-umum']);
+Route::get('/kelola-reservasi-alat',[ReservasiAlatController::class, 'kelolaReservasi'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/validasi-reservasi-alat/{id}',[ReservasiAlatController::class, 'validasi'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/validasi-reservasi-alat/{id}',[ReservasiAlatController::class, 'simpanValidasi'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/detail-reservasi-alat/{id}',[ReservasiAlatController::class, 'detailReservasi'])->middleware(['auth','forbidden-umum']);
+Route::get('/detail-reservasi-alat-cetak/{id}',[ReservasiAlatController::class, 'cetakReservasi'])->middleware(['auth','forbidden-umum']);
+Route::get('/daftar-reservasi-alat',[ReservasiAlatController::class, 'daftarReservasi'])->middleware(['auth','forbidden-umum']);
+Route::get('/cekJadwal_alat',[ReservasiAlatController::class, 'cekJadwal'])->middleware('auth');
+
+
 //kelola role
-Route::get('/role',[RoleController::class, 'index'])->middleware('auth');
-Route::get('/role-add',[RoleController::class, 'create'])->middleware('auth');
-Route::post('/role',[RoleController::class, 'store'])->middleware('auth');
-Route::get('/role-edit/{id}',[RoleController::class, 'edit'])->middleware('auth');
-Route::put('/role/{id}',[RoleController::class, 'update'])->middleware('auth');
-Route::delete('/role-destroy/{id}',[RoleController::class, 'destroy'])->middleware('auth');
+Route::get('/role',[RoleController::class, 'index'])->middleware(['auth','must-superadmin']);
+Route::get('/role-add',[RoleController::class, 'create'])->middleware(['auth','must-superadmin']);
+Route::post('/role',[RoleController::class, 'store'])->middleware(['auth','must-superadmin']);
+Route::get('/role-edit/{id}',[RoleController::class, 'edit'])->middleware(['auth','must-superadmin']);
+Route::put('/role/{id}',[RoleController::class, 'update'])->middleware(['auth','must-superadmin']);
+Route::delete('/role-destroy/{id}',[RoleController::class, 'destroy'])->middleware(['auth','must-superadmin']);
 
 //kelola user
-Route::get('/user',[UserController::class, 'index'])->middleware('auth');
-Route::get('/user/{id}',[UserController::class, 'show'])->middleware('auth');
-Route::get('/user-add',[UserController::class, 'create'])->middleware('auth');
-Route::post('/user',[UserController::class, 'store'])->middleware('auth');
-Route::get('/user-edit/{id}',[UserController::class, 'edit'])->middleware('auth');
-Route::put('/user/{id}',[UserController::class, 'update'])->middleware('auth');
-Route::delete('/user-destroy/{id}',[UserController::class, 'destroy'])->middleware('auth');
-Route::get('/user-deleted',[UserController::class, 'deletedUser'])->middleware('auth');
-Route::get('/user/{id}/restore',[UserController::class, 'restore'])->middleware('auth');
+Route::get('/user',[UserController::class, 'index'])->middleware(['auth','must-superadmin']);
+Route::get('/user/{id}',[UserController::class, 'show'])->middleware(['auth','must-superadmin']);
+Route::get('/user-add',[UserController::class, 'create'])->middleware(['auth','must-superadmin']);
+Route::post('/user',[UserController::class, 'store'])->middleware(['auth','must-superadmin']);
+Route::get('/user-edit/{id}',[UserController::class, 'edit'])->middleware(['auth','must-superadmin']);
+Route::put('/user/{id}',[UserController::class, 'update'])->middleware(['auth','must-superadmin']);
+Route::delete('/user-destroy/{id}',[UserController::class, 'destroy'])->middleware(['auth','must-superadmin']);
+Route::get('/user-deleted',[UserController::class, 'deletedUser'])->middleware(['auth','must-superadmin']);
+Route::get('/user/{id}/restore',[UserController::class, 'restore'])->middleware(['auth','must-superadmin']);
 
 
 //kelola ruangan
-Route::get('/ruang',[RuangController::class, 'index'])->middleware('auth');
-Route::get('/ruang/{id}',[RuangController::class, 'show'])->middleware('auth');
-Route::get('/ruang-add',[RuangController::class, 'create'])->middleware('auth');
-Route::post('/ruang',[RuangController::class, 'store'])->middleware('auth');
-Route::get('/ruang-edit/{id}',[RuangController::class, 'edit'])->middleware('auth');
-Route::put('/ruang/{id}',[RuangController::class, 'update'])->middleware('auth');
-Route::delete('/ruang-destroy/{id}',[RuangController::class, 'destroy'])->middleware('auth');
+Route::get('/ruang',[RuangController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/ruang/{id}',[RuangController::class, 'show'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/ruang-add',[RuangController::class, 'create'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/ruang',[RuangController::class, 'store'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/ruang-edit/{id}',[RuangController::class, 'edit'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/ruang/{id}',[RuangController::class, 'update'])->middleware(['auth','must-superadmin-or-admin']);
+Route::delete('/ruang-destroy/{id}',[RuangController::class, 'destroy'])->middleware(['auth','must-superadmin-or-admin']);
 
 
 //Reservasi  ruangan
-Route::get('/reservasi-ruang',[ReservasiRuangController::class, 'index'])->middleware('auth');
-Route::get('/reservasi-ruang-add/{id}',[ReservasiRuangController::class, 'create'])->middleware('auth');
-Route::post('/reservasi-ruang',[ReservasiRuangController::class, 'store'])->middleware('auth');
-Route::get('/kelola-reservasi-ruang',[ReservasiRuangController::class, 'kelolaReservasi'])->middleware('auth');
-Route::get('/validasi-reservasi-ruang/{id}',[ReservasiRuangController::class, 'validasi'])->middleware('auth');
-Route::put('/validasi-reservasi-ruang/{id}',[ReservasiRuangController::class, 'simpanValidasi'])->middleware('auth');
-Route::get('/detail-reservasi-ruang/{id}',[ReservasiRuangController::class, 'detailReservasi'])->middleware('auth');
-Route::get('/detail-reservasi-ruang-cetak/{id}',[ReservasiRuangController::class, 'cetakReservasi'])->middleware('auth');
-Route::get('/daftar-reservasi-ruang',[ReservasiRuangController::class, 'daftarReservasi'])->middleware('auth');
+Route::get('/reservasi-ruang',[ReservasiRuangController::class, 'index'])->middleware(['auth','forbidden-umum']);
+Route::get('/reservasi-ruang-add/{id}',[ReservasiRuangController::class, 'create'])->middleware(['auth','forbidden-umum']);
+Route::post('/reservasi-ruang',[ReservasiRuangController::class, 'store'])->middleware(['auth','forbidden-umum']);
+Route::get('/kelola-reservasi-ruang',[ReservasiRuangController::class, 'kelolaReservasi'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/validasi-reservasi-ruang/{id}',[ReservasiRuangController::class, 'validasi'])->middleware(['auth','must-superadmin-or-admin']);
+Route::put('/validasi-reservasi-ruang/{id}',[ReservasiRuangController::class, 'simpanValidasi'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/detail-reservasi-ruang/{id}',[ReservasiRuangController::class, 'detailReservasi'])->middleware(['auth','forbidden-umum']);
+Route::get('/detail-reservasi-ruang-cetak/{id}',[ReservasiRuangController::class, 'cetakReservasi'])->middleware(['auth','forbidden-umum']);
+Route::get('/daftar-reservasi-ruang',[ReservasiRuangController::class, 'daftarReservasi'])->middleware(['auth','forbidden-umum']);
+Route::get('/cekJadwal_ruang',[ReservasiRuangController::class, 'cekJadwal'])->middleware('auth');

@@ -46,15 +46,6 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
 
-        // $newName = '';
-        // if ($request->file('nama_foto')) {
-        //     $extension = $request->file('nama_foto')->getClientOriginalExtension();
-        //     $newName = $request->nama . $request->nomor_induk . '-' . now()->timestamp . '.' . $extension;
-        //     $request->file('nama_foto')->storeAs('nama_foto', $newName);
-        // }
-
-        // $request['nama_foto'] = $newName;
-
 
         $foto = $request->nama_foto;
         $name = $foto->hashName();
@@ -117,7 +108,7 @@ class UserController extends Controller
     {
 
         $data = $request->all();
-       
+
         $user = User::with('role', 'unit')->findOrFail($id);
         if ($request->nama_foto) {
             if ($user->nama_foto != null) {

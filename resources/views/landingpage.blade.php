@@ -44,7 +44,8 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="index.html"><span style="color: rgb(238, 159, 13);">SEKOLAH VOKASI</span><span style="color: rgb(255, 255, 255);"> UNS</span></a></h1>
+            <h1 class="logo me-auto"><span style="color: rgb(238, 159, 13);">SI</span> <span
+                    style="color: rgb(255, 255, 255);">PINJAM</span></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -78,8 +79,9 @@
                     data-aos="fade-up" data-aos-delay="200">
                     <h1>SISTEM INFORMASI PEMINJAMAN SARANA DAN PRASARANA </h1>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="/login"><button type="button"  class="btn btn-warning btn-lg mx-1">Mulai Pinjam <i class="bi bi-arrow-right"></i></button></a>
-                       
+                        <a href="/login"><button type="button" class="btn btn-warning btn-lg mx-1">Mulai Pinjam <i
+                                    class="bi bi-arrow-right"></i></button></a>
+
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -117,26 +119,21 @@
                 <div class="row content">
                     <div class="col-lg-6">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore
-                            magna aliqua.
+                            Aplikasi Sistem Peminjaman Sarana dan Prasarana Sekolah Vokasi UNS yang disingkat SI PINJAM
+                            memiliki 3 fitur utama seperti berikut :
                         </p>
                         <ul>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate
-                                velit</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat</li>
+                            <li><i class="ri-check-double-line"></i> Reservasi Ruangan</li>
+                            <li><i class="ri-check-double-line"></i> Reservasi Alat</li>
+                            <li><i class="ri-check-double-line"></i> Reservasi Kendaraan</li>
                         </ul>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0">
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
+                            Aplikasi ini berbasis web dengan tampilan dan mekanisme penggunaan yang mudah sehingga
+                            diharapkan pengguna dapat dengan mudah menggunakan aplikasi ini.Dengan adanya aplikasi ini
+                            diharapkan sistem reservasi sarana dan prasarana di lingkup Sekolah Vokasi UNS dapat menjadi
+                            efisien dan efektif.
                         </p>
                         <a href="#" class="btn-learn-more">Learn More</a>
                     </div>
@@ -155,45 +152,64 @@
 
                 <div class="section-title">
                     <h2>Panduan</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <p>Panduan singkat penggunaan Aplikasi SI PINJAM seperti berikut</p>
                 </div>
 
                 <div class="row">
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in"
-                        data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4><a href="">Lorem Ipsum</a></h4>
-                            <p>Melakukan Cek Jadwal</p>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                        data-aos-delay="200">
+                    <div class="col-xl-3 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4><a href="">Sed ut perspici</a></h4>
+                            <h4><a href="">Register Akun</a></h4>
+                            <p>Mengecek penggunaan sarana dan prasarana di fitur cek jadwal</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-file"></i></div>
+                            <h4><a href="">Verifikasi Akun</a></h4>
                             <p>Melakukan login akun dan memilih item yang ingin di reservasi</p>
                         </div>
                     </div>
-
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                        data-aos-delay="300">
+                    <div class="col-xl-3 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4><a href="">Magni Dolores</a></h4>
-                            <p>Menunggu validasi </p>
+                            <div class="icon"><i class="bx bx-file"></i></div>
+                            <h4><a href="">Login Akun</a></h4>
+                            <p>Mengecek penggunaan sarana dan prasarana di fitur cek jadwal</p>
                         </div>
                     </div>
-
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                        data-aos-delay="400">
+                    <div class="col-xl-3 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-layer"></i></div>
-                            <h4><a href="">Nemo Enim</a></h4>
-                            <p>Item dapat digunakan</p>
+                            <div class="icon"><i class="bx bx-file"></i></div>
+                            <h4><a href="">Cek Jadwal</a></h4>
+                            <p>Melakukan login akun dan memilih item yang ingin di reservasi</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-file"></i></div>
+                            <h4><a href="">Memilih Item</a></h4>
+                            <p>Mengecek penggunaan sarana dan prasarana di fitur cek jadwal</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-file"></i></div>
+                            <h4><a href="">Mengisi Formulis Reservasi</a></h4>
+                            <p>Melakukan login akun dan memilih item yang ingin di reservasi</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-file"></i></div>
+                            <h4><a href="">Menunggu Validasi</a></h4>
+                            <p>Mengecek penggunaan sarana dan prasarana di fitur cek jadwal</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-file"></i></div>
+                            <h4><a href="">Menggunakan Item</a></h4>
+                            <p>Melakukan login akun dan memilih item yang ingin di reservasi</p>
                         </div>
                     </div>
 
@@ -208,14 +224,14 @@
 
                 <div class="row">
                     <div class="col-lg-9 text-center text-lg-start">
-                        <h3>Call To Action</h3>
-                        <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum.</p>
+                        <h3>Sekolah Vokasi UNS</h3>
+                        <p> Sekolah Vokasi Universitas Sebelas Maret Surakarta mengelola Program Studi Diploma, baik D3
+                            maupun D4 atau Sarjana Terapan. Sekolah Vokasi UNS juga mengelola Program Studi Di Luar
+                            Kampus Utama (PSDKU) di Kabupaten Madiun. Perkuliahan program studi diselenggarakan di
+                            Kampus Tirtomoyo dan juga diselenggarakan di Kampus Utama Kentingan, Jalan Ir. Sutami 36 A
+                            Surakarta.</p>
                     </div>
-                    <div class="col-lg-3 cta-btn-container text-center">
-                        <a class="cta-btn align-middle" href="#">Call To Action</a>
-                    </div>
+
                 </div>
 
             </div>
@@ -230,9 +246,7 @@
 
                 <div class="section-title">
                     <h2>KONTAk</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+
                 </div>
 
                 <div class="row">
@@ -256,7 +270,23 @@
                                 <h4>No Telepon</h4>
                                 <p>0271-664126</p>
                             </div>
-                            <div style="width: 1050px;position: relative;"><iframe width="1050" height="440" src="https://maps.google.com/maps?width=1050&amp;height=440&amp;hl=en&amp;q=Jalan%20Kolonel%20Sutarto%20Nomor%20150K%2C%20Jebres%2C%20Surakarta%20City%2C%20Central%20Java%2057126+(Sekolah%20Vokasi%20UNS)&amp;ie=UTF8&amp;t=&amp;z=13&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/ja/">Googlemapsgenerator.com/ja/</a> & <a href="https://xn--mikroln-jxa.com/">mikrolån.com</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />                        </div>
+                            <div style="width: 1050px;position: relative;"><iframe width="1050" height="440"
+                                    src="https://maps.google.com/maps?width=1050&amp;height=440&amp;hl=en&amp;q=Jalan%20Kolonel%20Sutarto%20Nomor%20150K%2C%20Jebres%2C%20Surakarta%20City%2C%20Central%20Java%2057126+(Sekolah%20Vokasi%20UNS)&amp;ie=UTF8&amp;t=&amp;z=13&amp;iwloc=B&amp;output=embed"
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                <div
+                                    style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;">
+                                    <small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a
+                                            href="http://www.googlemapsgenerator.com/ja/">Googlemapsgenerator.com/ja/</a>
+                                        & <a href="https://xn--mikroln-jxa.com/">mikrolån.com</a></small>
+                                </div>
+                                <style>
+                                    #gmap_canvas img {
+                                        max-width: none !important;
+                                        background: none !important
+                                    }
+                                </style>
+                            </div><br />
+                        </div>
                     </div>
                 </div>
         </section><!-- End Contact Section -->

@@ -48,16 +48,7 @@ class JenisKendaraanController extends Controller
         return redirect('/jenis_kendaraan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Jenis_kendaraan  $jenis_kendaraan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Jenis_kendaraan $jenis_kendaraan)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.

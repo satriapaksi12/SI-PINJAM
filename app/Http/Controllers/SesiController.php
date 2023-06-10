@@ -47,16 +47,7 @@ class SesiController extends Controller
         return redirect('/sesi');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Sesi  $sesi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Sesi $sesi)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.

@@ -41,6 +41,7 @@
                             <th>Nomor Induk</th>
                             <th>Nama</th>
                             <th>Unit</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>

@@ -49,17 +49,6 @@ class PeriodeController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Periode  $periode
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Periode $periode)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Periode  $periode

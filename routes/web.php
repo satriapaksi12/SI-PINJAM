@@ -37,16 +37,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware('auth', 'verified');
 
-// Route::get('/login', function () {
-//     return view('login');
-// });
-
-// Route::get('/register', function () {
-//     return view('register');
-// });
-
-
-
 //login
 Route::get('/login',[AuthController::class, 'login'])->name('login');
 Route::post('/login',[AuthController::class, 'authenticating']);
@@ -65,6 +55,8 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     return redirect('/login');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
+//Profile
+Route::get('/profile',[AuthController::class, 'profile'])->middleware('auth');
 
 //kelola unit
 Route::get('/unit',[UnitController::class, 'index'])->middleware(['auth','must-superadmin-or-admin']);

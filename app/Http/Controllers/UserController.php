@@ -26,7 +26,7 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new resource.
-    *
+     *
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -46,19 +46,11 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
 
-
-        $foto = $request->nama_foto;
-        $name = $foto->hashName();
-        $foto->move(public_path('/img/'), $name);
-        $namaFoto = 'img/' . $name;
-
-
         $user = new User();
         $user->nama = $request->nama;
         $user->nomor_induk = $request->nomor_induk;
         $user->email = $request->email;
         $user->password =  Hash::make($request->password);
-        $user->nama_foto = $namaFoto;
         $user->role_id = $request->role_id;
         $user->unit_id = $request->unit_id;
         $user->save();
@@ -94,7 +86,7 @@ class UserController extends Controller
         $unit = Unit::all();
         $role = Role::all();
 
-        return view('user.user-edit', ['user' => $user,'unit' => $unit,'role' => $role]);
+        return view('user.user-edit', ['user' => $user, 'unit' => $unit, 'role' => $role]);
     }
 
     /**
@@ -107,23 +99,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user, $id)
     {
 
-        $data = $request->all();
-
         $user = User::with('role', 'unit')->findOrFail($id);
-        if ($request->nama_foto) {
-            if ($user->nama_foto != null) {
-                if (file_exists($user->nama_foto )) {
-                    unlink(public_path($user->nama_foto ));
-                }
-            }
-            $foto = $request->nama_foto;
-            $name = $foto->hashName();
-            $foto->move(public_path('/img/'), $name);
-            $namaFoto = 'img/' . $name;
-        }
-        // $request->nama_foto = $namaFoto;
-
-
         $user->update($request->all());
         if ($user) {
             Session::flash('status-edit', 'success');
@@ -157,8 +133,8 @@ class UserController extends Controller
 
     public function restore($id)
     {
-        $deletedUser = User::withTrashed()->where('id',$id)->restore();
-         if ($deletedUser) {
+        $deletedUser = User::withTrashed()->where('id', $id)->restore();
+        if ($deletedUser) {
             Session::flash('status-restore', 'success');
             Session::flash('message-restore', 'User berhasil diaktifkan');
         }

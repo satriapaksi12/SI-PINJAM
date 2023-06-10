@@ -1,7 +1,7 @@
 @extends('layouts.app2')
 
-@section('title', 'Detail User')
-@section('fitur', 'DETAIL USER')
+@section('title', 'Profile  User')
+@section('fitur', 'PROFILE USER')
 
 @section('content')
     <section id="basic-horizontal-layouts">
@@ -23,35 +23,35 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" name="nama"id="nama"
-                                                class="form-control" value="{{ $user->nama }}" placeholder="" readonly>
+                                                class="form-control" value="{{ $profile->nama }}" placeholder="" readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Nomor Induk/NIP/NIM</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text"name="nomor_induk"id="nomor_induk"
-                                                class="form-control" value="{{ $user->nomor_induk }}" placeholder="" readonly>
+                                                class="form-control" value="{{ $profile->nomor_induk }}" placeholder="" readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Email</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="email" name="email"id="email"
-                                                class="form-control" value="{{ $user->email }}" placeholder="" readonly>
+                                                class="form-control" value="{{ $profile->email }}" placeholder="" readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Unit</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" name="unit_id"id="unit_id"
-                                                class="form-control" value="{{ $user->unit->nama_unit }}" placeholder="" readonly>
+                                                class="form-control" value="{{ $profile->unit->nama_unit }}" placeholder="" readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Role</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" name="role_id"id="role_id"
-                                                class="form-control" value="{{ $user->role->nama_role }}" placeholder="" readonly>
+                                                class="form-control" value="{{ $profile->role->nama_role }}" placeholder="" readonly>
                                         </div>
 
                                     </div>

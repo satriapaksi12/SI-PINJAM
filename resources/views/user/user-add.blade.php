@@ -67,12 +67,7 @@
                                                 </select>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label>Pas Foto</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <input class="form-control" type="file" name="nama_foto" id="nama_foto">
-                                        </div>
+                                        
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
                                             <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>

@@ -70,4 +70,10 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+    public function profile()
+    {
+        $profile = Auth::user();
+        return view('profile', ['profile' => $profile]);
+    }
 }

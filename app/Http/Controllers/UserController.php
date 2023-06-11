@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\Unit;
 use App\Models\User;
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\UpdateUserRequest;
@@ -139,5 +143,18 @@ class UserController extends Controller
             Session::flash('message-restore', 'User berhasil diaktifkan');
         }
         return redirect('/user');
+    }
+
+
+    public function exportUsers()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
+    public function importUsers(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new UsersImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

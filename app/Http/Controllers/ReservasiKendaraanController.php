@@ -24,7 +24,7 @@ class ReservasiKendaraanController extends Controller
      */
     public function index()
     {
-        $reservasi_kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi')->get();
+        $reservasi_kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi', 'reservasi_kendaraan')->get();
         return view('reservasi_kendaraan.reservasi-kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
 
@@ -150,5 +150,5 @@ class ReservasiKendaraanController extends Controller
         $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->latest()->get();
         return view('reservasi_kendaraan.cekJadwal_kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
-   
+
 }

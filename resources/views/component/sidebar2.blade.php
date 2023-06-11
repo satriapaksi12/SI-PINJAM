@@ -72,10 +72,10 @@
                     <a href="/ruang"> Ruangan</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/kendaraan">Kendaraan</a>
+                    <a href="/alat">Alat</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/alat">Alat</a>
+                    <a href="/kendaraan">Kendaraan</a>
                 </li>
             </ul>
         </li>
@@ -89,10 +89,10 @@
                     <a href="/kelola-reservasi-ruang">Reservasi Ruangan</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/kelola-reservasi-kendaraan">Reservasi Kendaraan</a>
+                    <a href="/kelola-reservasi-alat">Reservasi Alat</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/kelola-reservasi-alat">Reservasi Alat</a>
+                    <a href="/kelola-reservasi-kendaraan">Reservasi Kendaraan</a>
                 </li>
             </ul>
         </li>
@@ -222,10 +222,10 @@
                     <a href="/ruang"> Ruangan</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/kendaraan">Kendaraan</a>
+                    <a href="/alat">Alat</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/alat">Alat</a>
+                    <a href="/kendaraan">Kendaraan</a>
                 </li>
             </ul>
         </li>
@@ -239,10 +239,10 @@
                     <a href="/kelola-reservasi-ruang">Reservasi Ruangan</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/kelola-reservasi-kendaraan">Reservasi Kendaraan</a>
+                    <a href="/kelola-reservasi-alat">Reservasi Alat</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/kelola-reservasi-alat">Reservasi Alat</a>
+                    <a href="/kelola-reservasi-kendaraan">Reservasi Kendaraan</a>
                 </li>
             </ul>
         </li>
@@ -291,7 +291,7 @@
                 <span>Kelola Unit</span>
             </a>
         </li>
-     
+
         @elseif (Auth::user()->role_id == 3)
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PeriodesExport;
 use App\Models\Periode;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StorePeriodeRequest;
 use App\Http\Requests\UpdatePeriodeRequest;
-use Illuminate\Support\Facades\Session;
-
+use App\Imports\PeriodesImport;
 
 class PeriodeController extends Controller
 {
@@ -95,5 +98,16 @@ class PeriodeController extends Controller
         }
 
         return redirect('/periode');
+    }
+    public function exportPeriodes()
+    {
+        return Excel::download(new PeriodesExport, 'periodes.xlsx');
+    }
+
+    public function importPeriodes(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new PeriodesImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

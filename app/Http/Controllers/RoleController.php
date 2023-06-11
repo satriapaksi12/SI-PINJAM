@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Exports\RolesExport;
+use App\Imports\RolesImport;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreRoleRequest;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\UpdateRoleRequest;
@@ -93,5 +97,17 @@ class RoleController extends Controller
             Session::flash('message-delete', 'Data berhasil dihapus');
         }
         return redirect('/role');
+    }
+
+    public function exportRoles()
+    {
+        return Excel::download(new RolesExport, 'roles.xlsx');
+    }
+
+    public function importRoles(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new RolesImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

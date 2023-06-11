@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unit;
+use App\Exports\UnitsExport;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreUnitRequest;
-use App\Http\Requests\UpdateUnitRequest;
 use Illuminate\Support\Facades\Session;
-
+use App\Http\Requests\UpdateUnitRequest;
+use App\Imports\UnitsImport;
 
 class UnitController extends Controller
 {
@@ -48,7 +51,7 @@ class UnitController extends Controller
         return redirect('/unit');
     }
 
-   
+
 
     /**
      * Show the form for editing the specified resource.
@@ -95,7 +98,16 @@ class UnitController extends Controller
             Session::flash('message-delete', 'Data berhasil dihapus');
         }
         return redirect('/unit');
+    }
+    public function exportUnits()
+    {
+        return Excel::download(new UnitsExport, 'units.xlsx');
+    }
 
-
+    public function importUnits(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new UnitsImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

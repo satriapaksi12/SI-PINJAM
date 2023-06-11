@@ -13,7 +13,11 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "nesbot/carbon": "^2.66"
+        "maatwebsite/excel": "^3.1",
+        "maennchen/zipstream-php": "2.4.0",
+        "nesbot/carbon": "^2.66",
+        "phpoffice/phpspreadsheet": "^1.28",
+        "psr/http-message": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

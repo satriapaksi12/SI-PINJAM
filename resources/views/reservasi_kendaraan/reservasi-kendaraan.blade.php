@@ -12,8 +12,6 @@
         <div class="row">
             @foreach ($reservasi_kendaraan as $data)
                 <div class="col-lg-3 col-md-4 col-sm-6">
-
-
                     <div class="card">
                         <div class="card-content">
                             @if ($data->jenis_kendaraan->nama_jenis_kendaraan == 'mobil')
@@ -65,7 +63,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class=" d-flex justify-content-end">
+                                <div class="d-flex justify-content-end">
                                     <a href="/reservasi-kendaraan-add/{{ $data->id }}"><button
                                             type="submit"class="btn btn-primary block">Reservasi</button></a>
                                 </div>

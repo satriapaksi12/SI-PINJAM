@@ -20,8 +20,21 @@
     <!-- Basic Tables start -->
     <section class="section">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex">
                 <a href="/jenis_kendaraan-add" class="btn btn-primary">Add Data</a>
+                <a href="/export-jenis_kendaraan" class="btn btn-success">Export Excel</a>
+
+                <form id="import-form" action="/import-jenis_kendaraan" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" id="file" accept=".xlsx, .xls, .csv" style="display: none;">
+                    <button type="button" class="btn btn-warning" id="import-btn">Import Excel</button>
+                </form>
+
+                <script>
+                    document.getElementById('import-btn').addEventListener('click', function() {
+                        document.getElementById('file').click();
+                    });
+                </script>
             </div>
             <div class="card-body">
                 <table class="table" id="table1">

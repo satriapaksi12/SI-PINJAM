@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\RuangsExport;
 use App\Models\Ruang;
 use App\Models\Gedung;
 use App\Models\Lokasi;
 use App\Models\Foto_ruang;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreRuangRequest;
 use App\Http\Requests\UpdateRuangRequest;
+use App\Imports\RuangsImport;
 
 class RuangController extends Controller
 {
@@ -159,5 +163,16 @@ class RuangController extends Controller
         }
 
         return redirect('/ruang');
+    }
+    public function exportRuangs()
+    {
+        return Excel::download(new RuangsExport, 'ruangs.xlsx');
+    }
+
+    public function importRuangs(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new RuangsImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

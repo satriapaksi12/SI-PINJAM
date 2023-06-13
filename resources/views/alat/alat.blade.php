@@ -56,16 +56,16 @@
                         {{-- <td>{{ $data->foto_alat->nama_foto }}</td>
                         <td>{{ $data->gedung->nama_gedung }} - {{ $data->gedung->lokasi->nama_lokasi }}</td> --}}
                         <td>
-                            <a href="alat/{{ $data->id }}" class="btn icon btn-info"><i
+                            <a href="alat/{{ $data->id }}" class="btn icon btn-info" title="Detail"><i
                                 class="bi bi-eye"></i></a>
-                            <a href="alat-edit/{{ $data->id }}" class="btn icon btn-warning"><i
+                            <a href="alat-edit/{{ $data->id }}" class="btn icon btn-warning" title="Edit"><i
                                     class="bi bi-pencil"></i></a>
                             <form action="/alat-destroy/{{ $data->id }}" method="post" class="d-inline">
                                 @csrf
                                 @method('delete')
                                 <button
                                     onclick="return confirm('Apakah anda ingin menghapus data alat dengan No Inventaris {{ $data->no_inventaris }}  ')"
-                                    class="btn icon btn-danger"><i class="bi bi-trash"></i></button>
+                                    class="btn icon btn-danger" title="Hapus"><i class="bi bi-trash"></i></button>
                             </form>
                         </td>
 

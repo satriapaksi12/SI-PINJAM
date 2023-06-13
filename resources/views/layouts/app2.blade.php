@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('tmp_dashboard2/dist/assets/css/main/app-dark.css')}}">
     <link rel="shortcut icon" href="{{asset('tmp_dashboard2/dist/assets/images/logo/favicon.svg')}}" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset('tmp_dashboard2/dist/assets/images/logo/favicon.png')}}" type="image/png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
     <link rel="stylesheet" href="{{asset('tmp_dashboard2/dist/assets/css/shared/iconly.css')}}">
 

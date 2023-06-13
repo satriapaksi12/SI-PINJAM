@@ -17,6 +17,7 @@ class PeriodesExport implements FromCollection
 
         $data = $periodes->map(function ($periode) {
             return [
+                $periode->id,
                 $periode->tahun_periode,
                 $periode->semester,
                 $periode->created_at,
@@ -25,6 +26,7 @@ class PeriodesExport implements FromCollection
         });
 
         $data->prepend([
+            'ID',
             'Tahun Periode',
             'Semester',
             'Created At',

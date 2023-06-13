@@ -17,6 +17,7 @@
                                             <label>Nama Ruangan</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="nama_ruang" id="nama_ruang"
                                                 class="form-control"  value="{{ $ruang->nama_ruang }}" readonly>
                                         </div>
@@ -24,6 +25,7 @@
                                             <label>Kapasitas</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="kapasitas"id="kapasitas"
                                                 class="form-control"  value="{{ $ruang->kapasitas }}" readonly >
                                         </div>
@@ -31,6 +33,7 @@
                                             <label>Lokasi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="gedung_id"id="gedung_id"
                                                 class="form-control" value="{{ $ruang->gedung->nama_gedung }} - {{ $ruang->gedung->lokasi->nama_lokasi}}" readonly>
                                         </div>
@@ -38,6 +41,7 @@
                                             <label>Fasilitas</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <textarea name="fasilitas"id="fasilitas" class="form-control" readonly>{{ $ruang->fasilitas }}</textarea>
                                         </div>
 

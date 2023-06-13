@@ -15,7 +15,10 @@ class RuangsImport implements ToModel
     public function model(array $row)
     {
         return new Ruang([
-            //
+            'nama_ruang'=> $row[0],
+            'kapasitas'=> $row[1],
+            'fasilitas'=> $row[2],
+            'gedung_id'=> $row[3],
         ]);
     }
 }

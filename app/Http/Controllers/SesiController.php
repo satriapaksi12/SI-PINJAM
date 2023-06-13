@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SesisExport;
 use App\Models\Sesi;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreSesiRequest;
-use App\Http\Requests\UpdateSesiRequest;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\UpdateSesiRequest;
+use App\Imports\SesisImport;
 
 class SesiController extends Controller
 {
@@ -47,7 +51,7 @@ class SesiController extends Controller
         return redirect('/sesi');
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -95,5 +99,16 @@ class SesiController extends Controller
         }
 
         return redirect('/sesi');
+    }
+    public function exportSesis()
+    {
+        return Excel::download(new SesisExport, 'users.xlsx');
+    }
+
+    public function importSesis(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new SesisImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

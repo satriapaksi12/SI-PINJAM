@@ -12,6 +12,29 @@ class GedungsExport implements FromCollection
     */
     public function collection()
     {
-        return Gedung::all();
+
+
+        $gedungs = Gedung::with('lokasi')->get();
+
+        $data = $gedungs->map(function ($gedung) {
+            return [
+                $gedung->id,
+                $gedung->nama_gedung,
+                $gedung->lokasi->nama_lokasi,
+                $gedung->created_at,
+                $gedung->updated_at,
+
+            ];
+        });
+
+        $data->prepend([
+            'ID',
+            'Nama Gedung',
+            'Lokasi',
+            'Created At',
+            'Updated At',
+        ]);
+
+        return $data;
     }
 }

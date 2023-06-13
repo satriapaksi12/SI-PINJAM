@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lokasi;
+use Illuminate\Http\Request;
+use App\Exports\LokasisExport;
+use App\Imports\LokasisImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreLokasiRequest;
 use App\Http\Requests\UpdateLokasiRequest;
-use Illuminate\Support\Facades\Session;
-
 
 class LokasiController extends Controller
 {
@@ -48,7 +51,7 @@ class LokasiController extends Controller
         return redirect('/lokasi');
     }
 
-   
+
 
     /**
      * Show the form for editing the specified resource.
@@ -56,10 +59,10 @@ class LokasiController extends Controller
      * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lokasi $lokasi,$id)
+    public function edit(Lokasi $lokasi, $id)
     {
         $lokasi = Lokasi::findOrFail($id);
-        return view('lokasi.lokasi-edit',['lokasi' => $lokasi]);
+        return view('lokasi.lokasi-edit', ['lokasi' => $lokasi]);
     }
 
     /**
@@ -69,7 +72,7 @@ class LokasiController extends Controller
      * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLokasiRequest $request, Lokasi $lokasi,$id)
+    public function update(UpdateLokasiRequest $request, Lokasi $lokasi, $id)
     {
         $lokasi = Lokasi::findOrFail($id);
         $lokasi->update($request->all());
@@ -86,7 +89,7 @@ class LokasiController extends Controller
      * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lokasi $lokasi,$id)
+    public function destroy(Lokasi $lokasi, $id)
     {
         $deletedLokasi = Lokasi::findORFail($id);
         $deletedLokasi->delete();
@@ -97,5 +100,17 @@ class LokasiController extends Controller
         }
 
         return redirect('/lokasi');
+    }
+
+    public function exportLokasis()
+    {
+        return Excel::download(new LokasisExport, 'lokasis.xlsx');
+    }
+
+    public function importLokasis(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new LokasisImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

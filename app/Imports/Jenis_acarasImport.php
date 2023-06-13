@@ -15,7 +15,7 @@ class Jenis_acarasImport implements ToModel
     public function model(array $row)
     {
         return new Jenis_acara([
-            //
+            'nama_jenis_acara'=> $row[0],
         ]);
     }
 }

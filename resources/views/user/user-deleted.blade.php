@@ -44,7 +44,7 @@
                                 <td>{{ $data->deleted_at }}</td>
                                 <td>
 
-                                    <a href="/user/{{ $data->id }}/restore" class="btn icon btn-primary"><i
+                                    <a href="/user/{{ $data->id }}/restore" class="btn icon btn-primary" title="Pulihkan" ><i
                                             class="bi bi-arrow-counterclockwise"></i></a>
                                 </td>
 

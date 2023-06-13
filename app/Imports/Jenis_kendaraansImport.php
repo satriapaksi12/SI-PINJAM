@@ -15,7 +15,7 @@ class Jenis_kendaraansImport implements ToModel
     public function model(array $row)
     {
         return new Jenis_kendaraan([
-            //
+            'nama_jenis_kendaraan'=> $row[0],
         ]);
     }
 }

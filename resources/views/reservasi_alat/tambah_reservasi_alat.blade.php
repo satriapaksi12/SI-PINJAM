@@ -18,6 +18,7 @@
                                             <label>Nama Alat</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="nama_alat"id="nama_alat" class="form-control"
                                                 value="{{ $alat->nama_alat }}" readonly>
                                             <input type="text"name="alat_id"id="alat_id" class="form-control"
@@ -27,6 +28,7 @@
                                             <label>Nomor Inventaris</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="no_inventaris" id="no_inventaris"
                                                 class="form-control" value="{{ $alat->no_inventaris }}" readonly>
                                             <input type="text"name="alat_id"id="alat_id" class="form-control"
@@ -36,6 +38,7 @@
                                             <label>Lokasi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="gedung_id"id="gedung_id" class="form-control"
                                                 value="{{ $alat->gedung->nama_gedung }} - {{ $alat->gedung->lokasi->nama_lokasi }}"
                                                 readonly>
@@ -44,6 +47,7 @@
                                             <label>Peminjam</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="user_id"id="user_id" class="form-control"
                                                 value="{{ Auth::user()->nama }}"readonly>
                                         </div>

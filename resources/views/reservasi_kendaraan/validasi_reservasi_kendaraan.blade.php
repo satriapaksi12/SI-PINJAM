@@ -19,6 +19,7 @@
                                             <label>Nomor Reservasi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <b><input type="text"name="no_reservasi"id="no_reservasi" class="form-control"
                                                 value="{{ $reservasi_kendaraan->no_reservasi }}" readonly></b>
                                         </div>
@@ -26,6 +27,7 @@
                                             <label>Nomor Polisi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="no_polisi"id="no_polisi" class="form-control"
                                                 value="{{ $reservasi_kendaraan->kendaraan->no_polisi }}" readonly>
                                             <input type="text"name="kendaraan_id"id="kendaraan_id" class="form-control"
@@ -35,6 +37,7 @@
                                             <label>Jenis Kendaraan</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="jenis_kendaraan_id" id="jenis_kendaraan_id"
                                                 class="form-control"
                                                 value="{{ $reservasi_kendaraan->kendaraan->jenis_kendaraan->nama_jenis_kendaraan }}" readonly>
@@ -45,6 +48,7 @@
                                             <label>Lokasi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="gedung_id"id="gedung_id" class="form-control"
                                                 value="{{ $reservasi_kendaraan->kendaraan->gedung->nama_gedung }} - {{ $reservasi_kendaraan->kendaraan->gedung->lokasi->nama_lokasi }}"
                                                 readonly>
@@ -53,6 +57,7 @@
                                             <label>Peminjam</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="user_id"id="user_id" class="form-control"
                                                 value="{{ $reservasi_kendaraan->user->nama }}"readonly>
                                             <input type="text"name="user_id"id="user_id" class="form-control"
@@ -62,6 +67,7 @@
                                             <label>Penanggungjawab</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="penanggung_jawab"id="penanggung_jawab"
                                                 class="form-control"
                                                 value="{{ $reservasi_kendaraan->penanggung_jawab }}"readonly>
@@ -70,6 +76,7 @@
                                             <label>No Telepon Penanggungjawab</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="no_telepon"id="no_telepon"
                                                 class="form-control"
                                                 value="{{ $reservasi_kendaraan->no_telepon }}"readonly>
@@ -78,6 +85,7 @@
                                             <label>Unit Penanggungjawab</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="unit_id"id="unit_id" class="form-control"
                                                 value="{{ $reservasi_kendaraan->unit->nama_unit }}" readonly>
                                             <input type="text"name="unit_id"id="unit_id" class="form-control"
@@ -87,6 +95,7 @@
                                             <label>Kegiatan</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="kegiatan"id="kegiatan" class="form-control"
                                                 value="{{ $reservasi_kendaraan->kegiatan }}" readonly>
                                         </div>
@@ -94,6 +103,7 @@
                                             <label>Tanggal Mulai</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="date" name="tanggal_mulai"id="tanggal_mulai"
                                                 class="form-control" value="{{ $reservasi_kendaraan->tanggal_mulai }}" readonly>
                                         </div>
@@ -101,6 +111,7 @@
                                             <label>Tanggal Selesai</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="date" name="tanggal_selesai"id="tanggal_selesai"
                                                 class="form-control" value="{{ $reservasi_kendaraan->tanggal_selesai }}"
                                                 readonly>
@@ -109,6 +120,7 @@
                                             <label>Jam Mulai</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="time" name="jam_mulai"id="jam_mulai" class="form-control"
                                                 value="{{ $reservasi_kendaraan->jam_mulai }}" readonly>
                                         </div>
@@ -116,6 +128,7 @@
                                             <label>Jam Selesai</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="time" name="jam_selesai"id="jam_selesai"
                                                 class="form-control" value="{{ $reservasi_kendaraan->jam_selesai }}" readonly>
                                         </div>

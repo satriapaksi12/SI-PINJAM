@@ -162,6 +162,8 @@ Route::get('/daftar-reservasi-kendaraan',[ReservasiKendaraanController::class, '
 Route::get('/cekJadwal_kendaraan',[ReservasiKendaraanController::class, 'cekJadwal'])->middleware('auth');
 Route::get('/export-reservasi_kendaraan', [ReservasiKendaraanController::class, 'exportReservasiKendaraans'])->middleware(['auth','must-superadmin-or-admin']);
 Route::post('/import-reservasi_kendaraan',[ReservasiKendaraanController::class, 'importReservasiKendaraans'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/cekKesediaan-reservasi_kendaraan',[ReservasiKendaraanController::class, 'cekKesediaan'])->middleware(['auth','forbidden-umum-or-mahasiswa'])->name('prosesCekKetersediaanKendaraan');;
+
 
 
 
@@ -190,6 +192,7 @@ Route::get('/daftar-reservasi-alat',[ReservasiAlatController::class, 'daftarRese
 Route::get('/cekJadwal_alat',[ReservasiAlatController::class, 'cekJadwal'])->middleware('auth');
 Route::get('/export-reservasi_alat', [ReservasiAlatController::class, 'exportReservasiAlats'])->middleware(['auth','must-superadmin-or-admin']);
 Route::post('/import-reservasi_alat',[ReservasiAlatController::class, 'importReservasiAlats'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/cekKesediaan-reservasi_alat',[ReservasiAlatController::class, 'cekKesediaan'])->middleware(['auth','forbidden-umum'])->name('prosesCekKetersediaanAlat');;
 
 
 
@@ -243,5 +246,7 @@ Route::get('/detail-reservasi-ruang/{id}',[ReservasiRuangController::class, 'det
 Route::get('/detail-reservasi-ruang-cetak/{id}',[ReservasiRuangController::class, 'cetakReservasi'])->middleware(['auth','forbidden-umum']);
 Route::get('/daftar-reservasi-ruang',[ReservasiRuangController::class, 'daftarReservasi'])->middleware(['auth','forbidden-umum']);
 Route::get('/cekJadwal_ruang',[ReservasiRuangController::class, 'cekJadwal'])->middleware('auth');
-Route::get('/export-reservasi_ruangan', [ReservasiRuangController::class, 'exportReservasiRuangans'])->middleware(['auth','must-superadmin-or-admin']);
-Route::post('/import-reservasi_ruangan',[ReservasiRuangController::class, 'importReservasiRuangans'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/export-reservasi_ruang', [ReservasiRuangController::class, 'exportReservasiRuangans'])->middleware(['auth','must-superadmin-or-admin']);
+Route::post('/import-reservasi_ruang',[ReservasiRuangController::class, 'importReservasiRuangans'])->middleware(['auth','must-superadmin-or-admin']);
+Route::get('/cekKesediaan-reservasi_ruang',[ReservasiRuangController::class, 'cekKesediaan'])->middleware(['auth','forbidden-umum'])->name('prosesCekKetersediaan');;
+

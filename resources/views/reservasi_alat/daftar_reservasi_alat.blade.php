@@ -53,7 +53,7 @@
                                 <td>{{ $data->jam_selesai }}</td>
                                 <td>{{ $data->status }}</td>
                                 <td>
-                                    <a href="/detail-reservasi-alat/{{ $data->id }}" class="btn icon btn-primary"><i
+                                    <a href="/detail-reservasi-alat/{{ $data->id }}" class="btn icon btn-primary" title="Detail"><i
                                             class="bi bi-eye"></i></a>
                                 </td>
                             </tr>

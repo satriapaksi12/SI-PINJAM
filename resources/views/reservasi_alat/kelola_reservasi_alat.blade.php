@@ -68,12 +68,12 @@
                                 <td>
                                     @if ($data->status == 'Proses Validasi')
                                         <a href="validasi-reservasi-alat/{{ $data->id }}"
-                                            class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
+                                            class="btn icon btn-warning" title="Validasi"><i class="bi bi-check2-circle"></i></a>
                                     @else
                                         <a href="/detail-reservasi-alat/{{ $data->id }}"
-                                            class="btn icon btn-primary"><i class="bi bi-eye"></i></a>
+                                            class="btn icon btn-primary" title="Detail"><i class="bi bi-eye"></i></a>
                                         <a href="validasi-reservasi-alat/{{ $data->id }}"
-                                            class="btn icon btn-warning"><i class="bi bi-check2-circle"></i></a>
+                                            class="btn icon btn-warning" title="Validasi"><i class="bi bi-check2-circle"></i></a>
                                     @endif
 
 

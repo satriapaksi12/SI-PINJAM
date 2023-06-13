@@ -18,6 +18,7 @@
                                             <label>Nomor Polisi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="no_polisi"id="no_polisi" class="form-control"
                                                 value="{{ $kendaraan->no_polisi }}" readonly>
                                             <input type="text"name="kendaraan_id"id="kendaraan_id" class="form-control"
@@ -27,6 +28,7 @@
                                             <label>Jenis Kendaraan</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="jenis_kendaraan_id" id="jenis_kendaraan_id"
                                                 class="form-control"
                                                 value="{{ $kendaraan->jenis_kendaraan->nama_jenis_kendaraan }}" readonly>
@@ -37,6 +39,7 @@
                                             <label>Lokasi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="gedung_id"id="gedung_id" class="form-control"
                                                 value="{{ $kendaraan->gedung->nama_gedung }} - {{ $kendaraan->gedung->lokasi->nama_lokasi }}"
                                                 readonly>
@@ -45,6 +48,7 @@
                                             <label>Kapasitas</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="kapasitas"id="kapasitas" class="form-control"
                                                 value="{{ $kendaraan->kapasitas }}" readonly>
                                             <input type="text"name="kendaraan_id"id="kendaraan_id" class="form-control"
@@ -54,6 +58,7 @@
                                             <label>Peminjam</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="user_id"id="user_id" class="form-control"
                                                 value="{{ Auth::user()->nama }}"readonly>
                                         </div>

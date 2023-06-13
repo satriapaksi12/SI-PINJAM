@@ -17,9 +17,6 @@ class PeriodesImport implements ToModel
         return new Periode([
             'tahun_periode'=> $row[0],
             'semester'=> $row[1],
-            'created_at'=> $row[4],
-            'updated_at'=> $row[5],
-            
         ]);
     }
 }

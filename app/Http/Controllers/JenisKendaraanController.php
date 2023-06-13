@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Jenis_kendaraan;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Jenis_kendaraansExport;
+use App\Imports\Jenis_kendaraansImport;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreJenis_kendaraanRequest;
 use App\Http\Requests\UpdateJenis_kendaraanRequest;
-use Illuminate\Support\Facades\Session;
-
 
 class JenisKendaraanController extends Controller
 {
@@ -48,7 +51,7 @@ class JenisKendaraanController extends Controller
         return redirect('/jenis_kendaraan');
     }
 
-   
+
 
     /**
      * Show the form for editing the specified resource.
@@ -101,6 +104,18 @@ class JenisKendaraanController extends Controller
         }
 
         return redirect('/jenis_kendaraan');
+    }
+
+    public function exportJenisKendaraans()
+    {
+        return Excel::download(new Jenis_kendaraansExport, 'jenis_kendaraans.xlsx');
+    }
+
+    public function importJenisKendaraans(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new Jenis_kendaraansImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 
 

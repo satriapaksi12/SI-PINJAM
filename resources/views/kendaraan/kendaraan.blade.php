@@ -59,14 +59,14 @@
                         <td>{{ $data->gedung->nama_gedung }} - {{ $data->gedung->lokasi->nama_lokasi }}</td>
                         <td>
 
-                            <a href="kendaraan-edit/{{ $data->id }}" class="btn icon btn-warning"><i
+                            <a href="kendaraan-edit/{{ $data->id }}" class="btn icon btn-warning" title="Edit"><i
                                     class="bi bi-pencil"></i></a>
                             <form action="/kendaraan-destroy/{{ $data->id }}" method="post" class="d-inline">
                                 @csrf
                                 @method('delete')
                                 <button
                                     onclick="return confirm('Apakah anda ingin menghapus data kendaraan dengan No Polisi {{ $data-> no_polisi }}  ')"
-                                    class="btn icon btn-danger"><i class="bi bi-trash"></i></button>
+                                    class="btn icon btn-danger" title="Hapus"><i class="bi bi-trash"></i></button>
                             </form>
                         </td>
 

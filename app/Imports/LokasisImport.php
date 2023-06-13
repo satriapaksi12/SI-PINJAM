@@ -15,7 +15,7 @@ class LokasisImport implements ToModel
     public function model(array $row)
     {
         return new Lokasi([
-            //
+            'nama_lokasi'=> $row[0],
         ]);
     }
 }

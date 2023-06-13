@@ -52,14 +52,14 @@
                                 <td>{{ $data->email }}</td>
                                 <td>
 
-                                    <a href="unit-edit/{{ $data->id }}" class="btn icon btn-warning"><i
+                                    <a href="unit-edit/{{ $data->id }}" title="Edit" class="btn icon btn-warning"><i
                                             class="bi bi-pencil"></i></a>
                                     <form action="/unit-destroy/{{ $data->id }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button
                                             onclick="return confirm('Apakah anda ingin menghapus data unit yaitu {{ $data->nama_unit }} ')"
-                                            class="btn icon btn-danger"><i class="bi bi-trash"></i></button>
+                                            class="btn icon btn-danger" title="Hapus"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </td>
 

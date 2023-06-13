@@ -60,16 +60,16 @@
                                 <td>{{ $data->role->nama_role }}</td>
                                 <td>
 
-                                    <a href="user/{{ $data->id }}" class="btn icon btn-info"><i
+                                    <a href="user/{{ $data->id }}" title="Detail" class="btn icon btn-info"><i
                                             class="bi bi-eye"></i></a>
-                                    <a href="user-edit/{{ $data->id }}" class="btn icon btn-warning"><i
+                                    <a href="user-edit/{{ $data->id }}" title="Edit" class="btn icon btn-warning"><i
                                             class="bi bi-pencil"></i></a>
                                     <form action="/user-destroy/{{ $data->id }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button
                                             onclick="return confirm('Apakah anda ingin menonaktifkan data user {{ $data->nama }} dengan nomor induk {{ $data->nomor_induk }} ')"
-                                            class="btn icon btn-danger"><i class="bi bi-person-x-fill"></i></button>
+                                            class="btn icon btn-danger" title="Non Aktifkan"><i class="bi bi-person-x-fill"></i></button>
                                     </form>
                                 </td>
 

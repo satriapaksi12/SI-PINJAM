@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Jenis_acarasExport;
 use App\Models\Jenis_acara;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreJenis_acaraRequest;
 use App\Http\Requests\UpdateJenis_acaraRequest;
-use Illuminate\Support\Facades\Session;
+use App\Imports\Jenis_acarasImport;
 
 class JenisAcaraController extends Controller
 {
@@ -95,5 +99,16 @@ class JenisAcaraController extends Controller
             Session::flash('message-delete', 'Data berhasil dihapus');
         }
         return redirect('/jenis_acara');
+    }
+    public function exportJenisAcaras()
+    {
+        return Excel::download(new Jenis_acarasExport, 'jenis_acaras.xlsx');
+    }
+
+    public function importJenisAcaras(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new Jenis_acarasImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

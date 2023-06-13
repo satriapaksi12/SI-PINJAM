@@ -54,7 +54,7 @@
 
                                 <td>{{ $data->status }}</td>
                                 <td>
-                                        <a href="/detail-reservasi-kendaraan/{{$data->id}}" class="btn icon btn-primary"><i class="bi bi-eye"></i></a>
+                                        <a href="/detail-reservasi-kendaraan/{{$data->id}}" class="btn icon btn-primary" title="Detail"><i class="bi bi-eye"></i></a>
                                 </td>
                             </tr>
                         @endforeach

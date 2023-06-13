@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Gedung;
 use App\Models\Lokasi;
-use App\Http\Requests\StoreGedungRequest;
-use App\Http\Requests\UpdateGedungRequest;
-use App\Http\Requests\StoreLokasiRequest;
-use App\Http\Requests\UpdateLokasiRequest;
-
+use Illuminate\Http\Request;
+use App\Exports\GedungsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\StoreGedungRequest;
+
+use App\Http\Requests\StoreLokasiRequest;
+use App\Http\Requests\UpdateGedungRequest;
+use App\Http\Requests\UpdateLokasiRequest;
+use App\Imports\GedungsImport;
 
 class GedungController extends Controller
 {
@@ -103,5 +107,16 @@ class GedungController extends Controller
         }
 
         return redirect('/gedung');
+    }
+    public function exportGedungs()
+    {
+        return Excel::download(new GedungsExport, 'gedungs.xlsx');
+    }
+
+    public function importGedungs(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new GedungsImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

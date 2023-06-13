@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Reservasi_ruangsExport;
 use PDF;
 use View;
+use Carbon\Carbon;
 use App\Models\Sesi;
 use App\Models\Unit;
 use App\Models\User;
 use App\Models\Ruang;
 use App\Models\Periode;
 use App\Models\Jenis_acara;
+use Illuminate\Http\Request;
 use App\Models\Reservasi_ruang;
 use Elibyy\TCPDF\Facades\TCPDF;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Requests\StoreReservasi_ruangRequest;
 use App\Http\Requests\UpdateReservasi_ruangRequest;
-
+use App\Imports\Reservasi_ruangsImport;
 
 class ReservasiRuangController extends Controller
 {
@@ -200,5 +203,16 @@ class ReservasiRuangController extends Controller
         $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->latest()->get();
         return view('reservasi_ruang.cekJadwal_ruangan', ['reservasi_ruang' => $reservasi_ruang,'ruang'=>$ruang]);
     }
-    
+    public function exportReservasiRuangans()
+    {
+        return Excel::download(new Reservasi_ruangsExport, 'reservasi_ruangs.xlsx');
+    }
+
+    public function importReservasiRuangans(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new Reservasi_ruangsImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
+    }
+
 }

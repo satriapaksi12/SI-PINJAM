@@ -12,6 +12,24 @@ class LokasisExport implements FromCollection
     */
     public function collection()
     {
-        return Lokasi::all();
+        $lokasis =Lokasi::all();
+
+        $data = $lokasis->map(function ($lokasi) {
+            return [
+                $lokasi->id,
+                $lokasi->nama_lokasi,
+                $lokasi->created_at,
+                $lokasi->updated_at,
+            ];
+        });
+
+        $data->prepend([
+            'ID',
+            'Nama Lokasi',
+            'Created At',
+            'Updated At',
+        ]);
+
+        return $data;
     }
 }

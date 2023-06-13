@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Unit;
 use App\Models\User;
 use PDF;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreReservasi_kendaraanRequest;
 use App\Http\Requests\UpdateReservasi_kendaraanRequest;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
-
+use Illuminate\Http\Request;
 
 class ReservasiKendaraanController extends Controller
 {
@@ -24,7 +25,7 @@ class ReservasiKendaraanController extends Controller
      */
     public function index()
     {
-        $reservasi_kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi', 'reservasi_kendaraan')->get();
+        $reservasi_kendaraan = Kendaraan::with('jenis_kendaraan', 'gedung.lokasi', 'reservasi_kendaraan')->get();
         return view('reservasi_kendaraan.reservasi-kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
 
@@ -37,7 +38,7 @@ class ReservasiKendaraanController extends Controller
     {
         $user = User::with('unit')->get();
         $unit = Unit::all();
-        $kendaraan = Kendaraan::with('gedung.lokasi','jenis_kendaraan')->findOrFail($id);
+        $kendaraan = Kendaraan::with('gedung.lokasi', 'jenis_kendaraan')->findOrFail($id);
         return view('reservasi_kendaraan.tambah_reservasi_kendaraan', ['user' => $user, 'unit' => $unit, 'kendaraan' => $kendaraan]);
     }
 
@@ -89,7 +90,6 @@ class ReservasiKendaraanController extends Controller
         // }
 
         return redirect('/daftar-reservasi-kendaraan');
-
     }
 
     public function kelolaReservasi()
@@ -122,9 +122,9 @@ class ReservasiKendaraanController extends Controller
         return view('reservasi_kendaraan.detail_reservasi_kendaraan', ['reservasi_kendaraan' =>  $reservasi_kendaraan]);
     }
 
-    public function cetakReservasi(Reservasi_kendaraan $reservasi_kendaraan,$id)
+    public function cetakReservasi(Reservasi_kendaraan $reservasi_kendaraan, $id)
     {
-        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user' ,'kendaraan.jenis_kendaraan')->findOrFail($id);
+        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user', 'kendaraan.jenis_kendaraan')->findOrFail($id);
         $filename = 'cetak-bukti-reservasi.pdf';
 
         $data = [
@@ -151,4 +151,31 @@ class ReservasiKendaraanController extends Controller
         return view('reservasi_kendaraan.cekJadwal_kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
 
+    public function cekKesediaan(Request $request)
+    {
+        $startDate = $request->cek_tanggal_mulai; // Replace with the desired start date
+        $endDate = $request->cek_tanggal_selesai; // Replace with the desired end date
+        $startTime = $request->cek_jam_mulai; // Replace with the desired start time
+        $endTime = $request->cek_jam_selesai; // Replace with the desired end time
+
+        $unavailableVehicleIds = Reservasi_kendaraan::where(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
+            $query->where(function ($query) use ($startDate, $endDate, $startTime) {
+                $query->where('tanggal_mulai', '=', $startDate)
+                    ->where('jam_selesai', '>', $startTime);
+            })->orWhere(function ($query) use ($startDate, $endDate, $endTime) {
+                $query->where('tanggal_selesai', '=', $endDate)
+                    ->where('jam_mulai', '<', $endTime);
+            })->orWhere(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
+                $query->where('tanggal_mulai', '<', $endDate)
+                    ->where('tanggal_selesai', '>', $startDate);
+            });
+        })->pluck('kendaraan_id');
+
+        $availableVehicles = Kendaraan::with('jenis_kendaraan', 'gedung.lokasi', 'reservasi_kendaraan')
+            ->whereNotIn('id', $unavailableVehicleIds)
+            ->get();
+
+        // $availableVehicles = Kend    araan::whereNotIn('id', $reservasi_kendaraan)->get();
+        return response()->json($availableVehicles);
+    }
 }

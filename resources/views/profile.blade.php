@@ -22,36 +22,46 @@
                                             <label>Nama</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="nama"id="nama"
                                                 class="form-control" value="{{ $profile->nama }}" placeholder="" readonly>
+                                            </fieldset>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Nomor Induk/NIP/NIM</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text"name="nomor_induk"id="nomor_induk"
                                                 class="form-control" value="{{ $profile->nomor_induk }}" placeholder="" readonly>
+                                            </fieldset>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Email</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="email" name="email"id="email"
                                                 class="form-control" value="{{ $profile->email }}" placeholder="" readonly>
+                                            </fieldset>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Unit</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="unit_id"id="unit_id"
                                                 class="form-control" value="{{ $profile->unit->nama_unit }}" placeholder="" readonly>
+                                            </fieldset>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Role</label>
                                         </div>
                                         <div class="col-md-8 form-group">
+                                            <fieldset disabled>
                                             <input type="text" name="role_id"id="role_id"
                                                 class="form-control" value="{{ $profile->role->nama_role }}" placeholder="" readonly>
+                                            </fieldset>
                                         </div>
 
                                     </div>

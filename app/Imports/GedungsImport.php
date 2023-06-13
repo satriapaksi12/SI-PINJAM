@@ -15,7 +15,8 @@ class GedungsImport implements ToModel
     public function model(array $row)
     {
         return new Gedung([
-            //
+            'nama_gedung'=> $row[0],
+            'lokasi_id'=> $row[1],
         ]);
     }
 }

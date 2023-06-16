@@ -102,7 +102,7 @@ class SesiController extends Controller
     }
     public function exportSesis()
     {
-        return Excel::download(new SesisExport, 'users.xlsx');
+        return Excel::download(new SesisExport, 'sesis.xlsx');
     }
 
     public function importSesis(Request $request)

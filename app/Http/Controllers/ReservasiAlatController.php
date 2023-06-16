@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Exports\Reservasi_alatsExport;
 use PDF;
 use View;
 use App\Models\Alat;
 use App\Models\Unit;
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Models\Reservasi_alat;
 use Elibyy\TCPDF\Facades\TCPDF;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Requests\StoreReservasi_alatRequest;
 use App\Http\Requests\UpdateReservasi_alatRequest;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
-use Illuminate\Http\Request;
+use App\Imports\Reservasi_alatsImport;
 
 class ReservasiAlatController extends Controller
 {
@@ -191,6 +193,18 @@ class ReservasiAlatController extends Controller
             ->get();
 
         return response()->json($availableTools);
+    }
+
+    public function exportReservasiAlats()
+    {
+        return Excel::download(new Reservasi_alatsExport, 'reservasi_alats.xlsx');
+    }
+
+    public function importReservasiAlats(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new Reservasi_alatsImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 
 }

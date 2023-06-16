@@ -12,7 +12,7 @@ class RuangsExport implements FromCollection
     */
     public function collection()
     {
-        $ruangs = Ruang::with('gedung', 'lokasi')->get();
+        $ruangs = Ruang::with('gedung.lokasi')->get();
 
         $data = $ruangs->map(function ($ruang) {
             return [
@@ -32,12 +32,10 @@ class RuangsExport implements FromCollection
             'Nama Ruang',
             'Kapasitas',
             'Fasilitas',
-            'Email Verified At',
+            'Gedung',
+            'Lokasi Kampus',
             'Created At',
             'Updated At',
-            'Nama Unit',
-            'Nama Role',
-            'Deleted At',
         ]);
 
         return $data;

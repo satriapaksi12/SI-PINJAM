@@ -8,8 +8,11 @@ use App\Models\Kendaraan;
 use App\Models\Reservasi_alat;
 use App\Models\Reservasi_kendaraan;
 use App\Models\Reservasi_ruang;
+use ConsoleTVs\Charts\ChartsServiceProvider;
+use ConsoleTVs\Charts\Commands\ChartsCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use ConsoleTVs\Charts\Facades\Charts;
 
 class HomeController extends Controller
 {
@@ -29,40 +32,40 @@ class HomeController extends Controller
         $jumlahreservasiRuang = count($reservasi_ruang);
         $setujuiRuang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')
             ->where('user_id', $user)
-            ->where('status', 'disetujui')
+            ->where('status', 'Disetujui')
             ->get();
         $jumlahsetujuiRuang = count($setujuiRuang);
         $tolakRuang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')
             ->where('user_id', $user)
-            ->where('status', 'ditolak')
+            ->where('status', 'Ditolak')
             ->get();
         $jumlahtolakRuang = count($tolakRuang);
 
         $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->where('user_id', $user)->get();
         $jumlahreservasiAlat = count($reservasi_alat);
-        $setujuiAlat =Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
+        $setujuiAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
             ->where('user_id', $user)
-            ->where('status', 'disetujui')
+            ->where('status', 'Disetujui')
             ->get();
         $jumlahsetujuiAlat = count($setujuiAlat);
-        $tolakAlat =Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
+        $tolakAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
             ->where('user_id', $user)
-            ->where('status', 'ditolak')
+            ->where('status', 'Ditolak')
             ->get();
         $jumlahtolakAlat = count($tolakAlat);
 
         $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->where('user_id', $user)->get();
         $jumlahreservasiKendaraan = count($reservasi_kendaraan);
-        $setujuiKendaraan =Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')
+        $setujuiKendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')
             ->where('user_id', $user)
-            ->where('status', 'disetujui')
+            ->where('status', 'Disetujui')
             ->get();
-        $jumlahsetujuiKendaraan = count( $setujuiKendaraan);
+        $jumlahsetujuiKendaraan = count($setujuiKendaraan);
         $tolakKendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')
             ->where('user_id', $user)
-            ->where('status', 'ditolak')
+            ->where('status', 'Ditolak')
             ->get();
-        $jumlahtolakKendaraan = count( $tolakKendaraan);
+        $jumlahtolakKendaraan = count($tolakKendaraan);
         return view('dashboard', compact('jumlahKendaraan', 'jumlahRuangan', 'jumlahAlat', 'jumlahreservasiRuang', 'jumlahreservasiAlat', 'jumlahreservasiKendaraan', 'jumlahsetujuiRuang', 'jumlahtolakRuang', 'jumlahsetujuiAlat', 'jumlahtolakAlat', 'jumlahsetujuiKendaraan', 'jumlahtolakKendaraan'));
     }
 
@@ -71,64 +74,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function grafik()
     {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

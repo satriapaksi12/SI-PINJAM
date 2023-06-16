@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Alat;
 use App\Models\Gedung;
 use App\Models\Lokasi;
-use App\Http\Requests\StoreAlatRequest;
-use App\Http\Requests\UpdateAlatRequest;
 use App\Models\Foto_alat;
+use App\Exports\AlatsExport;
+use App\Imports\AlatsImport;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\StoreAlatRequest;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\UpdateAlatRequest;
 
 
 class AlatController extends Controller
@@ -142,5 +146,16 @@ class AlatController extends Controller
         }
 
         return redirect('/alat');
+    }
+    public function exportAlats()
+    {
+        return Excel::download(new AlatsExport, 'alats.xlsx');
+    }
+
+    public function importAlats(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new AlatsImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

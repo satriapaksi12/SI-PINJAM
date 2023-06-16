@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kendaraan;
+use App\Exports\KendaraansExport;
 use App\Models\Gedung;
 use App\Models\Lokasi;
+use App\Models\Kendaraan;
+use Illuminate\Http\Request;
+use App\Models\Jenis_kendaraan;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreKendaraanRequest;
 use App\Http\Requests\UpdateKendaraanRequest;
-use App\Models\Jenis_kendaraan;
-use Illuminate\Support\Facades\Session;
-
+use App\Imports\KendaraansImport;
 
 class KendaraanController extends Controller
 {
@@ -114,5 +117,16 @@ class KendaraanController extends Controller
         }
 
         return redirect('/kendaraan');
+    }
+    public function exportKendaraans()
+    {
+        return Excel::download(new KendaraansExport, 'kendaraans.xlsx');
+    }
+
+    public function importKendaraans(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new KendaraansImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

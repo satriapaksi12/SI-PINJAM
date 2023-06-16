@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Unit;
-use App\Models\User;
+use App\Exports\Reservasi_kendaraansExport;
 use PDF;
 use View;
+use App\Models\Unit;
+use App\Models\User;
 use App\Models\Kendaraan;
-use App\Models\Reservasi_kendaraan;
+use Illuminate\Http\Request;
 use Elibyy\TCPDF\Facades\TCPDF;
+use App\Models\Reservasi_kendaraan;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Requests\StoreReservasi_kendaraanRequest;
 use App\Http\Requests\UpdateReservasi_kendaraanRequest;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
-use Illuminate\Http\Request;
+use App\Imports\Reservasi_kendaraansImport;
 
 class ReservasiKendaraanController extends Controller
 {
@@ -177,5 +180,17 @@ class ReservasiKendaraanController extends Controller
 
         // $availableVehicles = Kend    araan::whereNotIn('id', $reservasi_kendaraan)->get();
         return response()->json($availableVehicles);
+    }
+
+    public function exportReservasiKendaraans()
+    {
+        return Excel::download(new Reservasi_kendaraansExport, 'reservasi_kendaraans.xlsx');
+    }
+
+    public function importReservasiKendaraans(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new Reservasi_kendaraansImport, $file);
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 }

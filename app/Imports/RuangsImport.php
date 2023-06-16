@@ -19,6 +19,7 @@ class RuangsImport implements ToModel
             'kapasitas'=> $row[1],
             'fasilitas'=> $row[2],
             'gedung_id'=> $row[3],
+            'foto_ruang_id'=> $row[4],
         ]);
     }
 }

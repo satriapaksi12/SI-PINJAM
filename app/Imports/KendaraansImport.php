@@ -15,7 +15,10 @@ class KendaraansImport implements ToModel
     public function model(array $row)
     {
         return new Kendaraan([
-            //
+            'no_polisi'=> $row[0],
+            'kapasitas'=> $row[1],
+            'gedung_id'=> $row[2],
+            'jenis_kendaraan_id'=> $row[3],
         ]);
     }
 }

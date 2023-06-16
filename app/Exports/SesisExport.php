@@ -12,7 +12,7 @@ class SesisExport implements FromCollection
     */
     public function collection()
     {
-        $sesis = Sesi::all();
+        $sesis =  Sesi::all();
         $data = $sesis->map(function ($sesi) {
             return [
                 $sesi->id,
@@ -35,5 +35,6 @@ class SesisExport implements FromCollection
             'Updated At',
         ]);
 
+        return $data;
     }
 }

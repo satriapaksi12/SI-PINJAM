@@ -183,6 +183,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Elibyy\TCPDF\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -215,6 +216,7 @@ return [
         'PDF' => Elibyy\TCPDF\Facades\TCPDF::class
         ])->toArray(),
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
 
 ];
 $app->register(Elibyy\TCPDF\ServiceProvider::class);

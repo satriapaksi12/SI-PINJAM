@@ -15,7 +15,10 @@ class AlatsImport implements ToModel
     public function model(array $row)
     {
         return new Alat([
-            //
+            'no_inventaris'=> $row[0],
+            'nama_alat'=> $row[1],
+            'gedung_id'=> $row[2],
+            'foto_alat_id'=> $row[3],
         ]);
     }
 }

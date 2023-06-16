@@ -41,92 +41,6 @@
                 }
             </style>
 
-            {{-- <div class="col-12 col-lg-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Reservasi Anda</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card reservasi-card ruangan">
-                                    <div class="card-body text-center">
-                                        <svg class="bi mb-3" width="32" height="32" fill="currentColor">
-                                            <use xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                                        </svg>
-                                        <h5 class="mb-0">Reservasi Ruangan</h5>
-                                        <div class="row mt-3">
-                                            <div class="col">
-                                                <h5 class="mb-0">Total</h5>
-                                                <p class="mb-0">1,025</p>
-                                            </div>
-                                            <div class="col">
-                                                <h5 class="mb-0">Disetujui</h5>
-                                                <p class="mb-0">800</p>
-                                            </div>
-                                            <div class="col">
-                                                <h5 class="mb-0">Ditolak</h5>
-                                                <p class="mb-0">225</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="card reservasi-card alat">
-                                    <div class="card-body text-center">
-                                        <svg class="bi mb-3" width="32" height="32" fill="currentColor">
-                                            <use xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                                        </svg>
-                                        <h5 class="mb-0">Reservasi Alat</h5>
-                                        <div class="row mt-3">
-                                            <div class="col">
-                                                <h5 class="mb-0">Total</h5>
-                                                <p class="mb-0">1,025</p>
-                                            </div>
-                                            <div class="col">
-                                                <h5 class="mb-0">Disetujui</h5>
-                                                <p class="mb-0">800</p>
-                                            </div>
-                                            <div class="col">
-                                                <h5 class="mb-0">Ditolak</h5>
-                                                <p class="mb-0">225</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="card reservasi-card kendaraan">
-                                    <div class="card-body text-center">
-                                        <svg class="bi mb-3" width="32" height="32" fill="currentColor">
-                                            <use xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                                        </svg>
-                                        <h5 class="mb-0">Reservasi Kendaraan</h5>
-                                        <div class="row mt-3">
-                                            <div class="col">
-                                                <h5 class="mb-0">Total</h5>
-                                                <p class="mb-0">1,025</p>
-                                            </div>
-                                            <div class="col">
-                                                <h5 class="mb-0">Disetujui</h5>
-                                                <p class="mb-0">800</p>
-                                            </div>
-                                            <div class="col">
-                                                <h5 class="mb-0">Ditolak</h5>
-                                                <p class="mb-0">225</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-
-
-
             <div class="col-12">
                 <div class="card">
 
@@ -265,11 +179,13 @@
                                         </div>
                                     </div>
                                 </div>
+                             
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 
 

@@ -54,23 +54,18 @@ class ReservasiAlatController extends Controller
      */
     public function store(StoreReservasi_alatRequest $request)
     {
-
         $surat = $request->surat;
         $name = $surat->hashName();
         $surat->move(public_path('/surat/'), $name);
         $namaSurat = 'surat/' . $name;
-
         $config = [
             'table' => 'reservasi_alats',
             'field' => 'no_reservasi',
             'length' => '12',
             'prefix' => 'SV02-',
         ];
-
         // now use it
         $no_reservasi = IdGenerator::generate($config);
-
-
         $reservasi_alat = new Reservasi_alat();
         $reservasi_alat->kegiatan = $request->kegiatan;
         $reservasi_alat->alasan = $request->alasan;
@@ -87,11 +82,6 @@ class ReservasiAlatController extends Controller
         $reservasi_alat->unit_id = $request->unit_id;
         $reservasi_alat->alat_id = $request->alat_id;
         $reservasi_alat->save();
-        // if ($reservasi_alat) {
-        //     Session::flash('status', 'success');
-        //     Session::flash('message', 'Data berhasil ditambahkan');
-        // }
-
         return redirect('/daftar-reservasi-alat');
     }
     public function kelolaReservasi()
@@ -174,20 +164,6 @@ class ReservasiAlatController extends Controller
         $endDate = $request->cek_tanggal_selesai; // Replace with the desired end date
         $startTime = $request->cek_jam_mulai; // Replace with the desired start time
         $endTime = $request->cek_jam_selesai; // Replace with the desired end time
-
-        // $unavailableToolIds =Reservasi_alat::where(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
-        //     $query->where(function ($query) use ($startDate, $endDate, $startTime) {
-        //         $query->where('tanggal_mulai', '=', $startDate)
-        //             ->where('jam_selesai', '>', $startTime);
-        //     })->orWhere(function ($query) use ($startDate, $endDate, $endTime) {
-        //         $query->where('tanggal_selesai', '=', $endDate)
-        //             ->where('jam_mulai', '<', $endTime);
-        //     })->orWhere(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
-        //         $query->where('tanggal_mulai', '<', $endDate)
-        //             ->where('tanggal_selesai', '>', $startDate);
-        //     });
-        // })->pluck('alat_id');
-
         $unavailableToolIds = Reservasi_alat::where(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
             $query->where(function ($query) use ($startDate, $endDate, $startTime) {
                 $query->where('tanggal_mulai', '=', $startDate)
@@ -200,13 +176,9 @@ class ReservasiAlatController extends Controller
                     ->where('tanggal_selesai', '>', $startDate);
             });
         })->where('status', '=', 'Disetujui')->pluck('alat_id');
-
-
-
         $availableTools = Alat::with('foto_alat', 'gedung.lokasi')
             ->whereNotIn('id', $unavailableToolIds)
             ->get();
-
         return response()->json($availableTools);
     }
 

@@ -23,7 +23,6 @@ class AuthController extends Controller
         $unit = Unit::all();
         return view('auth.register',['unit'=>$unit]);
     }
-
     public function registerProses(Request $request)
     {
         $user = User::create([
@@ -63,11 +62,8 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 

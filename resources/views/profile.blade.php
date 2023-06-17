@@ -1,8 +1,6 @@
 @extends('layouts.app2')
-
 @section('title', 'Profile  User')
 @section('fitur', 'PROFILE USER')
-
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row match-height">
@@ -10,7 +8,6 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="my-3  mb-3 d-flex justify-content-center">
@@ -63,18 +60,13 @@
                                                 class="form-control" value="{{ $profile->role->nama_role }}" placeholder="" readonly>
                                             </fieldset>
                                         </div>
-
                                     </div>
                                 </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-
 @endsection
 

@@ -58,19 +58,13 @@ class ReservasiKendaraanController extends Controller
         $name = $surat->hashName();
         $surat->move(public_path('/surat/'), $name);
         $namaSurat = 'surat/' . $name;
-
         $config = [
             'table' => 'reservasi_kendaraans',
             'field' => 'no_reservasi',
             'length' => '12',
             'prefix' => 'SV03-',
         ];
-
-        // now use it
         $no_reservasi = IdGenerator::generate($config);
-
-
-
         $reservasi_kendaraan = new Reservasi_kendaraan();
         $reservasi_kendaraan->kegiatan = $request->kegiatan;
         $reservasi_kendaraan->alasan = $request->alasan;
@@ -87,11 +81,6 @@ class ReservasiKendaraanController extends Controller
         $reservasi_kendaraan->unit_id = $request->unit_id;
         $reservasi_kendaraan->kendaraan_id = $request->kendaraan_id;
         $reservasi_kendaraan->save();
-        // if ($reservasi_kendaraan) {
-        //     Session::flash('status', 'success');
-        //     Session::flash('message', 'Data berhasil ditambahkan');
-        // }
-
         return redirect('/daftar-reservasi-kendaraan');
     }
 
@@ -160,7 +149,6 @@ class ReservasiKendaraanController extends Controller
         $endDate = $request->cek_tanggal_selesai; // Replace with the desired end date
         $startTime = $request->cek_jam_mulai; // Replace with the desired start time
         $endTime = $request->cek_jam_selesai; // Replace with the desired end time
-
         $unavailableVehicleIds = Reservasi_kendaraan::where(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
             $query->where(function ($query) use ($startDate, $endDate, $startTime) {
                 $query->where('tanggal_mulai', '=', $startDate)
@@ -173,12 +161,9 @@ class ReservasiKendaraanController extends Controller
                     ->where('tanggal_selesai', '>', $startDate);
             });
         })->where('status', '=', 'Disetujui')->pluck('kendaraan_id');
-
         $availableVehicles = Kendaraan::with('jenis_kendaraan', 'gedung.lokasi', 'reservasi_kendaraan')
             ->whereNotIn('id', $unavailableVehicleIds)
             ->get();
-
-        // $availableVehicles = Kend    araan::whereNotIn('id', $reservasi_kendaraan)->get();
         return response()->json($availableVehicles);
     }
 

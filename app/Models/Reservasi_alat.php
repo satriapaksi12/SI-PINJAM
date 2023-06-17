@@ -10,19 +10,15 @@ class Reservasi_alat extends Model
     use HasFactory;
     protected $guarded = [
         'id',
-
     ];
-
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
     public function unit()
     {
         return $this->belongsTo(Unit::class);
     }
-
     public function alat()
     {
         return $this->belongsTo(Alat::class);

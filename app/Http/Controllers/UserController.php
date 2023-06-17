@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::get();
+        $user = User::latest()->get();
         return view('user.user', ['userList' => $user]);
     }
 
@@ -131,7 +131,7 @@ class UserController extends Controller
 
     public function deletedUser()
     {
-        $deletedUser = User::onlyTrashed()->get();
+        $deletedUser = User::onlyTrashed()->latest()->get();
         return view('user.user-deleted', ['deletedUser' => $deletedUser]);
     }
 

@@ -147,13 +147,13 @@ class ReservasiRuangController extends Controller
 
     public function kelolaReservasi()
     {
-        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->get();
+        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->latest()->get();
         return view('reservasi_ruang.kelola_reservasi_ruangan', ['reservasi_ruang' => $reservasi_ruang]);
     }
     public function daftarReservasi()
     {
         $user =  Auth::user()->id;
-        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->where('user_id', $user)->get();
+        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->where('user_id', $user)->latest()->get();
         return view('reservasi_ruang.daftar_reservasi_ruang', ['reservasi_ruang' => $reservasi_ruang]);
     }
     public function validasi(Reservasi_ruang $reservasi_ruang, $id)
@@ -199,10 +199,41 @@ class ReservasiRuangController extends Controller
     }
     public function cekJadwal()
     {
-        $ruang = Ruang::with('gedung.lokasi','foto_ruang')->get();
+        $ruang = Ruang::with('gedung.lokasi','foto_ruang')->latest()->get();
         $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->latest()->get();
         return view('reservasi_ruang.cekJadwal_ruangan', ['reservasi_ruang' => $reservasi_ruang,'ruang'=>$ruang]);
     }
+
+    public function cekKesediaan(Request $request)
+    {
+        $sesi = Sesi::all();
+        $startDate = $request->cek_tanggal_mulai; // Replace with the desired start date
+        $endDate = $request->cek_tanggal_selesai; // Replace with the desired end date
+        $startTime = $request->cek_jam_mulai; // Replace with the desired start time
+        $endTime = $request->cek_jam_selesai; // Replace with the desired end time
+
+        $unavailableRuangIds = Reservasi_ruang::where(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
+            $query->where(function ($query) use ($startDate, $endDate, $startTime) {
+                $query->where('tanggal_mulai', '=', $startDate)
+                    ->where('jam_selesai', '>', $startTime);
+            })->orWhere(function ($query) use ($startDate, $endDate, $endTime) {
+                $query->where('tanggal_selesai', '=', $endDate)
+                    ->where('jam_mulai', '<', $endTime);
+            })->orWhere(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
+                $query->where('tanggal_mulai', '<', $endDate)
+                    ->where('tanggal_selesai', '>', $startDate);
+            });
+        })->where('status', '=', 'Disetujui')->pluck('kendaraan_id');
+
+        $availableRuangs = Ruang::with( 'gedung.lokasi')
+            ->whereNotIn('id', $unavailableRuangIds)
+            ->get();
+
+        return response()->json($availableRuangs);
+
+        return view('reservasi_ruang.reservasi-ruangan', ['sesi' => $sesi]);
+    }
+
     public function exportReservasiRuangans()
     {
         return Excel::download(new Reservasi_ruangsExport, 'reservasi_ruangs.xlsx');

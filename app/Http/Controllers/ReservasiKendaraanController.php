@@ -97,13 +97,13 @@ class ReservasiKendaraanController extends Controller
 
     public function kelolaReservasi()
     {
-        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->get();
+        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->latest()->get();
         return view('reservasi_kendaraan.kelola_reservasi_kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
     public function daftarReservasi()
     {
         $user =  Auth::user()->id;
-        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->where('user_id', $user)->get();
+        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->where('user_id', $user)->latest()->get();
         return view('reservasi_kendaraan.daftar_reservasi_kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
     public function validasi(Reservasi_kendaraan $reservasi_kendaraan, $id)
@@ -172,7 +172,7 @@ class ReservasiKendaraanController extends Controller
                 $query->where('tanggal_mulai', '<', $endDate)
                     ->where('tanggal_selesai', '>', $startDate);
             });
-        })->pluck('kendaraan_id');
+        })->where('status', '=', 'Disetujui')->pluck('kendaraan_id');
 
         $availableVehicles = Kendaraan::with('jenis_kendaraan', 'gedung.lokasi', 'reservasi_kendaraan')
             ->whereNotIn('id', $unavailableVehicleIds)

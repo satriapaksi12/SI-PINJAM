@@ -23,7 +23,7 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        $kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi')->get();
+        $kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi')->latest()->get();
         return view('kendaraan.kendaraan', ['kendaraanList' => $kendaraan]);
     }
 

@@ -24,7 +24,7 @@ class AlatController extends Controller
      */
     public function index()
     {
-        $alat = Alat::with('gedung.lokasi','foto_alat')->get();
+        $alat = Alat::with('gedung.lokasi','foto_alat')->latest()->get();
         // dd($alat);
         return view('alat.alat', ['alat' => $alat]);
     }

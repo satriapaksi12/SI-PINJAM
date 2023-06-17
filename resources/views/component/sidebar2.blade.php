@@ -151,7 +151,7 @@
                     <a href="/user"> User Aktif</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/user-deleted"> User Non-Aktif</a>
+                    <a href="/user-deleted"> User Non Aktif</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="/role"> Role</a>

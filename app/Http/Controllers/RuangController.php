@@ -23,7 +23,7 @@ class RuangController extends Controller
      */
     public function index()
     {
-        $ruang = Ruang::with('gedung.lokasi','foto_ruang')->get();
+        $ruang = Ruang::with('gedung.lokasi','foto_ruang')->latest()->get();
         return view('ruangan.ruangan', ['ruang' => $ruang]);
     }
 

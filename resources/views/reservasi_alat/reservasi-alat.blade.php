@@ -66,10 +66,7 @@
 @section('link', '/reservasi-alat')
 @section('nama link', 'Reservasi Alat')
 
-
-
 @section('content')
-
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -119,7 +116,6 @@
 
                                             // Iterate over the response data and create card components
                                             $.each(response, function(index, data) {
-
                                                 var card = `
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="card">
@@ -152,10 +148,8 @@
                             </div>
                         </div>
                     `;
-
                                                 $('#cardContainer').append(card);
                                             });
-
                                             // Show the card section
                                             $('#cardContentSection').show();
                                         },
@@ -172,7 +166,6 @@
         </div>
         <div id="cardContentSection" style="display: none;">
             <div class="row" id="cardContainer">
-
             </div>
         </div>
     @endsection

@@ -21,22 +21,12 @@ use App\Imports\Reservasi_kendaraansImport;
 
 class ReservasiKendaraanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $reservasi_kendaraan = Kendaraan::with('jenis_kendaraan', 'gedung.lokasi', 'reservasi_kendaraan')->get();
         return view('reservasi_kendaraan.reservasi-kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($id)
     {
         $user = User::with('unit')->get();
@@ -44,13 +34,6 @@ class ReservasiKendaraanController extends Controller
         $kendaraan = Kendaraan::with('gedung.lokasi', 'jenis_kendaraan')->findOrFail($id);
         return view('reservasi_kendaraan.tambah_reservasi_kendaraan', ['user' => $user, 'unit' => $unit, 'kendaraan' => $kendaraan]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreReservasi_kendaraanRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreReservasi_kendaraanRequest $request)
     {
 

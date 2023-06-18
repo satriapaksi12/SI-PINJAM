@@ -32,12 +32,6 @@ class ReservasiAlatController extends Controller
         $reservasi_alat = Alat::with('foto_alat', 'gedung.lokasi')->get();
         return view('reservasi_alat.reservasi-alat', ['reservasi_alat' => $reservasi_alat]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($id)
     {
         $user = User::with('unit')->get();
@@ -45,13 +39,6 @@ class ReservasiAlatController extends Controller
         $alat = Alat::with('gedung.lokasi', 'foto_alat')->findOrFail($id);
         return view('reservasi_alat.tambah_reservasi_alat', ['user' => $user, 'unit' => $unit, 'alat' => $alat]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreReservasi_alatRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreReservasi_alatRequest $request)
     {
         $surat = $request->surat;
@@ -107,21 +94,12 @@ class ReservasiAlatController extends Controller
         $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->findOrFail($id);
         return view('reservasi_alat.validasi_reservasi_alat', ['reservasi_alat' => $reservasi_alat]);
     }
-
     public function simpanValidasi(UpdateReservasi_alatRequest $request, Reservasi_alat $reservasi_alat, $id)
     {
         $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->findOrFail($id);
         $reservasi_alat->update($request->all());
         return redirect('/kelola-reservasi-alat');
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Reservasi_alat  $reservasi_alat
-     * @return \Illuminate\Http\Response
-     */
-
     public function detailReservasi(Reservasi_alat $reservasi_alat, $id)
     {
         $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->findOrFail($id);

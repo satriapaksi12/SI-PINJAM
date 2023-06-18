@@ -102,10 +102,8 @@
                             </div>
                         </div>
                     `;
-
                                                 $('#cardContainer').append(card);
                                             });
-
                                             // Show the card section
                                             $('#cardContentSection').show();
                                         },

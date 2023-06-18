@@ -12,10 +12,6 @@ use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
-    public function login()
-    {
-        return view('auth.login');
-    }
 
 
     public function register()
@@ -33,14 +29,14 @@ class AuthController extends Controller
             'role_id' =>5,
             'password' =>Hash::make($request->password),
         ]);
-
         event(new Registered($user));
-
         Auth::login($user);
-
         return redirect('/email/verify');
     }
-
+    public function login()
+    {
+        return view('auth.login');
+    }
     public function authenticating(Request $request)
     {
         $credentials = $request->validate([
@@ -58,7 +54,6 @@ class AuthController extends Controller
 
         return redirect('/login');
     }
-
     public function logout(Request $request)
     {
         Auth::logout();

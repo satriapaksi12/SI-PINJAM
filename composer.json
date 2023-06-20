@@ -9,6 +9,7 @@
         "barryvdh/laravel-dompdf": "^2.0",
         "consoletvs/charts": "6.6.0",
         "elibyy/tcpdf-laravel": "^10.0",
+        "emilio-bravo/bravo-orm": "dev-main",
         "guzzlehttp/guzzle": "^7.2",
         "haruncpi/laravel-id-generator": "^1.1",
         "laravel/framework": "^9.19",
@@ -33,12 +34,15 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Brevo\\": "path/to/brevo/src/"
+
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
+
         }
     },
     "scripts": {
@@ -69,6 +73,7 @@
             "pestphp/pest-plugin": true
         }
     },
-    "minimum-stability": "stable",
+
+    "minimum-stability": "alpha",
     "prefer-stable": true
 }

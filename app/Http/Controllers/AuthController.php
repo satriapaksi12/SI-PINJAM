@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Auth\Events\Registered;
+use Brevo;
 
 class AuthController extends Controller
 {
@@ -30,7 +31,11 @@ class AuthController extends Controller
             'password' =>Hash::make($request->password),
         ]);
         event(new Registered($user));
+
         Auth::login($user);
+
+        $user->sendEmailVerificationNotification();
+
         return redirect('/email/verify');
     }
     public function login()

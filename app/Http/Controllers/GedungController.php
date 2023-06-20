@@ -17,22 +17,13 @@ use App\Imports\GedungsImport;
 
 class GedungController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $gedung = Gedung::with('lokasi')->get();
         return view('gedung.gedung', ['gedungList' => $gedung]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $gedung = Gedung::select('id', 'nama_gedung')->get();
@@ -40,12 +31,6 @@ class GedungController extends Controller
         return view('gedung.gedung-add', ['gedung' => $gedung, 'lokasi' => $lokasi]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreGedungRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreGedungRequest $request)
     {
         $gedung = Gedung::create($request->all());
@@ -55,12 +40,7 @@ class GedungController extends Controller
         }
         return redirect('/gedung');
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Gedung  $gedung
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Gedung $gedung ,Lokasi $lokasi,$id)
     {
         $gedung = Gedung::with('lokasi')->findOrFail($id);
@@ -68,13 +48,6 @@ class GedungController extends Controller
         return view('gedung.gedung-edit', ['gedung' => $gedung,'lokasi' => $lokasi]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateGedungRequest  $request
-     * @param  \App\Models\Gedung  $gedung
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateGedungRequest $request, Gedung $gedung,$id)
     {
         // dd($request->all());
@@ -86,16 +59,8 @@ class GedungController extends Controller
             Session::flash('message-edit', 'Data berhasil diedit');
         }
         return redirect('/gedung');
-
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Gedung  $gedung
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Gedung $gedung,$id)
     {
         $deletedGedung = Gedung::findORFail($id);

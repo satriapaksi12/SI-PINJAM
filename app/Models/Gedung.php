@@ -10,7 +10,7 @@ class Gedung extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_gedung','lokasi_id'  // memberi tau kolom mana aja yang boleh diisi
+        'nama_gedung','lokasi_id'  
     ];
     public function ruang()
     {

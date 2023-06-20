@@ -24,11 +24,6 @@ use App\Imports\Reservasi_ruangsImport;
 
 class ReservasiRuangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $sesi = Sesi::all();
@@ -36,11 +31,6 @@ class ReservasiRuangController extends Controller
         return view('reservasi_ruang.reservasi-ruangan', ['reservasi_ruang' => $reservasi_ruang, 'sesi' => $sesi]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($id)
     {
         $user = User::with('unit')->get();
@@ -49,41 +39,20 @@ class ReservasiRuangController extends Controller
         $sesi = Sesi::all();
         $jenis_acara = Jenis_acara::all();
         $ruang = Ruang::with('gedung.lokasi', 'foto_ruang', 'reservasi_ruang')->findOrFail($id);
-
-
-        // $tanggalMulai = Reservasi_ruang::select('tanggal_mulai')->get();
-        // $date = Carbon::createFromFormat('Y-m-d', $tanggalMulai);
-        // $date->locale('id');
-        // $namaHari = $date->format('l');
-        // $sesiMulai = $sesi->where('hari', $namaHari);
-        return view('reservasi_ruang.tambah_reservasi_ruangan', ['periode' => $periode, 'jenis_acara' => $jenis_acara, 'sesi' => $sesi, 'user' => $user, 'unit' => $unit, 'ruang' => $ruang]);
+        return view('reservasi_ruang.tambah_reservasi_ruangan',
+        ['periode' => $periode, 'jenis_acara' => $jenis_acara, 'sesi' => $sesi, 'user' => $user, 'unit' => $unit, 'ruang' => $ruang]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreReservasi_ruangRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreReservasi_ruangRequest $request)
     {
-
-
         if ($request->hasFile('surat')) {
             $surat = $request->file('surat');
             $name = $surat->hashName();
             $surat->move(public_path('/surat/'), $name);
             $namaSurat = 'surat/' . $name;
         } else {
-            // Handle jika file surat tidak ada
-            // Misalnya, berikan nilai default atau berikan pesan kesalahan kepada pengguna
             $namaSurat = "Tidak ada Surat";
         }
-        // $surat = $request->surat;
-        // $name = $surat->hashName();
-        // $surat->move(public_path('/surat/'), $name);
-        // $namaSurat = 'surat/' . $name;
-
         $config = [
             'table' => 'reservasi_ruangs',
             'field' => 'no_reservasi',
@@ -91,10 +60,7 @@ class ReservasiRuangController extends Controller
             'prefix' => 'SV01-',
         ];
 
-        // now use it
         $no_reservasi = IdGenerator::generate($config);
-
-
         if ($request->jenis_acara_id == 1) {
             $reservasi_ruang = new Reservasi_ruang();
             $reservasi_ruang->kegiatan = $request->kegiatan;
@@ -155,7 +121,8 @@ class ReservasiRuangController extends Controller
     public function daftarReservasi()
     {
         $user =  Auth::user()->id;
-        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->where('user_id', $user)->latest()->get();
+        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')
+        ->where('user_id', $user)->latest()->get();
         return view('reservasi_ruang.daftar_reservasi_ruang', ['reservasi_ruang' => $reservasi_ruang]);
     }
     public function validasi(Reservasi_ruang $reservasi_ruang, $id)
@@ -181,29 +148,25 @@ class ReservasiRuangController extends Controller
     public function cetakReservasi(Reservasi_ruang $reservasi_ruang, $id)
     {
 
-        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->findOrFail($id);
+        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')
+        ->findOrFail($id);
         $filename = 'cetak-bukti-reservasi.pdf';
-
         $data = [
             'reservasi_ruang' => $reservasi_ruang
         ];
-
         $html = view()->make('reservasi_ruang.cetak_bukti_reservasi_ruangan', $data)->render();
-
         $pdf = new TCPDF;
-
         $pdf::SetTitle('Cetak Bukti Reservasi');
         $pdf::AddPage();
         $pdf::writeHTML($html, true, false, true, false, '');
-
         $pdf::Output(public_path($filename), 'F');
-
         return response()->download(public_path($filename));
     }
     public function cekJadwal()
     {
         $ruang = Ruang::with('gedung.lokasi', 'foto_ruang')->latest()->get();
-        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->latest()->get();
+        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')
+        ->latest()->get();
         return view('reservasi_ruang.cekJadwal_ruangan', ['reservasi_ruang' => $reservasi_ruang, 'ruang' => $ruang]);
     }
 
@@ -233,12 +196,11 @@ class ReservasiRuangController extends Controller
             ->where('status', '=', 'Disetujui')
             ->pluck('ruang_id');
 
-        $availableRuangs = Ruang::with('gedung.lokasi')
+        $availableRuangs = Ruang::with(['gedung.lokasi', 'foto_ruang'])
             ->whereNotIn('id', $unavailableRuangIds)
             ->get();
 
         return response()->json($availableRuangs);
-
     }
 
 

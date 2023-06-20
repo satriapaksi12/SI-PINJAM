@@ -9,7 +9,7 @@ class Role extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama_role'  // memberi tau kolom mana aja yang boleh diisi
+        'nama_role'  
     ];
     public function user()
     {

@@ -9,7 +9,7 @@ class Sesi extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'sesi','hari','jam_mulai','jam_selesai'  // memberi tau kolom mana aja yang boleh diisi
+        'sesi','hari','jam_mulai','jam_selesai'
     ];
 
     public function reservasi_ruang()

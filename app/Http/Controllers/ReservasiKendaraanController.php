@@ -75,7 +75,8 @@ class ReservasiKendaraanController extends Controller
     public function daftarReservasi()
     {
         $user =  Auth::user()->id;
-        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->where('user_id', $user)->latest()->get();
+        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->where('user_id', $user)
+        ->latest()->get();
         return view('reservasi_kendaraan.daftar_reservasi_kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
     public function validasi(Reservasi_kendaraan $reservasi_kendaraan, $id)
@@ -99,24 +100,19 @@ class ReservasiKendaraanController extends Controller
 
     public function cetakReservasi(Reservasi_kendaraan $reservasi_kendaraan, $id)
     {
-        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user', 'kendaraan.jenis_kendaraan')->findOrFail($id);
+        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user', 'kendaraan.jenis_kendaraan')
+        ->findOrFail($id);
         $filename = 'cetak-bukti-reservasi.pdf';
-
         $data = [
             'title' => 'Cetak Bukti Reservasi Kendaraan Sekolah Vokasi UNS',
             'reservasi_kendaraan' => $reservasi_kendaraan
         ];
-
         $html = view()->make('reservasi_kendaraan.cetak_bukti_reservasi_kendaraan', $data)->render();
-
         $pdf = new TCPDF;
-
         $pdf::SetTitle('Cetak Bukti Reservasi');
         $pdf::AddPage();
         $pdf::writeHTML($html, true, false, true, false, '');
-
         $pdf::Output(public_path($filename), 'F');
-
         return response()->download(public_path($filename));
     }
 

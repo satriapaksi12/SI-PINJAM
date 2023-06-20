@@ -16,22 +16,13 @@ use App\Imports\KendaraansImport;
 
 class KendaraanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi')->latest()->get();
         return view('kendaraan.kendaraan', ['kendaraanList' => $kendaraan]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $jenis_kendaraan = Jenis_kendaraan::select('id', 'nama_jenis_kendaraan')->get();
@@ -39,13 +30,6 @@ class KendaraanController extends Controller
         $lokasi = Lokasi::select('id', 'nama_lokasi')->get();
         return view('kendaraan.kendaraan-add', ['gedung' => $gedung, 'lokasi' => $lokasi,'jenis_kendaraan' => $jenis_kendaraan]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreKendaraanRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreKendaraanRequest $request)
     {
         $kendaraan = Kendaraan::create($request->all());
@@ -56,15 +40,8 @@ class KendaraanController extends Controller
         return redirect('/kendaraan');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kendaraan  $kendaraan
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Kendaraan $kendaraan,$id)
     {
-
         $data = [
             'kendaraan' => Kendaraan::with('jenis_kendaraan','gedung.lokasi')->findOrFail($id),
             'jenis_kendaraan' => Jenis_kendaraan::pluck('nama_jenis_kendaraan','id'),
@@ -72,40 +49,20 @@ class KendaraanController extends Controller
             // 'gedung' => Gedung::pluck('id','nama_gedung','lokasi_id')->first(),
             'lokasi' => Lokasi::select('id', 'nama_lokasi')->get(),
         ];
-
         return view('kendaraan.kendaraan-edit', $data);
-
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateKendaraanRequest  $request
-     * @param  \App\Models\Kendaraan  $kendaraan
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateKendaraanRequest $request, Kendaraan $kendaraan,$id)
     {
-
-
         $kendaraan =Kendaraan::findOrFail($id);
         $kendaraan->update($request->all());
-
-
         if ($kendaraan) {
             Session::flash('status-edit', 'success');
             Session::flash('message-edit', 'Data berhasil diedit');
         }
         return redirect('/kendaraan');
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kendaraan  $kendaraan
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kendaraan $kendaraan,$id)
     {
         $deletedKendaraan = Kendaraan::findORFail($id);
@@ -115,14 +72,12 @@ class KendaraanController extends Controller
             Session::flash('status-delete', 'success');
             Session::flash('message-delete', 'Data berhasil dihapus');
         }
-
         return redirect('/kendaraan');
     }
     public function exportKendaraans()
     {
         return Excel::download(new KendaraansExport, 'kendaraans.xlsx');
     }
-
     public function importKendaraans(Request $request)
     {
         $file = $request->file('file');

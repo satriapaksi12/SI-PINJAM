@@ -9,9 +9,8 @@ class Kendaraan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'no_polisi','kapasitas','gedung_id','jenis_kendaraan_id'  // memberi tau kolom mana aja yang boleh diisi
+        'no_polisi','kapasitas','gedung_id','jenis_kendaraan_id' 
     ];
-
     public function reservasi_kendaraan()
     {
         return $this->hasMany(Reservasi_kendaraan::class);

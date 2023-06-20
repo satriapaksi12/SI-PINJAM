@@ -9,7 +9,7 @@ class Alat extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama_alat','no_inventaris','foto_alat_id','gedung_id'  // memberi tau kolom mana aja yang boleh diisi
+        'nama_alat','no_inventaris','foto_alat_id','gedung_id'
     ];
 
     public function reservasi_alat()

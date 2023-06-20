@@ -18,7 +18,7 @@ class RuangSeeder extends Seeder
     {
         $data = [
             ['nama_ruang' => 'Ruangan A', 'kapasitas' => '25', 'fasilitas' => 'tv,LCD,meja,kursi','foto_ruang_id' => '1', 'gedung_id' => '1'],
-            ['nama_ruang' => 'Ruangan B', 'kapasitas' => '25', 'fasilitas' => 'tv,LCD,meja,kursi', 'foto_ruang_id' => '1', 'gedung_id' => '1'],
+            ['nama_ruang' => 'Ruangan B', 'kapasitas' => '25', 'fasilitas' => 'tv,LCD,meja,kursi', 'foto_ruang_id' => '2', 'gedung_id' => '1'],
         ];
 
         foreach ($data as $value) {

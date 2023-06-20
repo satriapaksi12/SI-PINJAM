@@ -1,7 +1,7 @@
 @extends('layouts.app2')
 
-@section('title', 'Detail Reservasi Alat')
-@section('fitur', 'DETAIL RESERVASI ALAT')
+@section('title', 'Detail Reservasi Kendaraan')
+@section('fitur', 'DETAIL RESERVASI KENDARAAN')
 
 @section('content')
     <section id="basic-horizontal-layouts">

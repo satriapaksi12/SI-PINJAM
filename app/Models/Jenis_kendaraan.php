@@ -9,7 +9,7 @@ class Jenis_kendaraan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama_jenis_kendaraan'  // memberi tau kolom mana aja yang boleh diisi
+        'nama_jenis_kendaraan'
     ];
     public function kendaraan()
     {

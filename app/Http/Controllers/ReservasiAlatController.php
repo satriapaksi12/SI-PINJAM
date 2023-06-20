@@ -111,22 +111,16 @@ class ReservasiAlatController extends Controller
 
         $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->findOrFail($id);
         $filename = 'cetak-bukti-reservasi.pdf';
-
         $data = [
             'title' => 'Cetak Bukti Reservasi Alat Sekolah Vokasi UNS',
             'reservasi_alat' => $reservasi_alat
         ];
-
         $html = view()->make('reservasi_alat.cetak_bukti_reservasi_alat', $data)->render();
-
         $pdf = new TCPDF;
-
         $pdf::SetTitle('Cetak Bukti Reservasi');
         $pdf::AddPage();
         $pdf::writeHTML($html, true, false, true, false, '');
-
         $pdf::Output(public_path($filename), 'F');
-
         return response()->download(public_path($filename));
     }
 
@@ -164,7 +158,6 @@ class ReservasiAlatController extends Controller
     {
         return Excel::download(new Reservasi_alatsExport, 'reservasi_alats.xlsx');
     }
-
     public function importReservasiAlats(Request $request)
     {
         $file = $request->file('file');

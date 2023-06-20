@@ -29,10 +29,6 @@ class Reservasi_ruangsImport implements ToModel
             'jenis_acara_id'=> $row[11],
             'periode_id'=> $row[12],
             'user_id'=> $row[13],
-
-
-
-
         ]);
     }
 }

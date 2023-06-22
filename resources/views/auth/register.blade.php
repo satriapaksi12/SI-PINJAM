@@ -29,6 +29,7 @@
                         <div class="form-group">
                             <label for="Email"><i class="zmdi zmdi-email"></i></label>
                             <input type="email" name="email" id="email" placeholder="Email" />
+                            <p class="email-format">Format email harus sesuai dengan @staff.uns.ac.id atau @student.uns.ac.id</p>
                         </div>
                         <div class="form-group">
                             <label for="Password"><i class="zmdi zmdi-lock"></i></label>

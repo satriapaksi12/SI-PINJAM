@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('tahun_periode');
             $table->string('semester');
+            $table->string('status');
             $table->timestamps();
         });
     }

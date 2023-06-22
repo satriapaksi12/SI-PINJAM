@@ -15,18 +15,25 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>Nama Ruang</label>
+                                            <label>No Ruangan</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" name="no_ruang"id="no_ruang"
+                                                class="form-control" placeholder="No Ruangan">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Nama Ruangan</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" name="nama_ruang"id="nama_ruang"
-                                                class="form-control" placeholder="No Inventaris">
+                                                class="form-control" placeholder="Nama Ruangan">
                                         </div>
                                         <div class="col-md-4">
                                             <label>Kapasitas</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="number"name="kapasitas"id="kapasitas"
-                                                class="form-control" placeholder="Nama Alat">
+                                                class="form-control" placeholder="Kapasitas">
                                         </div>
 
                                         <div class="col-md-4">

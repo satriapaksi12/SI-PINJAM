@@ -37,6 +37,7 @@
                             <th>No</th>
                             <th>Tahun Periode</th>
                             <th>Semester</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -46,6 +47,13 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->tahun_periode }}</td>
                                 <td>{{ $data->semester }}</td>
+                                <td>
+                                    @if ($data->status == 'Aktif')
+                                    <span class="badge bg-success">Aktif</span>
+                                    @else
+                                    <span class="badge bg-danger">Non Aktif</span>
+                                    @endif
+                                </td>
                                 <td>
 
                                     <a href="periode-edit/{{ $data->id }}" class="btn icon btn-warning" title="Edit"><i

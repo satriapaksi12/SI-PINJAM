@@ -43,6 +43,7 @@ class RuangController extends Controller
         ]);
         $foto = Foto_ruang::where('nama_foto', $namaFoto)->first();
         $ruang = new Ruang();
+        $ruang->no_ruang = $request->no_ruang;
         $ruang->nama_ruang = $request->nama_ruang;
         $ruang->kapasitas = $request->kapasitas;
         $ruang->fasilitas = $request->fasilitas;

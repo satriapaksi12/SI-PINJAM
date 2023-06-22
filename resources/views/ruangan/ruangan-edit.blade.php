@@ -16,10 +16,17 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
+                                            <label>No Ruangan</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" name="no_ruang"id="no_ruang"
+                                                class="form-control"  value="{{ $ruang->no_ruang }}">
+                                        </div>
+                                        <div class="col-md-4">
                                             <label>Nama Ruangan</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" name="nama_ruang"id="no_inventaris"
+                                            <input type="text" name="nama_ruang"id="nama_ruang"
                                                 class="form-control"  value="{{ $ruang->nama_ruang }}">
                                         </div>
                                         <div class="col-md-4">

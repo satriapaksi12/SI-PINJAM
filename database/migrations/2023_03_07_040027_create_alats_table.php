@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('alats', function (Blueprint $table) {
             $table->id();
             $table->string('nama_alat');
-            $table->string('no_inventaris');
+            $table->string('no_inventaris')->unique();
             $table->timestamps();
             $table->unsignedBigInteger('foto_alat_id');
             $table->foreign('foto_alat_id')->references('id')->on('foto_alats')->onDelete('cascade');

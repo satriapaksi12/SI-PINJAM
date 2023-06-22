@@ -47,6 +47,7 @@
                             <th>Nama</th>
                             <th>Unit</th>
                             <th>Role</th>
+                            <th>Aktivasi Akun</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -59,6 +60,14 @@
                                 <td>{{ $data->unit->nama_unit }}</td>
                                 <td>{{ $data->role->nama_role }}</td>
                                 <td>
+                                    @if (!empty($data->email_verified_at))
+                                        <span class="badge bg-success">Sudah Aktivasi</span>
+                                    @else
+                                        <span class="badge bg-danger">Belum Aktivasi</span>
+                                    @endif
+
+                                </td>
+                                <td>
 
                                     <a href="user/{{ $data->id }}" title="Detail" class="btn icon btn-info"><i
                                             class="bi bi-eye"></i></a>
@@ -69,7 +78,8 @@
                                         @method('delete')
                                         <button
                                             onclick="return confirm('Apakah anda ingin menonaktifkan data user {{ $data->nama }} dengan nomor induk {{ $data->nomor_induk }} ')"
-                                            class="btn icon btn-danger" title="Non Aktifkan"><i class="bi bi-person-x-fill"></i></button>
+                                            class="btn icon btn-danger" title="Non Aktifkan"><i
+                                                class="bi bi-person-x-fill"></i></button>
                                     </form>
                                 </td>
 

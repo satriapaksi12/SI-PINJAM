@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Alat extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'nama_alat','no_inventaris','foto_alat_id','gedung_id'
+    protected $guarded = [
+        'id',
     ];
 
     public function reservasi_alat()

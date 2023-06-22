@@ -19,39 +19,39 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset disabled>
-                                            <input type="text"name="nama_ruang"id="nama_ruang" class="form-control"
-                                                value="{{ $ruang->nama_ruang }}" readonly>
-                                            <input type="text"name="ruang_id"id="ruang_id" class="form-control"
-                                                value="{{ $ruang->id }}" hidden>
+                                                <input type="text" name="nama_ruang" id="nama_ruang" class="form-control"
+                                                    value="{{ $ruang->nama_ruang }}" readonly>
+                                                <input type="text"name="ruang_id"id="ruang_id"
+                                                    class="form-control"value="{{ $ruang->id }}" hidden>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Kapasitas</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset disabled>
-                                            <input type="text"name="kapasitas"id="kapasitas" class="form-control"
-                                                value="{{ $ruang->kapasitas }}" readonly>
-                                            <input type="text"name="ruang_id"id="ruang_id" class="form-control"
-                                                value="{{ $ruang->id }}" hidden>
+                                                <input type="text"name="kapasitas"id="kapasitas" class="form-control"
+                                                    value="{{ $ruang->kapasitas }}" readonly>
+                                                <input type="text"name="ruang_id"id="ruang_id" class="form-control"
+                                                    value="{{ $ruang->id }}" hidden>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Fasilitas</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset disabled>
-                                            <input type="text"name="fasilitas"id="fasilitas" class="form-control"
-                                                value="{{ $ruang->fasilitas }}" readonly>
-                                            <input type="text"name="ruang_id"id="ruang_id" class="form-control"
-                                                value="{{ $ruang->id }}" hidden>
+                                                <input type="text"name="fasilitas"id="fasilitas" class="form-control"
+                                                    value="{{ $ruang->fasilitas }}" readonly>
+                                                <input type="text"name="ruang_id"id="ruang_id" class="form-control"
+                                                    value="{{ $ruang->id }}" hidden>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Lokasi</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset disabled>
-                                            <input type="text"name="gedung_id"id="gedung_id" class="form-control"
-                                                value="{{ $ruang->gedung->nama_gedung }} - {{ $ruang->gedung->lokasi->nama_lokasi }}"
-                                                readonly>
+                                                <input type="text"name="gedung_id"id="gedung_id" class="form-control"
+                                                    value="{{ $ruang->gedung->nama_gedung }} - {{ $ruang->gedung->lokasi->nama_lokasi }}"
+                                                    readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Periode</label>
@@ -123,8 +123,8 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset disabled>
-                                            <input type="text" name="user_id"id="user_id" class="form-control"
-                                                value="{{ Auth::user()->nama }}"readonly>
+                                                <input type="text" name="user_id"id="user_id" class="form-control"
+                                                    value="{{ Auth::user()->nama }}"readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Penanggungjawab</label>

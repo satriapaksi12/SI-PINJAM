@@ -40,6 +40,22 @@
                                                 </select>
                                             </fieldset>
                                         </div>
+                                        <div class="col-md-4">
+                                            <label>Status</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="status" id="status">
+                                                    <option value="{{ $periode->status }}">{{ $periode->status }}
+                                                    </option>
+                                                    @if ($periode->status == 'Aktif')
+                                                        <option value="Non Aktif">Non Aktif</option>
+                                                    @else
+                                                        <option value="Aktif">Aktif</option>
+                                                    @endif
+                                                </select>
+                                            </fieldset>
+                                        </div>
 
 
                                         <div class="col-sm-12 d-flex justify-content-end">

@@ -16,12 +16,12 @@ class PeriodeSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['tahun_periode' => '2020','semester' => 'Ganjil'],
-            ['tahun_periode' => '2020','semester' => 'Genap'],
-            ['tahun_periode' => '2021','semester' => 'Ganjil'],
-            ['tahun_periode' => '2021','semester' => 'Genap'],
-            ['tahun_periode' => '2022','semester' => 'Ganjil'],
-            ['tahun_periode' => '2022','semester' => 'Genap'],
+            ['tahun_periode' => '2020','semester' => 'Ganjil','status' => 'Aktif'],
+            ['tahun_periode' => '2020','semester' => 'Genap','status' => 'Non Aktif'],
+            ['tahun_periode' => '2021','semester' => 'Ganjil','status' => 'Non Aktif'],
+            ['tahun_periode' => '2021','semester' => 'Genap','status' => 'Non Aktif'],
+            ['tahun_periode' => '2022','semester' => 'Ganjil','status' => 'Non Aktif'],
+            ['tahun_periode' => '2022','semester' => 'Genap','status' => 'Non Aktif'],
 
         ];
 
@@ -29,6 +29,7 @@ class PeriodeSeeder extends Seeder
            Periode::insert([
                 'tahun_periode' => $value ['tahun_periode'],
                 'semester' => $value ['semester'],
+                'status' => $value ['status'],
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);

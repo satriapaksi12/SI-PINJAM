@@ -35,6 +35,7 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>No Ruangan</th>
                     <th>Nama Ruangan</th>
                     <th>Kapasitas</th>
                     <th>Lokasi</th>
@@ -45,6 +46,7 @@
                 @foreach ($ruang as $data)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td>{{ $data->no_ruang }}</td>
                         <td>{{ $data->nama_ruang }}</td>
                         <td>{{ $data->kapasitas }}</td>
                         <td>{{ $data->gedung->nama_gedung }} - {{ $data->gedung->lokasi->nama_lokasi}}</td>

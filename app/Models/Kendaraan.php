@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Kendaraan extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'no_polisi','kapasitas','gedung_id','jenis_kendaraan_id' 
+    protected $guarded = [
+        'id',
     ];
     public function reservasi_kendaraan()
     {

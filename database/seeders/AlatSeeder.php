@@ -19,7 +19,7 @@ class AlatSeeder extends Seeder
     {
         $data = [
             ['nama_alat' => 'TV', 'no_inventaris' => '02716641261212', 'foto_alat_id' => '1', 'gedung_id' => '1'],
-            ['nama_alat' => 'TV', 'no_inventaris' => '02716641261212', 'foto_alat_id' => '1', 'gedung_id' => '1'],
+            ['nama_alat' => 'TV', 'no_inventaris' => '02716641261213', 'foto_alat_id' => '1', 'gedung_id' => '1'],
         ];
 
         foreach ($data as $value) {

@@ -33,6 +33,17 @@
                                                 </select>
                                             </fieldset>
                                         </div>
+                                        <div class="col-md-4">
+                                            <label>Status</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="status" id="status">
+                                                    <option value="Aktif">Aktif</option>
+                                                    <option value="Non Aktif">Non Aktif</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
 
 
                                         <div class="col-sm-12 d-flex justify-content-end">

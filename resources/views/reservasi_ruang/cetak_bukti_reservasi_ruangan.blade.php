@@ -158,7 +158,11 @@
                             <table class="table table-bordered" width="700px">
                                 <tbody>
                                     <tr>
-                                        <td width="150px">Nama Ruang</td>
+                                        <td width="150px">No Ruangan</td>
+                                        <td>{{ $reservasi_ruang->ruang->no_ruang }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="150px">Nama Ruangan</td>
                                         <td>{{ $reservasi_ruang->ruang->nama_ruang }}</td>
                                     </tr>
                                     <tr>
@@ -234,7 +238,7 @@
                                             </ul>
                                         </td>
                                     </tr>
-                                   
+
                                     <tr>
                                         <td>Status</td>
                                         <td>{{ $reservasi_ruang->status }}</td>

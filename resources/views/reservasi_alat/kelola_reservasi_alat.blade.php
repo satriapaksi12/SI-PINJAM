@@ -28,7 +28,7 @@
                     Import Excel
                 </button>
 
-               
+
             </div>
             <div class="card-body">
                 <table class="table" id="table1">
@@ -57,7 +57,17 @@
                                 <td>{{ $data->tanggal_selesai }}</td>
                                 <td>{{ $data->jam_mulai }}</td>
                                 <td>{{ $data->jam_selesai }}</td>
-                                <td>{{ $data->status }}</td>
+                                <td>
+                                    @if ($data->status == 'Proses Validasi')
+                                    <span class="badge bg-warning">Proses Validasi</span>
+                                    @endif
+                                    @if ($data->status == 'Disetujui')
+                                    <spbooan class="badge bg-success">Disetujui</spbooan>
+                                    @endif
+                                    @if ($data->status == 'Ditolak')
+                                    <span class="badge bg-danger">Ditolak</span>
+                                    @endif
+                                </td>
                                 <td>
                                     @if ($data->status == 'Proses Validasi')
                                         <a href="validasi-reservasi-alat/{{ $data->id }}"

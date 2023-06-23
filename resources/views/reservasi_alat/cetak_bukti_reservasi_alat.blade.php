@@ -158,12 +158,12 @@
                         <table class="table table-bordered" width="700px">
                             <tbody>
                                 <tr>
-                                    <td width="150px">Nama Alat</td>
-                                    <td>{{ $reservasi_alat->alat->nama_alat }}</td>
-                                </tr>
-                                <tr>
                                     <td>No Inventaris</td>
                                     <td>{{ $reservasi_alat->alat->no_inventaris }}</td>
+                                </tr>
+                                <tr>
+                                    <td width="150px">Nama Alat</td>
+                                    <td>{{ $reservasi_alat->alat->nama_alat }}</td>
                                 </tr>
                                 <tr>
                                     <td>Lokasi</td>
@@ -206,7 +206,7 @@
                                     <td>Jam Selesai</td>
                                     <td>{{ $reservasi_alat->jam_selesai }}</td>
                                 </tr>
-                                
+
                                 <tr>
                                     <td>Status</td>
                                     <td>{{ $reservasi_alat->status }}</td>

@@ -21,8 +21,7 @@
                                             <fieldset disabled>
                                             <input type="text"name="nama_alat"id="nama_alat" class="form-control"
                                                 value="{{ $alat->nama_alat }}" readonly>
-                                            <input type="text"name="alat_id"id="alat_id" class="form-control"
-                                                value="{{ $alat->id }}" hidden>
+
                                         </div>
                                         <div class="col-md-4">
                                             <label>Nomor Inventaris</label>
@@ -31,8 +30,7 @@
                                             <fieldset disabled>
                                             <input type="text" name="no_inventaris" id="no_inventaris"
                                                 class="form-control" value="{{ $alat->no_inventaris }}" readonly>
-                                            <input type="text"name="alat_id"id="alat_id" class="form-control"
-                                                value="{{ $alat->id }}" hidden>
+
                                         </div>
                                         <div class="col-md-4">
                                             <label>Lokasi</label>
@@ -115,6 +113,8 @@
                                         <div class="col-md-8 form-group">
                                             <input class="form-control" type="file" name="surat" id="surat">
                                         </div>
+                                        {{-- untuk menyimpan data ke database --}}
+                                        <input type="hidden" name="alat_id" value="{{ $alat->id }}">
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
                                             <button type="reset"

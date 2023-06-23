@@ -112,7 +112,7 @@ class ReservasiKendaraanController extends Controller
         $pdf::SetTitle('Cetak Bukti Reservasi');
         $pdf::AddPage();
         $pdf::writeHTML($html, true, false, true, false, '');
-        $pdf::Output(public_path($filename), 'F');
+        $pdf::Output(public_path($filename), 'I');
         return response()->download(public_path($filename));
     }
 

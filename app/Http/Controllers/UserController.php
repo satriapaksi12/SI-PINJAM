@@ -39,7 +39,7 @@ class UserController extends Controller
         $user->password =  Hash::make($request->password);
         $user->role_id = $request->role_id;
         $user->unit_id = $request->unit_id;
-        // $user->email_verified_at = Carbon::now();
+        $user->email_verified_at = Carbon::now();
         $user->save();
         if ($user) {
             Session::flash('status', 'success');

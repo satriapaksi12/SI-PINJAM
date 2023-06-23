@@ -31,6 +31,7 @@
                             <th>No</th>
                             <th>No Reservasi</th>
                             <th>Periode</th>
+                            <th>No Ruangan</th>
                             <th>Nama Ruangan</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
@@ -44,10 +45,21 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->no_reservasi }}</td>
                                 <td>{{ $data->periode->tahun_periode }} - {{ $data->periode->semester }}</td>
+                                <td>{{ $data->ruang->no_ruang}}</td>
                                 <td>{{ $data->ruang->nama_ruang}}</td>
                                 <td>{{ $data->tanggal_mulai }}</td>
                                 <td>{{ $data->tanggal_selesai }}</td>
-                                <td>{{ $data->status }}</td>
+                                <td>
+                                    @if ($data->status == 'Proses Validasi')
+                                    <span class="badge bg-warning">Proses Validasi</span>
+                                    @endif
+                                    @if ($data->status == 'Disetujui')
+                                    <spbooan class="badge bg-success">Disetujui</spbooan>
+                                    @endif
+                                    @if ($data->status == 'Ditolak')
+                                    <span class="badge bg-danger">Ditolak</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="/detail-reservasi-ruang/{{ $data->id }}" class="btn icon btn-primary" title="Detail"><i
                                             class="bi bi-eye"></i></a>

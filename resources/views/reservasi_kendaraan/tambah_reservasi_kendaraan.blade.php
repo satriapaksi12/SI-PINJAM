@@ -21,8 +21,7 @@
                                             <fieldset disabled>
                                             <input type="text"name="no_polisi"id="no_polisi" class="form-control"
                                                 value="{{ $kendaraan->no_polisi }}" readonly>
-                                            <input type="text"name="kendaraan_id"id="kendaraan_id" class="form-control"
-                                                value="{{ $kendaraan->id }}" hidden>
+
                                         </div>
                                         <div class="col-md-4">
                                             <label>Jenis Kendaraan</label>
@@ -32,8 +31,14 @@
                                             <input type="text" name="jenis_kendaraan_id" id="jenis_kendaraan_id"
                                                 class="form-control"
                                                 value="{{ $kendaraan->jenis_kendaraan->nama_jenis_kendaraan }}" readonly>
-                                            <input type="text"name="jenis_kendaraan_id"id="jenis_kendaraan_id"
-                                                class="form-control" value="{{ $kendaraan->jenis_kendaraan->id }}" hidden>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Kapasitas</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <fieldset disabled>
+                                            <input type="text"name="kapasitas"id="kapasitas" class="form-control"
+                                                value="{{ $kendaraan->kapasitas }}" readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Lokasi</label>
@@ -44,16 +49,7 @@
                                                 value="{{ $kendaraan->gedung->nama_gedung }} - {{ $kendaraan->gedung->lokasi->nama_lokasi }}"
                                                 readonly>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label>Kapasitas</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <fieldset disabled>
-                                            <input type="text"name="kapasitas"id="kapasitas" class="form-control"
-                                                value="{{ $kendaraan->kapasitas }}" readonly>
-                                            <input type="text"name="kendaraan_id"id="kendaraan_id" class="form-control"
-                                                value="{{ $kendaraan->id }}" hidden>
-                                        </div>
+
                                         <div class="col-md-4">
                                             <label>Peminjam</label>
                                         </div>
@@ -128,6 +124,8 @@
                                         <div class="col-md-8 form-group">
                                             <input class="form-control" type="file" name="surat" id="surat">
                                         </div>
+                                           {{-- untuk menyimpan data ke database --}}
+                                           <input type="hidden" name="kendaraan_id" value="{{ $kendaraan->id }}">
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
                                             <button type="reset"

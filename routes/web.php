@@ -216,8 +216,7 @@ Route::put('/validasi-reservasi-alat/{id}', [ReservasiAlatController::class, 'si
 Route::get('/detail-reservasi-alat/{id}', [ReservasiAlatController::class, 'detailReservasi'])
 ->middleware(['auth', 'forbidden-umum']);
 //cetak bukti reservasi alat
-Route::get('/detail-reservasi-alat-cetak/{id}', [ReservasiAlatController::class, 'cetakReservasi'])
-->middleware(['auth', 'forbidden-umum']);
+Route::get('/detail-reservasi-alat-cetak/{id}', [ReservasiAlatController::class, 'cetakReservasi'])->middleware(['auth', 'forbidden-umum']);
 //daftar reservasi alat
 Route::get('/daftar-reservasi-alat', [ReservasiAlatController::class, 'daftarReservasi'])->middleware(['auth', 'forbidden-umum']);
 //cek jadwal reservasi alat

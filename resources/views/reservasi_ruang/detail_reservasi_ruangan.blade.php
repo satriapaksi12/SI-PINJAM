@@ -22,6 +22,16 @@
                                                 value="{{ $reservasi_ruang->no_reservasi }}" readonly></b>
                                     </div>
                                     <div class="col-md-4">
+                                        <label>No Ruangan</label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        <fieldset disabled>
+                                        <input type="text"name="no_ruang"id="no_ruang" class="form-control"
+                                            value="{{ $reservasi_ruang->ruang->no_ruang }}" readonly>
+                                        <input type="text"name="ruang_id"id="ruang_id" class="form-control"
+                                            value="{{ $reservasi_ruang->ruang->id }}" hidden>
+                                    </div>
+                                    <div class="col-md-4">
                                         <label>Nama Ruang</label>
                                     </div>
                                     <div class="col-md-8 form-group">
@@ -194,7 +204,7 @@
                                     </div>
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <a href="/detail-reservasi-ruang-cetak/{{ $reservasi_ruang->id }}"><button
-                                                type="submit" class="btn btn-primary me-1 mb-1">Cetak Bukti
+                                                type="submit"  class="btn btn-primary me-1 mb-1">Cetak Bukti
                                                 Reservasi</button></a>
                                     </div>
                                 </div>

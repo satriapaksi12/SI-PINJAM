@@ -35,13 +35,13 @@ class ReservasiRuangController extends Controller
     {
         $user = User::with('unit')->get();
         $unit = Unit::all();
-        $periode = Periode::all();
+        $periode = Periode::where('status', 'Aktif')->get();
         $sesi = Sesi::all();
         $jenis_acara = Jenis_acara::all();
         $ruang = Ruang::with('gedung.lokasi', 'foto_ruang', 'reservasi_ruang')->findOrFail($id);
+
         return view(
-            'reservasi_ruang.tambah_reservasi_ruangan',
-            ['periode' => $periode, 'jenis_acara' => $jenis_acara, 'sesi' => $sesi, 'user' => $user, 'unit' => $unit, 'ruang' => $ruang]
+            'reservasi_ruang.tambah_reservasi_ruangan',['periode' => $periode, 'jenis_acara' => $jenis_acara, 'sesi' => $sesi, 'user' => $user, 'unit' => $unit, 'ruang' => $ruang]
         );
     }
 
@@ -149,20 +149,6 @@ class ReservasiRuangController extends Controller
 
     public function cetakReservasi(Reservasi_ruang $reservasi_ruang, $id)
     {
-
-        // $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')
-        // ->findOrFail($id);
-        // $filename = 'cetak-bukti-reservasi.pdf';
-        // $data = [
-        //     'reservasi_ruang' => $reservasi_ruang
-        // ];
-        // $html = view()->make('reservasi_ruang.cetak_bukti_reservasi_ruangan', $data)->render();
-        // $pdf = new TCPDF;
-        // $pdf::SetTitle('Cetak Bukti Reservasi');
-        // $pdf::AddPage();
-        // $pdf::writeHTML($html, true, false, true, false, '');
-        // $pdf::Output(public_path($filename), 'F');
-        // return response()->download(public_path($filename));
         $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')
             ->findOrFail($id);
 

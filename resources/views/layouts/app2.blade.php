@@ -40,8 +40,6 @@
                             }
                         </style>
                         <div class="logo">
-                            {{-- <a href="index.html"><img src="{{ asset('tmp_dashboard2/dist/assets/images/logo/logo.svg') }}" alt="Logo"
-                                    srcset=""></a> --}}
                             <h4 class="color">SI PINJAM</h4>
                         </div>
 

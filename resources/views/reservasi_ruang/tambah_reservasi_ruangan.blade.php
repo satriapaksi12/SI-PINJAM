@@ -15,14 +15,22 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>Nama Ruang</label>
+                                            <label>No Ruangan</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <fieldset disabled>
+                                                <input type="text" name="no_ruang" id="no_ruang" class="form-control"
+                                                    value="{{ $ruang->no_ruang }}" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Nama Ruangan</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset disabled>
                                                 <input type="text" name="nama_ruang" id="nama_ruang" class="form-control"
                                                     value="{{ $ruang->nama_ruang }}" readonly>
-                                                <input type="text"name="ruang_id"id="ruang_id"
-                                                    class="form-control"value="{{ $ruang->id }}" hidden>
+
                                         </div>
                                         <div class="col-md-4">
                                             <label>Kapasitas</label>
@@ -31,8 +39,7 @@
                                             <fieldset disabled>
                                                 <input type="text"name="kapasitas"id="kapasitas" class="form-control"
                                                     value="{{ $ruang->kapasitas }}" readonly>
-                                                <input type="text"name="ruang_id"id="ruang_id" class="form-control"
-                                                    value="{{ $ruang->id }}" hidden>
+
                                         </div>
                                         <div class="col-md-4">
                                             <label>Fasilitas</label>
@@ -41,8 +48,7 @@
                                             <fieldset disabled>
                                                 <input type="text"name="fasilitas"id="fasilitas" class="form-control"
                                                     value="{{ $ruang->fasilitas }}" readonly>
-                                                <input type="text"name="ruang_id"id="ruang_id" class="form-control"
-                                                    value="{{ $ruang->id }}" hidden>
+
                                         </div>
                                         <div class="col-md-4">
                                             <label>Lokasi</label>
@@ -57,16 +63,17 @@
                                             <label>Periode</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <fieldset class="form-group">
-                                                <select class="form-select" name="periode_id" id="periode_id">
-                                                    @foreach ($periode as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->tahun_periode }} -
-                                                            {{ $item->semester }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
+                                            <fieldset disabled>
+                                                <input type="text" name="periode_id" id="periode_id" class="form-control"
+                                                    value="
+                                                @foreach ($periode as $p)
+                                                    @if ($p->status == 'Aktif')
+                                                        {{ $p->tahun_periode }} - {{ $p->semester }}
+                                                    @endif @endforeach"
+                                                    readonly>
                                             </fieldset>
                                         </div>
+
                                         <div class="col-md-4">
                                             <label>Jenis Acara</label>
                                         </div>
@@ -224,6 +231,16 @@
                                                 @endforeach
                                             </div>
                                         </div>
+                                        {{-- untuk menyimpan data ke database --}}
+                                        <input type="hidden" name="ruang_id" value="{{ $ruang->id }}">
+                                        <input type="hidden" name="periode_id" id="periode_id"
+                                            value="
+                                        @foreach ($periode as $p)
+                                            @if ($p->status == 'Aktif')
+                                                {{ $p->id }}
+                                            @endif @endforeach">
+
+
                                         <div cass="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
                                             <button type="reset"

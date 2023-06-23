@@ -22,16 +22,6 @@
                                                 value="{{ $reservasi_alat->no_reservasi }}" readonly></b>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Nama Alat</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <fieldset disabled>
-                                            <input type="text"name="nama_alat"id="nama_alat" class="form-control"
-                                                value="{{ $reservasi_alat->alat->nama_alat }}" readonly>
-                                            <input type="text"name="alat_id"id="alat_id" class="form-control"
-                                                value="{{ $reservasi_alat->alat->id }}" hidden>
-                                        </div>
-                                        <div class="col-md-4">
                                             <label>Nomor Inventaris</label>
                                         </div>
                                         <div class="col-md-8 form-group">
@@ -39,6 +29,16 @@
                                             <input type="text" name="no_inventaris" id="no_inventaris"
                                                 class="form-control" value="{{ $reservasi_alat->alat->no_inventaris }}"
                                                 readonly>
+                                            <input type="text"name="alat_id"id="alat_id" class="form-control"
+                                                value="{{ $reservasi_alat->alat->id }}" hidden>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Nama Alat</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <fieldset disabled>
+                                            <input type="text"name="nama_alat"id="nama_alat" class="form-control"
+                                                value="{{ $reservasi_alat->alat->nama_alat }}" readonly>
                                             <input type="text"name="alat_id"id="alat_id" class="form-control"
                                                 value="{{ $reservasi_alat->alat->id }}" hidden>
                                         </div>

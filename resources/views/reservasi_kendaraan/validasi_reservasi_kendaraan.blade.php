@@ -132,6 +132,12 @@
                                             <input type="time" name="jam_selesai"id="jam_selesai"
                                                 class="form-control" value="{{ $reservasi_kendaraan->jam_selesai }}" readonly>
                                         </div>
+                                        <div class="col-md-4">
+                                            <label>Surat</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <a href="{{ $reservasi_kendaraan->surat }}" target="_blank">Lihat Surat</a>
+                                        </div>
                                         {{-- <div class="col-md-4">
                                             <label>Surat</label>
                                         </div>

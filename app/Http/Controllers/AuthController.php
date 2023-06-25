@@ -18,7 +18,7 @@ class AuthController extends Controller
     public function register()
     {
         $unit = Unit::all();
-        return view('auth.register', ['unit' => $unit]);
+        return view('auth.register2', ['unit' => $unit]);
     }
     public function registerProses(Request $request)
     {
@@ -53,7 +53,7 @@ class AuthController extends Controller
     }
     public function login()
     {
-        return view('auth.login');
+        return view('auth.login2');
     }
     public function authenticating(Request $request)
     {

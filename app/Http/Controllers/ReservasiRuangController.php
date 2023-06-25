@@ -41,7 +41,8 @@ class ReservasiRuangController extends Controller
         $ruang = Ruang::with('gedung.lokasi', 'foto_ruang', 'reservasi_ruang')->findOrFail($id);
 
         return view(
-            'reservasi_ruang.tambah_reservasi_ruangan',['periode' => $periode, 'jenis_acara' => $jenis_acara, 'sesi' => $sesi, 'user' => $user, 'unit' => $unit, 'ruang' => $ruang]
+            'reservasi_ruang.tambah_reservasi_ruangan',
+            ['periode' => $periode, 'jenis_acara' => $jenis_acara, 'sesi' => $sesi, 'user' => $user, 'unit' => $unit, 'ruang' => $ruang]
         );
     }
 
@@ -205,6 +206,12 @@ class ReservasiRuangController extends Controller
             ->whereNotIn('id', $unavailableRuangIds)
             ->get();
 
+        // $availableRuangs = Ruang::with(['gedung.lokasi', 'foto_ruang'])
+        //     ->whereNotIn('id', $unavailableRuangIds)
+        //     ->whereHas('sesi', function ($query) use ($sesiIds) {
+        //         $query->whereIn('sesi_id', $sesiIds);
+        //     })
+        //     ->get();
         return response()->json($availableRuangs);
     }
 

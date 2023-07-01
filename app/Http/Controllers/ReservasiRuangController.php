@@ -54,7 +54,7 @@ class ReservasiRuangController extends Controller
             $surat->move(public_path('/surat/'), $name);
             $namaSurat = 'surat/' . $name;
         } else {
-            $namaSurat = "Tidak ada Surat";
+            $namaSurat = "Tidak ada surat";
         }
         $config = [
             'table' => 'reservasi_ruangs',
@@ -221,7 +221,6 @@ class ReservasiRuangController extends Controller
     {
         return Excel::download(new Reservasi_ruangsExport, 'reservasi_ruangs.xlsx');
     }
-
     public function importReservasiRuangans(Request $request)
     {
         $file = $request->file('file');

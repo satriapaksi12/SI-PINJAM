@@ -19,12 +19,10 @@ class UnitController extends Controller
         $unit = Unit::all();
         return view('unit.unit', ['unitList' => $unit]);
     }
-
     public function create()
     {
         return view('unit.unit-add');
     }
-
     public function store(StoreUnitRequest $request)
     {
         $unit = Unit::create($request->all());
@@ -32,16 +30,13 @@ class UnitController extends Controller
             Session::flash('status', 'success');
             Session::flash('message', 'Data berhasil ditambahkan');
         }
-
         return redirect('/unit');
     }
-
     public function edit(Unit $unit, $id)
     {
         $unit = Unit::findOrFail($id);
         return view('unit.unit-edit',['unit' => $unit]);
     }
-
     public function update(UpdateUnitRequest $request, Unit $unit,$id)
     {
         $unit = Unit::findOrFail($id);
@@ -52,7 +47,6 @@ class UnitController extends Controller
         }
         return redirect('/unit');
     }
-
     public function destroy(Unit $unit,$id)
     {
         $deletedUnit = Unit::findORFail($id);

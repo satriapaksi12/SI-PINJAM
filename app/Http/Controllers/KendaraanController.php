@@ -22,7 +22,6 @@ class KendaraanController extends Controller
         $kendaraan = Kendaraan::with('jenis_kendaraan','gedung.lokasi')->latest()->get();
         return view('kendaraan.kendaraan', ['kendaraanList' => $kendaraan]);
     }
-
     public function create()
     {
         $jenis_kendaraan = Jenis_kendaraan::select('id', 'nama_jenis_kendaraan')->get();
@@ -39,7 +38,6 @@ class KendaraanController extends Controller
         }
         return redirect('/kendaraan');
     }
-
     public function edit(Kendaraan $kendaraan,$id)
     {
         $data = [

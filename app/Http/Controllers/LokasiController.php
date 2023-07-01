@@ -19,12 +19,10 @@ class LokasiController extends Controller
         $lokasi = Lokasi::all();
         return view('lokasi.lokasi', ['lokasiList' => $lokasi]);
     }
-
     public function create()
     {
         return view('lokasi.lokasi-add');
     }
-
     public function store(StoreLokasiRequest $request)
     {
         $lokasi = Lokasi::create($request->all());
@@ -35,13 +33,11 @@ class LokasiController extends Controller
 
         return redirect('/lokasi');
     }
-
     public function edit(Lokasi $lokasi, $id)
     {
         $lokasi = Lokasi::findOrFail($id);
         return view('lokasi.lokasi-edit', ['lokasi' => $lokasi]);
     }
-
     public function update(UpdateLokasiRequest $request, Lokasi $lokasi, $id)
     {
         $lokasi = Lokasi::findOrFail($id);
@@ -52,7 +48,6 @@ class LokasiController extends Controller
         }
         return redirect('/lokasi');
     }
-
     public function destroy(Lokasi $lokasi, $id)
     {
         $deletedLokasi = Lokasi::findORFail($id);
@@ -62,10 +57,8 @@ class LokasiController extends Controller
             Session::flash('status-delete', 'success');
             Session::flash('message-delete', 'Data berhasil dihapus');
         }
-
         return redirect('/lokasi');
     }
-
     public function exportLokasis()
     {
         return Excel::download(new LokasisExport, 'lokasis.xlsx');

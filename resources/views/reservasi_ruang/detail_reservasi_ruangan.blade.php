@@ -180,12 +180,22 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                    {{-- <div class="col-md-4">
-                                            <label>Surat</label>
-                                        </div>
+                                    <div class="col-md-4">
+                                        <label>Surat</label>
+                                    </div>
+                                    @if ($reservasi_ruang->surat == 'Tidak ada surat')
                                         <div class="col-md-8 form-group">
-                                            <a href="{{ $reservasi_alat->surat }}">Link Surat</a>
-                                        </div> --}}
+                                            <fieldset disabled>
+                                                <input type="text" name="surat"id="surat"
+                                                    class="form-control" value="Tidak ada surat" readonly>
+                                        </div>
+                                    @else
+                                        <div class="col-md-8 form-group">
+                                            <a href="{{ asset($reservasi_ruang->surat) }}" target="_blank"
+                                                class="btn icon icon-left btn-info"><i data-feather="file"></i>Lihat
+                                                Surat</a>
+                                        </div>
+                                    @endif
                                     <div class="col-md-4">
                                         <label>Status</label>
                                     </div>

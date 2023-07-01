@@ -162,7 +162,7 @@
                                     <td>{{ $reservasi_kendaraan->kendaraan->no_polisi }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Jenis Kendaraan</td>
+                                    <td width="150px">Jenis Kendaraan</td>
                                     <td>{{ $reservasi_kendaraan->kendaraan->jenis_kendaraan->nama_jenis_kendaraan }}</td>
                                 </tr>
                                 <tr>
@@ -206,7 +206,10 @@
                                     <td>Jam Selesai</td>
                                     <td>{{ $reservasi_kendaraan->jam_selesai }}</td>
                                 </tr>
-                                
+                                <tr>
+                                    <td>Surat</td>
+                                    <td>Surat terlampir</td>
+                                </tr>
                                 <tr>
                                     <td>Status</td>
                                     <td>{{ $reservasi_kendaraan->status }}</td>

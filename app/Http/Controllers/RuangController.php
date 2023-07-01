@@ -22,7 +22,6 @@ class RuangController extends Controller
         $ruang = Ruang::with('gedung.lokasi', 'foto_ruang')->latest()->get();
         return view('ruangan.ruangan', ['ruang' => $ruang]);
     }
-
     public function create()
     {
         $foto_ruang = Foto_ruang::select('id', 'nama_foto')->get();
@@ -30,8 +29,6 @@ class RuangController extends Controller
         $lokasi = Lokasi::select('id', 'nama_lokasi')->get();
         return view('ruangan.ruangan-add', ['gedung' => $gedung, 'lokasi' => $lokasi, 'foto_ruang' => $foto_ruang]);
     }
-
-
     public function store(StoreRuangRequest $request)
     {
         $foto = $request->foto_ruang_id;
@@ -57,14 +54,12 @@ class RuangController extends Controller
         }
         return redirect('/ruang');
     }
-
     public function show(Ruang $ruang, $id)
     {
         $ruang = Ruang::with('gedung.lokasi', 'foto_ruang')->findOrFail($id);
         return view('ruangan.ruangan-detail', ['ruang' => $ruang]);
         // return response()->json($ruang);
     }
-
     public function edit(Ruang $ruang, $id)
     {
         $data = [
@@ -75,7 +70,6 @@ class RuangController extends Controller
         ];
         return view('ruangan.ruangan-edit', $data);
     }
-
     public function update(UpdateRuangRequest $request, Ruang $ruang, $id)
     {
         $ruang = Ruang::findOrFail($id);
@@ -104,8 +98,6 @@ class RuangController extends Controller
         }
         return redirect('/ruang');
     }
-
-
     public function destroy(Ruang $ruang, $id)
     {
         $deletedRuang = Ruang::findORFail($id);
@@ -115,14 +107,12 @@ class RuangController extends Controller
             Session::flash('status-delete', 'success');
             Session::flash('message-delete', 'Data berhasil dihapus');
         }
-
         return redirect('/ruang');
     }
     public function exportRuangs()
     {
         return Excel::download(new RuangsExport, 'ruangs.xlsx');
     }
-
     public function importRuangs(Request $request)
     {
         $file = $request->file('file');

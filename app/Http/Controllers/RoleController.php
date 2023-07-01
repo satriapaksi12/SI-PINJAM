@@ -18,12 +18,10 @@ class RoleController extends Controller
         $role = Role::all();
         return view('roles.roles', ['roleList' => $role]);
     }
-
     public function create()
     {
         return view('roles.roles-add');
     }
-
     public function store(StoreRoleRequest $request)
     {
         $role = Role::create($request->all());
@@ -31,16 +29,13 @@ class RoleController extends Controller
             Session::flash('status', 'success');
             Session::flash('message', 'Data berhasil ditambahkan');
         }
-
         return redirect('/role');
     }
-
     public function edit(Role $role,$id)
     {
         $role = Role::findOrFail($id);
         return view('roles.roles-edit',['role' => $role]);
     }
-
     public function update(UpdateRoleRequest $request, Role $role,$id)
     {
         $role = Role::findOrFail($id);
@@ -61,7 +56,6 @@ class RoleController extends Controller
         }
         return redirect('/role');
     }
-
     public function exportRoles()
     {
         return Excel::download(new RolesExport, 'roles.xlsx');

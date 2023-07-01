@@ -130,12 +130,12 @@
                                             <input type="time" name="jam_selesai"id="jam_selesai"
                                                 class="form-control" value="{{ $reservasi_kendaraan->jam_selesai }}" readonly>
                                         </div>
-                                        {{-- <div class="col-md-4">
+                                        <div class="col-md-4">
                                             <label>Surat</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <a href="{{ $reservasi_alat->surat }}">Link Surat</a>
-                                        </div> --}}
+                                            <a href="{{ asset($reservasi_kendaraan->surat) }}" target="_blank" class="btn icon icon-left btn-info"><i data-feather="file"></i>Lihat Surat</a>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>Status</label>
                                         </div>

@@ -19,12 +19,10 @@ class SesiController extends Controller
         $sesi = Sesi::all();
         return view('sesi.sesi', ['sesiList' => $sesi]);
     }
-
     public function create()
     {
         return view('sesi.sesi-add');
     }
-
     public function store(StoreSesiRequest $request)
     {
         $sesi = Sesi::create($request->all());

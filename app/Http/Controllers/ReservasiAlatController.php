@@ -108,11 +108,8 @@ class ReservasiAlatController extends Controller
 
     public function cetakReservasi(Reservasi_alat $reservasi_alat,$id)
     {
-
         $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->findOrFail($id);
-        $filename = 'cetak-bukti-reservasi.pdf';
         $data = [
-            'title' => 'Cetak Bukti Reservasi Alat Sekolah Vokasi UNS',
             'reservasi_alat' => $reservasi_alat
         ];
         $html = view()->make('reservasi_alat.cetak_bukti_reservasi_alat', $data)->render();
@@ -120,8 +117,10 @@ class ReservasiAlatController extends Controller
         $pdf::SetTitle('Cetak Bukti Reservasi');
         $pdf::AddPage();
         $pdf::writeHTML($html, true, false, true, false, '');
-        $pdf::Output(public_path($filename), 'F');
-        return response()->download(public_path($filename));
+
+        $filename = 'cetak-bukti-reservasi.pdf';
+        $pdf::Output($filename, 'I');
+        exit();
     }
 
     public function cekJadwal()

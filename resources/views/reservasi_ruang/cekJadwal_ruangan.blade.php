@@ -89,6 +89,7 @@
                         <tr>
                             <th>No</th>
                             <th>Periode</th>
+                            <th> No Ruangan</th>
                             <th>Ruangan</th>
                             <th>Tanggal</th>
                             <th>Sesi</th>
@@ -101,6 +102,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>  {{  $data->periode->tahun_periode }} - {{ $data->periode->semester}}</td>
+                                <td>{{ $data->ruang->no_ruang }}</td>
                                 <td>
                                     {{ $data->ruang->nama_ruang }} </br>
                                     {{  $data->ruang->gedung->nama_gedung }} - {{ $data->ruang->gedung->lokasi->nama_lokasi}}
@@ -124,7 +126,17 @@
                                 @else
                                 <td>{{ $data->kelas }} - {{ $data->kegiatan}} - {{ $data->jenis_acara->nama_jenis_acara }}</td>
                                 @endif
-                                <td>{{ $data->status}}</td>
+                                <td>
+                                    @if ($data->status == 'Proses Validasi')
+                                    <span class="badge bg-warning">Proses Validasi</span>
+                                    @endif
+                                    @if ($data->status == 'Disetujui')
+                                    <spbooan class="badge bg-success">Disetujui</spbooan>
+                                    @endif
+                                    @if ($data->status == 'Ditolak')
+                                    <span class="badge bg-danger">Ditolak</span>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

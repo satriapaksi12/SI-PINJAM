@@ -63,15 +63,16 @@
                                             <label>Periode</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <fieldset disabled>
-                                                <input type="text" name="periode_id" id="periode_id" class="form-control"
-                                                    value="
-                                                @foreach ($periode as $p)
-                                                    @if ($p->status == 'Aktif')
-                                                        {{ $p->tahun_periode }} - {{ $p->semester }}
-                                                    @endif @endforeach"
-                                                    readonly>
-                                            </fieldset>
+                                            <input type="hidden" name="periode_id" id="periode_id"
+                                                value="@foreach ($periode as $p) @if ($p->status == 'Aktif') {{ $p->id }} @endif @endforeach">
+                                            @foreach ($periode as $p)
+                                                @if ($p->status == 'Aktif')
+                                                    <fieldset disabled>
+                                                        <input type="text" class="form-control"
+                                                            value="{{ $p->tahun_periode }} - {{ $p->semester }}" readonly>
+                                                    </fieldset>
+                                                @endif
+                                            @endforeach
                                         </div>
 
                                         <div class="col-md-4">
@@ -233,14 +234,6 @@
                                         </div>
                                         {{-- untuk menyimpan data ke database --}}
                                         <input type="hidden" name="ruang_id" value="{{ $ruang->id }}">
-                                        <input type="hidden" name="periode_id" id="periode_id"
-                                            value="
-                                        @foreach ($periode as $p)
-                                            @if ($p->status == 'Aktif')
-                                                {{ $p->id }}
-                                            @endif @endforeach">
-
-
                                         <div cass="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
                                             <button type="reset"

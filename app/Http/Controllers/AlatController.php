@@ -32,7 +32,6 @@ class AlatController extends Controller
     }
     public function store(StoreAlatRequest $request)
     {
-
         $foto = $request->foto_alat_id;
         $name = $foto->hashName();
         $foto->move(public_path('/img/'), $name);

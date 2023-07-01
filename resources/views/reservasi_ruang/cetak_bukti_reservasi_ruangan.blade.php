@@ -238,7 +238,14 @@
                                             </ul>
                                         </td>
                                     </tr>
-
+                                    <tr>
+                                        <td>Surat</td>
+                                        @if ($reservasi_ruang->surat == 'Tidak ada surat')
+                                            <td>Tidak ada surat</td>
+                                        @else
+                                            <td>Surat terlampir</td>
+                                        @endif
+                                    </tr>
                                     <tr>
                                         <td>Status</td>
                                         <td>{{ $reservasi_ruang->status }}</td>

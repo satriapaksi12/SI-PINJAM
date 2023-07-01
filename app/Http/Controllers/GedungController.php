@@ -23,14 +23,12 @@ class GedungController extends Controller
         $gedung = Gedung::with('lokasi')->get();
         return view('gedung.gedung', ['gedungList' => $gedung]);
     }
-
     public function create()
     {
         $gedung = Gedung::select('id', 'nama_gedung')->get();
         $lokasi = Lokasi::select('id', 'nama_lokasi')->get();
         return view('gedung.gedung-add', ['gedung' => $gedung, 'lokasi' => $lokasi]);
     }
-
     public function store(StoreGedungRequest $request)
     {
         $gedung = Gedung::create($request->all());
@@ -40,14 +38,12 @@ class GedungController extends Controller
         }
         return redirect('/gedung');
     }
-
     public function edit(Gedung $gedung ,Lokasi $lokasi,$id)
     {
         $gedung = Gedung::with('lokasi')->findOrFail($id);
         $lokasi =Lokasi::select('id', 'nama_lokasi')->where('id', '!=', $gedung->lokasi_id)->get();
         return view('gedung.gedung-edit', ['gedung' => $gedung,'lokasi' => $lokasi]);
     }
-
     public function update(UpdateGedungRequest $request, Gedung $gedung,$id)
     {
         // dd($request->all());
@@ -60,7 +56,6 @@ class GedungController extends Controller
         }
         return redirect('/gedung');
     }
-
     public function destroy(Gedung $gedung,$id)
     {
         $deletedGedung = Gedung::findORFail($id);
@@ -70,7 +65,6 @@ class GedungController extends Controller
             Session::flash('status-delete', 'success');
             Session::flash('message-delete', 'Data berhasil dihapus');
         }
-
         return redirect('/gedung');
     }
     public function exportGedungs()

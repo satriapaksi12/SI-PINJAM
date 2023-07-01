@@ -143,92 +143,95 @@
         <div class="row">
             <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
                 <div class="row">
-                        <center>
-                            <h2>BUKTI RESERVASI SEKOLAH VOKASI UNS</h2>
-                        </center>
-
-                <div>
-                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                        <div class="receipt-right">
-                            <h5>NOMOR RESERVASI</h5>
-                            <h3>{{ $reservasi_alat->no_reservasi }}</h3>
-                        </div>
-                    </div>
                     <center>
-                        <table class="table table-bordered" width="700px">
-                            <tbody>
-                                <tr>
-                                    <td>No Inventaris</td>
-                                    <td>{{ $reservasi_alat->alat->no_inventaris }}</td>
-                                </tr>
-                                <tr>
-                                    <td width="150px">Nama Alat</td>
-                                    <td>{{ $reservasi_alat->alat->nama_alat }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Lokasi</td>
-                                    <td>{{ $reservasi_alat->alat->gedung->nama_gedung }} -
-                                        {{ $reservasi_alat->alat->gedung->lokasi->nama_lokasi }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Peminjam</td>
-                                    <td>{{ Auth::user()->nama }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Penanggung Jawab</td>
-                                    <td>{{ $reservasi_alat->penanggung_jawab }}</td>
-                                </tr>
-                                <tr>
-                                    <td>No Telepon Penanggung Jawab</td>
-                                    <td>{{ $reservasi_alat->no_telepon }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Unit Penanggung Jawab</td>
-                                    <td>{{ $reservasi_alat->unit->nama_unit }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Kegiatan</td>
-                                    <td>{{ $reservasi_alat->kegiatan }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Tanggal Mulai</td>
-                                    <td>{{ $reservasi_alat->tanggal_mulai }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Tanggal Selesai</td>
-                                    <td>{{ $reservasi_alat->tanggal_selesai }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Jam Mulai</td>
-                                    <td>{{ $reservasi_alat->jam_mulai }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Jam Selesai</td>
-                                    <td>{{ $reservasi_alat->jam_selesai }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Status</td>
-                                    <td>{{ $reservasi_alat->status }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Alasan Penolakan</td>
-                                    <td>{{ $reservasi_alat->alasan }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <h2>BUKTI RESERVASI SEKOLAH VOKASI UNS</h2>
                     </center>
-                </div>
-                <div class="receipt-right">
-                    <h5>Hubungi Kami :</h5>
-                    <h6>Sekolah Vokasi Universitas Sebelas Maret</h6>
-                    <h6>Jl. Kolonel Sutarto 150 K, Jebres, Surakarta, Jawa Tengah</h6>
-                    <h6>0271-664126</h6>
-                    <h6>vokasi@unit.uns.ac.id</h6>
+
+                    <div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                            <div class="receipt-right">
+                                <h5>NOMOR RESERVASI</h5>
+                                <h3>{{ $reservasi_alat->no_reservasi }}</h3>
+                            </div>
+                        </div>
+                        <center>
+                            <table class="table table-bordered" width="700px">
+                                <tbody>
+                                    <tr>
+                                        <td width="150px">No Inventaris</td>
+                                        <td>{{ $reservasi_alat->alat->no_inventaris }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="150px">Nama Alat</td>
+                                        <td>{{ $reservasi_alat->alat->nama_alat }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lokasi</td>
+                                        <td>{{ $reservasi_alat->alat->gedung->nama_gedung }} -
+                                            {{ $reservasi_alat->alat->gedung->lokasi->nama_lokasi }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Peminjam</td>
+                                        <td>{{ Auth::user()->nama }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Penanggung Jawab</td>
+                                        <td>{{ $reservasi_alat->penanggung_jawab }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>No Telepon Penanggung Jawab</td>
+                                        <td>{{ $reservasi_alat->no_telepon }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Unit Penanggung Jawab</td>
+                                        <td>{{ $reservasi_alat->unit->nama_unit }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kegiatan</td>
+                                        <td>{{ $reservasi_alat->kegiatan }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tanggal Mulai</td>
+                                        <td>{{ $reservasi_alat->tanggal_mulai }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tanggal Selesai</td>
+                                        <td>{{ $reservasi_alat->tanggal_selesai }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jam Mulai</td>
+                                        <td>{{ $reservasi_alat->jam_mulai }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jam Selesai</td>
+                                        <td>{{ $reservasi_alat->jam_selesai }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Surat</td>
+                                        <td>Surat terlampir</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td>{{ $reservasi_alat->status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Alasan Penolakan</td>
+                                        <td>{{ $reservasi_alat->alasan }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="receipt-right">
+                        <h5>Hubungi Kami :</h5>
+                        <h6>Sekolah Vokasi Universitas Sebelas Maret</h6>
+                        <h6>Jl. Kolonel Sutarto 150 K, Jebres, Surakarta, Jawa Tengah</h6>
+                        <h6>0271-664126</h6>
+                        <h6>vokasi@unit.uns.ac.id</h6>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
 </body>

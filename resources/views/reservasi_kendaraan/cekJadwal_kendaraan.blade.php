@@ -116,7 +116,17 @@
                                     {{ strftime('%Y', strtotime($data->tanggal_selesai)) }}
                                 </td>
                                 <td>{{ date('H:i', strtotime($data->jam_mulai)) }} - {{ date('H:i', strtotime($data->jam_selesai)) }}</td>
-                                <td>{{ $data->status }}</td>
+                                <td>
+                                    @if ($data->status == 'Proses Validasi')
+                                    <span class="badge bg-warning">Proses Validasi</span>
+                                    @endif
+                                    @if ($data->status == 'Disetujui')
+                                    <spbooan class="badge bg-success">Disetujui</spbooan>
+                                    @endif
+                                    @if ($data->status == 'Ditolak')
+                                    <span class="badge bg-danger">Ditolak</span>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

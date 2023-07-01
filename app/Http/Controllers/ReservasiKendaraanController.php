@@ -84,14 +84,12 @@ class ReservasiKendaraanController extends Controller
         $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->findOrFail($id);
         return view('reservasi_kendaraan.validasi_reservasi_kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
-
     public function simpanValidasi(UpdateReservasi_kendaraanRequest $request, Reservasi_kendaraan $reservasi_kendaraan, $id)
     {
         $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->findOrFail($id);
         $reservasi_kendaraan->update($request->all());
         return redirect('/kelola-reservasi-kendaraan');
     }
-
     public function detailReservasi(Reservasi_kendaraan $reservasi_kendaraan, $id)
     {
         $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->findOrFail($id);
@@ -102,9 +100,7 @@ class ReservasiKendaraanController extends Controller
     {
         $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user', 'kendaraan.jenis_kendaraan')
         ->findOrFail($id);
-        $filename = 'cetak-bukti-reservasi.pdf';
         $data = [
-            'title' => 'Cetak Bukti Reservasi Kendaraan Sekolah Vokasi UNS',
             'reservasi_kendaraan' => $reservasi_kendaraan
         ];
         $html = view()->make('reservasi_kendaraan.cetak_bukti_reservasi_kendaraan', $data)->render();
@@ -112,8 +108,9 @@ class ReservasiKendaraanController extends Controller
         $pdf::SetTitle('Cetak Bukti Reservasi');
         $pdf::AddPage();
         $pdf::writeHTML($html, true, false, true, false, '');
-        $pdf::Output(public_path($filename), 'I');
-        return response()->download(public_path($filename));
+        $filename = 'cetak-bukti-reservasi.pdf';
+        $pdf::Output($filename, 'I');
+        exit();
     }
 
     public function cekJadwal()
@@ -150,7 +147,6 @@ class ReservasiKendaraanController extends Controller
     {
         return Excel::download(new Reservasi_kendaraansExport, 'reservasi_kendaraans.xlsx');
     }
-
     public function importReservasiKendaraans(Request $request)
     {
         $file = $request->file('file');

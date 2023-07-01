@@ -61,7 +61,6 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
@@ -69,7 +68,6 @@ class AuthController extends Controller
         }
         Session::flash('status', 'failed');
         Session::flash('message', 'Gagal Login');
-
         return redirect('/login');
     }
     public function logout(Request $request)

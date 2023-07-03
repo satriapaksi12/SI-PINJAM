@@ -20,7 +20,7 @@ class GedungController extends Controller
 
     public function index()
     {
-        $gedung = Gedung::with('lokasi')->get();
+        $gedung = Gedung::with('lokasi')->latest()->get();
         return view('gedung.gedung', ['gedungList' => $gedung]);
     }
     public function create()

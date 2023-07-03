@@ -21,6 +21,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Requests\StoreReservasi_ruangRequest;
 use App\Http\Requests\UpdateReservasi_ruangRequest;
 use App\Imports\Reservasi_ruangsImport;
+use Illuminate\Support\Facades\DB;
 
 class ReservasiRuangController extends Controller
 {
@@ -183,35 +184,29 @@ class ReservasiRuangController extends Controller
         $endDate = $request->cek_tanggal_selesai;
         $sesiIds = $request->sesi_id;
 
-        $unavailableRuangIds = Reservasi_ruang::with('sesi')
-            ->whereDoesntHave('sesi', function ($query) use ($sesiIds) {
-                $query->whereIn('reservasi_ruang_sesi.sesi_id', $sesiIds);
-            })
-            ->where(function ($query) use ($startDate, $endDate) {
-                $query->where(function ($query) use ($startDate, $endDate) {
-                    $query->where('tanggal_mulai', '=', $startDate)
-                        ->orWhere('tanggal_selesai', '=', $endDate);
-                })->orWhere(function ($query) use ($startDate, $endDate) {
+        $unavailableRuangIds = DB::table('reservasi_ruangs')
+        ->join('reservasi_ruang_sesi', 'reservasi_ruangs.id', '=', 'reservasi_ruang_sesi.reservasi_ruang_id')
+        ->where('reservasi_ruang_sesi.sesi_id', '=', $sesiIds)
+        ->where(function ($query) use ($startDate, $endDate) {
+            $query->orWhere('tanggal_mulai', '=', $startDate)
+                ->orWhere('tanggal_selesai', '=', $endDate)
+                ->orWhere(function ($query) use ($startDate, $endDate) {
                     $query->where('tanggal_mulai', '>=', $startDate)
                         ->where('tanggal_selesai', '<=', $endDate);
-                })->orWhere(function ($query) use ($startDate, $endDate) {
+                })
+                ->orWhere(function ($query) use ($startDate, $endDate) {
                     $query->where('tanggal_mulai', '<=', $startDate)
                         ->where('tanggal_selesai', '>=', $endDate);
                 });
-            })
-            ->where('status', '=', 'Disetujui')
-            ->pluck('ruang_id');
+        })
+        ->where('reservasi_ruangs.status', '=', 'Disetujui')
+        ->pluck('ruang_id')
+        ->toArray();
 
         $availableRuangs = Ruang::with(['gedung.lokasi', 'foto_ruang'])
-            ->whereNotIn('id', $unavailableRuangIds)
-            ->get();
+        ->whereNotIn('id', $unavailableRuangIds)
+        ->get();
 
-        // $availableRuangs = Ruang::with(['gedung.lokasi', 'foto_ruang'])
-        //     ->whereNotIn('id', $unavailableRuangIds)
-        //     ->whereHas('sesi', function ($query) use ($sesiIds) {
-        //         $query->whereIn('sesi_id', $sesiIds);
-        //     })
-        //     ->get();
         return response()->json($availableRuangs);
     }
 

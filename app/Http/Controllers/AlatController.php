@@ -9,6 +9,7 @@ use App\Models\Foto_alat;
 use App\Exports\AlatsExport;
 use App\Imports\AlatsImport;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreAlatRequest;
 use Illuminate\Support\Facades\Session;
@@ -20,15 +21,15 @@ class AlatController extends Controller
 
     public function index()
     {
-        $alat = Alat::with('gedung.lokasi','foto_alat')->latest()->get();
+        $alat = Alat::with('gedung.lokasi', 'foto_alat')->latest()->get();
         return view('alat.alat', ['alat' => $alat]);
     }
     public function create()
     {
         $foto_alat = Foto_alat::select('id', 'nama_foto')->get();
-        $gedung = Gedung::select('id', 'nama_gedung','lokasi_id')->get();
+        $gedung = Gedung::select('id', 'nama_gedung', 'lokasi_id')->get();
         $lokasi = Lokasi::select('id', 'nama_lokasi')->get();
-        return view('alat.alat-add', ['gedung' => $gedung, 'lokasi' => $lokasi,'foto_alat' => $foto_alat]);
+        return view('alat.alat-add', ['gedung' => $gedung, 'lokasi' => $lokasi, 'foto_alat' => $foto_alat]);
     }
     public function store(StoreAlatRequest $request)
     {
@@ -52,32 +53,55 @@ class AlatController extends Controller
         }
         return redirect('/alat');
     }
-    public function show(Alat $alat,$id)
+    public function show(Alat $alat, $id)
     {
-        $alat = Alat::with('gedung.lokasi','foto_alat')->findOrFail($id);
+        $alat = Alat::with('gedung.lokasi', 'foto_alat')->findOrFail($id);
         return view('alat.alat-detail', ['alat' => $alat]);
     }
-    public function edit(Alat $alat,$id)
+    public function edit(Alat $alat, $id)
     {
         $data = [
-            'alat' => Alat::with('foto_alat','gedung.lokasi')->findOrFail($id),
-            'foto_alat' => Foto_alat::pluck('nama_foto','id'),
+            'alat' => Alat::with('foto_alat', 'gedung.lokasi')->findOrFail($id),
+            'foto_alat' => Foto_alat::pluck('nama_foto', 'id'),
             'gedung' => Gedung::get(),
             'lokasi' => Lokasi::select('id', 'nama_lokasi')->get(),
         ];
         return view('alat.alat-edit', $data);
     }
-    public function update(UpdateAlatRequest $request, Alat $alat,$id)
+    public function update(UpdateAlatRequest $request, Alat $alat, $id)
     {
-        $alat =Alat::findOrFail($id);
-        $alat->update($request->all());
+        $alat = Alat::findOrFail($id);
+        $oldData = Foto_alat::where('id', $alat->foto_alat_id)->first();
+        $path = "";
+
+        if ($request->hasFile('foto_alat_id')) {
+            if ($oldData != null) {
+                if (file_exists(public_path($oldData->nama_foto))) {
+                    unlink(public_path($oldData->nama_foto));
+                }
+            }
+            $foto = $request->file('foto_alat_id');
+
+            if ($foto != null) {
+                $name = $foto->hashName();
+                $path = 'img/' . $name;
+                $foto->move(public_path('img/'), $name);
+            }
+        }
+
+        if ($path != "") {
+            $oldData->update([
+                'nama_foto' => $path
+            ]);
+        }
+        $alat->update($request->except('foto_alat_id'));
         if ($alat) {
             Session::flash('status-edit', 'success');
             Session::flash('message-edit', 'Data berhasil diedit');
         }
         return redirect('/alat');
     }
-    public function destroy(Alat $alat,$id)
+    public function destroy(Alat $alat, $id)
     {
         $deletedAlat = Alat::findORFail($id);
         $deletedAlat->delete();

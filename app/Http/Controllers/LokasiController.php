@@ -16,7 +16,7 @@ class LokasiController extends Controller
 
     public function index()
     {
-        $lokasi = Lokasi::all();
+        $lokasi = Lokasi::latest()->get();
         return view('lokasi.lokasi', ['lokasiList' => $lokasi]);
     }
     public function create()

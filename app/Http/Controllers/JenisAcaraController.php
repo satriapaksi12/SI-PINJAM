@@ -15,7 +15,7 @@ class JenisAcaraController extends Controller
 {
     public function index()
     {
-        $jenis_acara = Jenis_acara::all();
+        $jenis_acara = Jenis_acara::latest()->get();
         return view('jenis_acara.jenis_acara', ['jenisacaraList' => $jenis_acara]);
     }
     public function create()

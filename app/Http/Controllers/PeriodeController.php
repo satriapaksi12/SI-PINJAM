@@ -16,7 +16,7 @@ class PeriodeController extends Controller
 
     public function index()
     {
-        $periode = Periode::all();
+        $periode = Periode::latest()->get();
         return view('periode.periode', ['periodeList' => $periode]);
     }
     public function create()

@@ -16,7 +16,7 @@ class SesiController extends Controller
 
     public function index()
     {
-        $sesi = Sesi::all();
+        $sesi = Sesi::latest()->get();
         return view('sesi.sesi', ['sesiList' => $sesi]);
     }
     public function create()

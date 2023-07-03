@@ -16,7 +16,7 @@ class JenisKendaraanController extends Controller
 
     public function index()
     {
-        $jenis_kendaraan = Jenis_kendaraan::all();
+        $jenis_kendaraan = Jenis_kendaraan::latest()->get();
         return view('jenis_kendaraan.jenis_kendaraan', ['jeniskendaraanList' => $jenis_kendaraan]);
     }
     public function create()

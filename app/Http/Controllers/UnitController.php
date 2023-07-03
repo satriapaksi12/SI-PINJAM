@@ -16,7 +16,7 @@ class UnitController extends Controller
 
     public function index()
     {
-        $unit = Unit::all();
+        $unit = Unit::latest()->get();
         return view('unit.unit', ['unitList' => $unit]);
     }
     public function create()

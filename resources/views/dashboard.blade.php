@@ -50,12 +50,17 @@
                                 <h4>Jumlah Aset</h4>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <div class="card bg-primary">
+                                <div class="card">
                                     <div class="card-body px-4 py-4">
                                         <div class="row align-items-center">
-                                            <div class="col-12">
-                                                <h6 class="text-white font-semibold">Ruangan</h6>
-                                                <h6 class="text-white font-extrabold mb-0">{{ $jumlahRuangan }}</h6>
+                                            <div class="col-4">
+                                                <div class="stats-icon purple mb-2">
+                                                    <i class="fas fa-door-open"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <h6 class="text-muted font-semibold">Ruangan</h6>
+                                                <h6 class="font-extrabold mb-0">{{ $jumlahRuangan }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -64,13 +69,16 @@
                             </div>
                             <div class="col-12 col-lg-4">
                                 <div class="card">
-                                    <div class="card bg-info">
-                                        <div class="card-body px-4 py-4">
-                                            <div class="row align-items-center">
-                                                <div class="col-12">
-                                                    <h6 class="text-white font-semibold">Alat</h6>
-                                                    <h6 class="text-white font-extrabold mb-0">{{ $jumlahAlat }}</h6>
+                                    <div class="card-body px-4 py-4">
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <div class="stats-icon blue mb-2">
+                                                    <i class="fas fa-tools"></i>
                                                 </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <h6 class="text-muted font-semibold">Alat</h6>
+                                                <h6 class="font-extrabold mb-0">{{ $jumlahAlat }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -78,15 +86,16 @@
                             </div>
                             <div class="col-12 col-lg-4">
                                 <div class="card">
-                                    <div class="card">
-                                        <div class="card bg-success">
-                                            <div class="card-body px-4 py-4">
-                                                <div class="row align-items-center">
-                                                    <div class="col-12">
-                                                        <h6 class="text-white font-semibold">Kendaraan</h6>
-                                                        <h6 class="text-white font-extrabold mb-0">{{ $jumlahKendaraan }}</h6>
-                                                    </div>
+                                    <div class="card-body px-4 py-4">
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <div class="stats-icon green mb-2">
+                                                    <i class="fa fa-car"></i>
                                                 </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <h6 class="text-muted font-semibold">Kendaraan</h6>
+                                                <h6 class="font-extrabold mb-0">{{ $jumlahKendaraan }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -177,7 +186,7 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
     </div>
 
 

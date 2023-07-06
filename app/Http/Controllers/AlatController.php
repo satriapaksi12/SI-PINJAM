@@ -88,7 +88,6 @@ class AlatController extends Controller
                 $foto->move(public_path('img/'), $name);
             }
         }
-
         if ($path != "") {
             $oldData->update([
                 'nama_foto' => $path

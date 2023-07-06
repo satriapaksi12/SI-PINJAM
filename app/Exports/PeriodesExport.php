@@ -20,6 +20,7 @@ class PeriodesExport implements FromCollection
                 $periode->id,
                 $periode->tahun_periode,
                 $periode->semester,
+                $periode->status,
                 $periode->created_at,
                 $periode->updated_at,
             ];
@@ -29,6 +30,7 @@ class PeriodesExport implements FromCollection
             'ID',
             'Tahun Periode',
             'Semester',
+            'Status',
             'Created At',
             'Updated At',
         ]);

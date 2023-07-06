@@ -17,6 +17,7 @@ class RuangsExport implements FromCollection
         $data = $ruangs->map(function ($ruang) {
             return [
                 $ruang->id,
+                $ruang->no_ruang,
                 $ruang->nama_ruang,
                 $ruang->kapasitas,
                 $ruang->fasilitas,
@@ -29,6 +30,7 @@ class RuangsExport implements FromCollection
 
         $data->prepend([
             'ID',
+            'No Ruang',
             'Nama Ruang',
             'Kapasitas',
             'Fasilitas',

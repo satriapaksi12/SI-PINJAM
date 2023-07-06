@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kendaraans', function (Blueprint $table) {
             $table->id();
-            $table->string('no_polisi')->unique();
+            $table->string('no_polisi', 191)->unique();
             $table->integer('kapasitas');
             $table->timestamps();
             $table->unsignedBigInteger('gedung_id');

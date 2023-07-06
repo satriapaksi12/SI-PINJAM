@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_unit')->unique();
+            $table->string('nama_unit', 191)->unique();
             $table->string('telepon');
             $table->string('email');
             $table->timestamps();

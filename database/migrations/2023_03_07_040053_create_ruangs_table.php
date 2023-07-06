@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('ruangs', function (Blueprint $table) {
             $table->id();
-            $table->string('no_ruang')->unique();
+            $table->string('no_ruang', 191)->unique();
             $table->string('nama_ruang');
             $table->string('fasilitas');
             $table->integer('kapasitas');

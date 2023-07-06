@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('kelas')->nullable();
             $table->string('penanggung_jawab');
             $table->string('status')->nullable();
-            $table->string('no_reservasi')->unique();
+            $table->string('no_reservasi', 191)->unique();
             $table->string('no_telepon');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');

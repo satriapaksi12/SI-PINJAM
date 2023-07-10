@@ -14,14 +14,13 @@
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        {{-- <div class="col-md-4">
                                             <label>Nama Alat</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset disabled>
                                             <input type="text"name="nama_alat"id="nama_alat" class="form-control"
                                                 value="{{ $alat->nama_alat }}" readonly>
-
                                         </div>
                                         <div class="col-md-4">
                                             <label>Nomor Inventaris</label>
@@ -30,7 +29,6 @@
                                             <fieldset disabled>
                                             <input type="text" name="no_inventaris" id="no_inventaris"
                                                 class="form-control" value="{{ $alat->no_inventaris }}" readonly>
-
                                         </div>
                                         <div class="col-md-4">
                                             <label>Lokasi</label>
@@ -40,7 +38,7 @@
                                             <input type="text"name="gedung_id"id="gedung_id" class="form-control"
                                                 value="{{ $alat->gedung->nama_gedung }} - {{ $alat->gedung->lokasi->nama_lokasi }}"
                                                 readonly>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-4">
                                             <label>Peminjam</label>
                                         </div>
@@ -115,6 +113,27 @@
                                         </div>
                                         {{-- untuk menyimpan data ke database --}}
                                         <input type="hidden" name="alat_id" value="{{ $alat->id }}">
+                                        <div class="col-md-4">
+                                            <label>Daftar ALat </label>
+                                        </div>
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">No Inventaris</th>
+                                                <th scope="col">Nama Alat</th>
+                                                <th scope="col">Lokasi</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <td>1</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
                                             <button type="reset"

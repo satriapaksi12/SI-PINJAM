@@ -99,17 +99,22 @@
                                 <button id="cekKetersediaanButton" type="submit" class="btn btn-primary">Cek
                                     Ketersediaan</button>
                             </div>
+                            <a id="submitItemsButton" class="btn btn-primary" style="display: none;">Submit</a>
+
                         </form>
                         <script>
                             $(document).ready(function() {
-                                $('#cekKetersediaanForm').submit(function(event) {
+                                var selectedItems = []; // Array to store selected values
+
+                                // Event handler for "Cek Ketersediaan" button
+                                $('#cekKetersediaanButton').click(function(event) {
                                     event.preventDefault(); // Prevent form submission
 
                                     // Perform AJAX request
                                     $.ajax({
-                                        url: $(this).attr('action'),
+                                        url: $('#cekKetersediaanForm').attr('action'),
                                         method: 'GET',
-                                        data: $(this).serialize(),
+                                        data: $('#cekKetersediaanForm').serialize(),
                                         success: function(response) {
                                             // Clear previous cards
                                             $('#cardContainer').empty();
@@ -117,46 +122,84 @@
                                             // Iterate over the response data and create card components
                                             $.each(response, function(index, data) {
                                                 var card = `
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="card">
-                                <div class="card-content">
-                                    <img class="card-img-top img-fluid" src=${data.foto_alat[0].nama_foto} alt="Card image cap" style="height: 12rem" />
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="card">
+                <div class="card-content">
+                  <img class="card-img-top img-fluid" src="${data.foto_alat[0].nama_foto}" alt="Card image cap" style="height: 12rem" />
 
-                                    <div class="card-body">
-                                        <h4 class="card-title">${data.no_inventaris}</h4>
-                                        <table class="table table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Nama Alat</th>
-                                                    <td>:</td>
-                                                    <td>${data.nama_alat}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Lokasi</th>
-                                                    <td>:</td>
-                                                    <td colspan="2">${data.gedung.nama_gedung} ${data.gedung.lokasi.nama_lokasi}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="d-flex justify-content-end">
-                                            <a href="/reservasi-alat-add/${data.id}">
-                                                <button type="submit" class="btn btn-primary block">Reservasi</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+                  <div class="card-body">
+                    <h4 class="card-title">${data.no_inventaris}</h4>
+                    <table class="table table-borderless">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Nama Alat</th>
+                          <td>:</td>
+                          <td>${data.nama_alat}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Lokasi</th>
+                          <td>:</td>
+                          <td colspan="2">${data.gedung.nama_gedung} ${data.gedung.lokasi.nama_lokasi}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="d-flex justify-content-center">
+                      <input type="checkbox" class="form-check-input reservasiCheckbox" value="${data.id}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+
                                                 $('#cardContainer').append(card);
                                             });
+
                                             // Show the card section
                                             $('#cardContentSection').show();
+
+                                            // Show the submit button if at least one checkbox is checked
+                                            if ($('input.reservasiCheckbox:checked').length > 0) {
+                                                $('#submitItemsButton').show();
+                                            }
                                         },
                                         error: function(error) {
                                             console.log(error);
                                         }
                                     });
+                                });
+
+                                // Event handler for checkbox selection
+                                $(document).on('change', 'input.reservasiCheckbox', function() {
+                                    // Check if at least one checkbox is checked
+                                    if ($('input.reservasiCheckbox:checked').length > 0) {
+                                        $('#submitItemsButton').show();
+                                    } else {
+                                        $('#submitItemsButton').hide();
+                                    }
+                                });
+
+                                // Event handler for "Submit" button
+                                $('#submitItemsButton').click(function(event) {
+                                    event.preventDefault(); // Prevent anchor tag default action
+
+                                    // Clear previous selection
+                                    selectedItems = [];
+
+                                    // Iterate over the checkboxes and add the selected values to the array
+                                    $('input.reservasiCheckbox:checked').each(function() {
+                                        selectedItems.push($(this).val());
+                                    });
+
+                                    // Log the selected items
+                                    console.log(selectedItems);
+
+                                    // Construct the redirect URL with the selected IDs
+                                    var redirectURL = 'http://127.0.0.1:8000/reservasi-alat-add/' + selectedItems[0] + '?id=' +
+                                        selectedItems.slice(1).join(',');
+
+                                    // Redirect to the specified URL
+                                    window.location.href = redirectURL;
                                 });
                             });
                         </script>

@@ -153,6 +153,17 @@ class ReservasiAlatController extends Controller
         return response()->json($availableTools);
     }
 
+    public function getReservasiAlatAPI(Request $request) {
+        $data = $request->data;
+        $result = Alat::select('alats.no_inventaris', 'alats.nama_alat', 'lokasis.nama_lokasi')
+        ->join('gedungs', 'alats.gedung_id', '=', 'gedungs.id')
+        ->join('lokasis', 'gedungs.lokasi_id', '=', 'lokasis.id')
+        ->whereIn('alats.id', [$data])
+        ->get();
+        
+        return response()->json($result);
+    }
+
     public function exportReservasiAlats()
     {
         return Excel::download(new Reservasi_alatsExport, 'reservasi_alats.xlsx');

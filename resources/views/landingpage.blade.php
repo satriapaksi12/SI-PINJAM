@@ -45,7 +45,7 @@
         <div class="container d-flex align-items-center">
 
             <h1 class="logo me-auto"><span style="color: rgb(238, 159, 13);">SI</span> <span
-                    style="color: rgb(255, 255, 255);">PINJAMS TES</span></h1>
+                    style="color: rgb(255, 255, 255);">PINJAM</span></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 

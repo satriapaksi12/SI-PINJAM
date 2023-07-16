@@ -67,6 +67,9 @@
                                     @if ($data->status == 'Ditolak')
                                     <span class="badge bg-danger">Ditolak</span>
                                     @endif
+                                    @if ($data->status == 'Dibatalkan')
+                                    <span class="badge bg-secondary ">Dibatalkan</span>
+                                    @endif
                                 </td>
                                 <td>
                                     @if ($data->status == 'Proses Validasi')

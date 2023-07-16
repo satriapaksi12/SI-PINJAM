@@ -143,12 +143,14 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset class="form-group">
-                                                <select class="form-select" name="status" id="status">
-                                                    <option value="">Pilih salah satu</option>
-                                                    <option value="Proses Validasi ">Proses Validasi</option>
-                                                    <option value="Disetujui">Disetujui</option>
-                                                    <option value="Ditolak">Ditolak</option>
-                                                </select>
+                                                <input type="radio" name="status" id="status-proses" value="Proses Validasi" <?php echo ($reservasi_ruang->status === 'Proses Validasi') ? ' checked' : ''; ?>>
+                                                <label for="status-proses">Proses Validasi</label><br>
+                                                <input type="radio" name="status" id="status-disetujui" value="Disetujui" <?php echo ($reservasi_ruang->status === 'Disetujui') ? ' checked' : ''; ?>>
+                                                <label for="status-disetujui">Disetujui</label><br>
+                                                <input type="radio" name="status" id="status-ditolak" value="Ditolak" <?php echo ($reservasi_ruang->status === 'Ditolak') ? ' checked' : ''; ?>>
+                                                <label for="status-ditolak">Ditolak</label><br>
+                                                <input type="radio" name="status" id="status-dibatalkan" value="Dibatalkan" <?php echo ($reservasi_ruang->status === 'Dibatalkan') ? ' checked' : ''; ?>>
+                                                <label for="status-dibatalkan">Dibatalkan</label><br>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-4">

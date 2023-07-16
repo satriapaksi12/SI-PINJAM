@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlatController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SesiController;
@@ -44,7 +45,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 //Dashboard
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware('auth', 'verified');
 
-
+//Laporan
+Route::get('/laporan', [ExportController::class, 'index'])->middleware(['auth', 'must-superadmin-or-admin']);
 //Register
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('/register', [AuthController::class, 'registerProses']);

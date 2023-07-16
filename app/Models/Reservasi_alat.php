@@ -21,6 +21,6 @@ class Reservasi_alat extends Model
     }
     public function alat()
     {
-        return $this->belongsTo(Alat::class);
+        return $this->belongsToMany(Alat::class,'reservasi_alat_to_alat','reservasi_alat_id','alat_id');
     }
 }

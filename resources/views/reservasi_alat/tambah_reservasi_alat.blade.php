@@ -44,8 +44,8 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset disabled>
-                                            <input type="text" name="user_id"id="user_id" class="form-control"
-                                                value="{{ Auth::user()->nama }}"readonly>
+                                                <input type="text" name="user_id"id="user_id" class="form-control"
+                                                    value="{{ Auth::user()->nama }}"readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Penanggungjawab</label>
@@ -58,8 +58,7 @@
                                             <label>No Telepon Penanggungjawab</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" name="no_telepon"id="no_telepon"
-                                                class="form-control">
+                                            <input type="text" name="no_telepon"id="no_telepon" class="form-control">
                                         </div>
                                         <div class="col-md-4">
                                             <label>Unit Penanggungjawab</label>
@@ -118,26 +117,25 @@
                                         </div>
                                         <table class="table">
                                             <thead>
-                                              <tr>
-                                                <th scope="col">No</th>
-                                                <th scope="col">No Inventaris</th>
-                                                <th scope="col">Nama Alat</th>
-                                                <th scope="col">Lokasi</th>
-                                              </tr>
+                                                <tr>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">No Inventaris</th>
+                                                    <th scope="col">Nama Alat</th>
+                                                    <th scope="col">Lokasi</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                              <tr>
-                                                <td>1</td>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                              </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Mark</td>
+                                                    <td>Otto</td>
+                                                    <td>@mdo</td>
+                                                </tr>
                                             </tbody>
-                                          </table>
+                                        </table>
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                                            <button type="reset"
-                                                class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                         </div>
                                     </div>
                                 </div>
@@ -147,6 +145,17 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).on('change', 'input.reservasiCheckbox', function() {
+                        $.ajax({
+                                url: $('#cekKetersediaanForm').attr('action'),
+                                method: 'GET',
+                                data: $('#cekKetersediaanForm').serialize(),
+                                success: function(response) {
+
+                                });
+                        });
+        </script>
     </section>
 
 

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('reservasi_ruang_sesi', function (Blueprint $table) {
             $table->unsignedBigInteger('reservasi_ruang_id');
-            $table->foreign('reservasi_ruang_id')->references('id')->on('reservasi_ruangs')->onDelete('restrict');
+            $table->foreign('reservasi_ruang_id')->references('id')->on('reservasi_ruangs')->onDelete('cascade');
             $table->unsignedBigInteger('sesi_id');
-            $table->foreign('sesi_id')->references('id')->on('sesis')->onDelete('restrict');
+            $table->foreign('sesi_id')->references('id')->on('sesis')->onDelete('cascade');
         });
     }
 

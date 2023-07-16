@@ -20,10 +20,10 @@
                     <h1 class="text-center justify-content-center">LOGIN</h1>
 
                     <div class="form-group">
-                        <input type="email" class="form-input" name="email" id="email" placeholder="Email" />
+                        <input type="email" class="form-input" name="email" id="email" placeholder="Email" required />
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-input" name="password" id="password" placeholder="Password" />
+                        <input type="password" class="form-input" name="password" id="password" placeholder="Password" required/>
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                     </div>
                     <div class="form-group">

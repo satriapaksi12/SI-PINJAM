@@ -19,14 +19,14 @@
                     </h2>
                     <h1 class="text-center justify-content-center">Register</h1>
                     <div class="form-group">
-                        <input type="text" class="form-input" name="nama" id="nama" placeholder="Nama" />
+                        <input type="text" class="form-input" name="nama" id="nama" placeholder="Nama" required/>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-input" name="nomor_induk" id="nomor_induk"
-                            placeholder="Nomor Induk" />
+                            placeholder="Nomor Induk" required/>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-input" name="email" id="email" placeholder="Email" />
+                        <input type="email" class="form-input" name="email" id="email" placeholder="Email" required/>
                         <p class="email-format-small">Format email harus sesuai dengan @staff.uns.ac.id atau
                             @student.uns.ac.id</p>
                     </div>
@@ -37,7 +37,7 @@
                         }
                     </style>
                     <div class="form-group">
-                        <input type="password" class="form-input" name="password" id="password" placeholder="Password" />
+                        <input type="password" class="form-input" name="password" id="password" placeholder="Password" required />
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                     </div>
                     <div class="form-group">

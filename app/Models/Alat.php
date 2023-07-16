@@ -14,7 +14,7 @@ class Alat extends Model
 
     public function reservasi_alat()
     {
-        return $this->hasMany(Reservasi_alat::class);
+        return $this->belongsToMany(Reservasi_alat::class,'reservasi_alat_to_alat','alat_id','reservasi_alat_id' );
     }
 
     public function gedung()

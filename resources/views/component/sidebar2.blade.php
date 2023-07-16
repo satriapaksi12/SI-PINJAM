@@ -158,6 +158,12 @@
                 </li>
             </ul>
         </li>
+        <li class="sidebar-item  ">
+            <a href="/laporan" class='sidebar-link'>
+                <i class="bi bi-mortarboard"></i>
+                <span>Laporan</span>
+            </a>
+        </li>
         @elseif (Auth::user()->role_id == 2)
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>

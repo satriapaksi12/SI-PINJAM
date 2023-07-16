@@ -118,8 +118,7 @@ class ReservasiRuangController extends Controller
 
     public function kelolaReservasi()
     {
-        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')
-            ->latest()->get();
+        $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->get();
         return view('reservasi_ruang.kelola_reservasi_ruangan', ['reservasi_ruang' => $reservasi_ruang]);
     }
     public function daftarReservasi()

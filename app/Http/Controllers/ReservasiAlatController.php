@@ -73,7 +73,7 @@ class ReservasiAlatController extends Controller
     }
     public function kelolaReservasi()
     {
-        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi','user')->latest()->get();
+        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi','user')->get();
         return view('reservasi_alat.kelola_reservasi_alat', ['reservasi_alat' => $reservasi_alat]);
     }
 
@@ -160,7 +160,7 @@ class ReservasiAlatController extends Controller
         ->join('lokasis', 'gedungs.lokasi_id', '=', 'lokasis.id')
         ->whereIn('alats.id', [$data])
         ->get();
-        
+
         return response()->json($result);
     }
 

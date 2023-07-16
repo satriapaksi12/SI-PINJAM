@@ -69,7 +69,7 @@ class ReservasiKendaraanController extends Controller
 
     public function kelolaReservasi()
     {
-        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->latest()->get();
+        $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->get();
         return view('reservasi_kendaraan.kelola_reservasi_kendaraan', ['reservasi_kendaraan' => $reservasi_kendaraan]);
     }
     public function daftarReservasi()

@@ -145,17 +145,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            $(document).on('change', 'input.reservasiCheckbox', function() {
-                        $.ajax({
-                                url: $('#cekKetersediaanForm').attr('action'),
-                                method: 'GET',
-                                data: $('#cekKetersediaanForm').serialize(),
-                                success: function(response) {
-
-                                });
-                        });
-        </script>
     </section>
 
 

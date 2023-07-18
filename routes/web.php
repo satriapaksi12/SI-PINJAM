@@ -1,20 +1,23 @@
 <?php
 
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlatController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RuangController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\GedungController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\JenisAcaraController;
+use App\Exports\LaporanReservasiKendaraanExport;
 use App\Http\Controllers\ReservasiAlatController;
 use App\Http\Controllers\JenisKendaraanController;
 use App\Http\Controllers\ReservasiRuangController;
@@ -45,8 +48,14 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 //Dashboard
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware('auth', 'verified');
 
-//Laporan
-Route::get('/laporan', [ExportController::class, 'index'])->middleware(['auth', 'must-superadmin-or-admin']);
+//Laporan berdasarkan bulan dan tahun
+//reservasi kendaraan
+Route::get('/export-reservasi-kendaran', function (Request $request) {
+    $bulan = $request->input('bulan');
+    $tahun = $request->input('tahun');
+
+    return Excel::download(new LaporanReservasiKendaraanExport($bulan, $tahun), 'laporan_reservasi_kendaraan.xlsx');
+})->name('export.reservasi.kendaraan');;
 //Register
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('/register', [AuthController::class, 'registerProses']);

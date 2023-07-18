@@ -21,6 +21,39 @@
     <!-- Basic Tables start -->
     <section class="section">
         <div class="card">
+            <div class="separator"></div>
+            <center><p>EXPORT DATA TO EXCEL BY MONTH AND YEAR</p></center>
+            <div class="card-header flex-container">
+                <form action="" method="get">
+                    <label for="bulan">Bulan</label>
+                    <select class="form-select" name="bulan" id="bulan">
+                        @for ($i = 1; $i <= 12; $i++)
+                            <option value="{{ $i }}">{{ date('F', mktime(0, 0, 0, $i, 1)) }}</option>
+                        @endfor
+                    </select>
+
+                    <label for="tahun">Tahun</label>
+                    <select class="form-select" name="tahun" id="tahun">
+                        @for ($year = date('Y'); $year >= 2020; $year--)
+                            <option value="{{ $year }}">{{ $year }}</option>
+                        @endfor
+                    </select>
+                    <div class="d-grid gap-2 mt-3">
+                        <button type="submit" class="btn btn-outline-primary">Export to Excel</button>
+                    </div>
+                </form>
+            </div>
+            <div class="separator"></div>
+            <style>
+                .separator {
+                    width: 100%;
+                    height: 1px;
+                    background-color: #ddd;
+                    /* Ganti dengan warna garis yang sesuai */
+                    margin: 15px 0;
+                    /* Sesuaikan margin atas dan bawah sesuai preferensi Anda */
+                }
+            </style>
             <div class="card-header flex-container">
                 <a href="/reservasi-ruang" class="btn btn-primary">Add Data</a>
                 <a href="/export-reservasi_ruang" class="btn btn-success">Export Excel</a>

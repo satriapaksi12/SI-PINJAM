@@ -40,8 +40,6 @@ class JenisKendaraanController extends Controller
     public function update(UpdateJenis_kendaraanRequest $request, Jenis_kendaraan $jenis_kendaraan,$id)
     {
         $jenis_kendaraan = Jenis_kendaraan::findOrFail($id);
-
-        // dd($request->all());
         $jenis_kendaraan->update( $request->all());
 
         if ($jenis_kendaraan) {

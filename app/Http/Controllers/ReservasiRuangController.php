@@ -152,18 +152,14 @@ class ReservasiRuangController extends Controller
     {
         $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')
             ->findOrFail($id);
-
         $data = [
             'reservasi_ruang' => $reservasi_ruang
         ];
-
         $html = view()->make('reservasi_ruang.cetak_bukti_reservasi_ruangan', $data)->render();
-
         $pdf = new TCPDF;
         $pdf::SetTitle('Cetak Bukti Reservasi');
         $pdf::AddPage();
         $pdf::writeHTML($html, true, false, true, false, '');
-
         $filename = 'cetak-bukti-reservasi.pdf';
         $pdf::Output($filename, 'I');
         exit();

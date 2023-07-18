@@ -46,7 +46,6 @@ class GedungController extends Controller
     }
     public function update(UpdateGedungRequest $request, Gedung $gedung,$id)
     {
-        // dd($request->all());
         $gedung =Gedung::findOrFail($id);
         $gedung->update($request->all());
 

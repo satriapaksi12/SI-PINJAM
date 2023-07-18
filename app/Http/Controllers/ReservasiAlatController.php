@@ -117,7 +117,6 @@ class ReservasiAlatController extends Controller
         $pdf::SetTitle('Cetak Bukti Reservasi');
         $pdf::AddPage();
         $pdf::writeHTML($html, true, false, true, false, '');
-
         $filename = 'cetak-bukti-reservasi.pdf';
         $pdf::Output($filename, 'I');
         exit();
@@ -131,10 +130,10 @@ class ReservasiAlatController extends Controller
 
     public function cekKesediaan(Request $request)
     {
-        $startDate = $request->cek_tanggal_mulai; // Replace with the desired start date
-        $endDate = $request->cek_tanggal_selesai; // Replace with the desired end date
-        $startTime = $request->cek_jam_mulai; // Replace with the desired start time
-        $endTime = $request->cek_jam_selesai; // Replace with the desired end time
+        $startDate = $request->cek_tanggal_mulai;
+        $endDate = $request->cek_tanggal_selesai;
+        $startTime = $request->cek_jam_mulai;
+        $endTime = $request->cek_jam_selesai;
         $unavailableToolIds = Reservasi_alat::where(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
             $query->where(function ($query) use ($startDate, $endDate, $startTime) {
                 $query->where('tanggal_mulai', '=', $startDate)

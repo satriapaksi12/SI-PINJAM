@@ -13,7 +13,6 @@ class Reservasi_ruangsExport implements FromCollection
     public function collection()
     {
         $reservasi_ruangs = Reservasi_ruang::with('user','unit', 'ruang.gedung.lokasi',  'sesi', 'jenis_acara', 'periode')->get();
-
         $data = $reservasi_ruangs->map(function ($reservasi_ruang) {
             return [
                 $reservasi_ruang->id,
@@ -35,15 +34,14 @@ class Reservasi_ruangsExport implements FromCollection
                 $reservasi_ruang->jenis_acara->nama_jenis_acara,
                 $reservasi_ruang->periode->tahun_periode,
                 $reservasi_ruang->periode->semester,
-                $reservasi_ruang->sesi->pluck('sesi')->implode(', '), // Menggabungkan nilai sesi menjadi satu string
-                $reservasi_ruang->sesi->pluck('hari')->implode(', '), // Menggabungkan nilai hari menjadi satu string
-                $reservasi_ruang->sesi->pluck('jam_mulai')->implode(', '), // Menggabungkan nilai jam_mulai menjadi satu string
-                $reservasi_ruang->sesi->pluck('jam_selesai')->implode(', '), // Menggabungkan nilai jam_selesai menjadi satu string
+                $reservasi_ruang->sesi->pluck('sesi')->implode(', '),
+                $reservasi_ruang->sesi->pluck('hari')->implode(', '),
+                $reservasi_ruang->sesi->pluck('jam_mulai')->implode(', '),
+                $reservasi_ruang->sesi->pluck('jam_selesai')->implode(', '), 
                 $reservasi_ruang->created_at,
                 $reservasi_ruang->updated_at,
             ];
         });
-
         $data->prepend([
             'ID',
             'No Reservasi',

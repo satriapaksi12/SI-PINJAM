@@ -58,7 +58,6 @@ class RuangController extends Controller
     {
         $ruang = Ruang::with('gedung.lokasi', 'foto_ruang')->findOrFail($id);
         return view('ruangan.ruangan-detail', ['ruang' => $ruang]);
-        // return response()->json($ruang);
     }
     public function edit(Ruang $ruang, $id)
     {

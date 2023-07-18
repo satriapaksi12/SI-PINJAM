@@ -44,7 +44,6 @@ class KendaraanController extends Controller
             'kendaraan' => Kendaraan::with('jenis_kendaraan','gedung.lokasi')->findOrFail($id),
             'jenis_kendaraan' => Jenis_kendaraan::pluck('nama_jenis_kendaraan','id'),
             'gedung' => Gedung::get(),
-            // 'gedung' => Gedung::pluck('id','nama_gedung','lokasi_id')->first(),
             'lokasi' => Lokasi::select('id', 'nama_lokasi')->get(),
         ];
         return view('kendaraan.kendaraan-edit', $data);

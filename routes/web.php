@@ -14,8 +14,10 @@ use App\Http\Controllers\RuangController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\GedungController;
 use App\Http\Controllers\LokasiController;
+use App\Exports\LaporanReservasiAlatExport;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\KendaraanController;
+use App\Exports\LaporanReservasiRuanganExport;
 use App\Http\Controllers\JenisAcaraController;
 use App\Exports\LaporanReservasiKendaraanExport;
 use App\Http\Controllers\ReservasiAlatController;
@@ -49,13 +51,29 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware('auth', 'verified');
 
 //Laporan berdasarkan bulan dan tahun
+//reservasi ruangan
+Route::get('/export-reservasi-ruangan', function (Request $request) {
+    $bulan = $request->input('bulan');
+    $tahun = $request->input('tahun');
+
+    return Excel::download(new LaporanReservasiRuanganExport($bulan, $tahun), 'laporan_reservasi_ruangan.xlsx');
+})->name('export.reservasi.ruangan');;
+//reservasi alat
+Route::get('/export-reservasi-alat', function (Request $request) {
+    $bulan = $request->input('bulan');
+    $tahun = $request->input('tahun');
+
+    return Excel::download(new LaporanReservasiAlatExport($bulan, $tahun), 'laporan_reservasi_alat.xlsx');
+})->name('export.reservasi.alat');;
 //reservasi kendaraan
-Route::get('/export-reservasi-kendaran', function (Request $request) {
+Route::get('/export-reservasi-kendaraan', function (Request $request) {
     $bulan = $request->input('bulan');
     $tahun = $request->input('tahun');
 
     return Excel::download(new LaporanReservasiKendaraanExport($bulan, $tahun), 'laporan_reservasi_kendaraan.xlsx');
 })->name('export.reservasi.kendaraan');;
+
+
 //Register
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('/register', [AuthController::class, 'registerProses']);

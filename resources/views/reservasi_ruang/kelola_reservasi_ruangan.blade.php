@@ -24,7 +24,7 @@
             <div class="separator"></div>
             <center><p>EXPORT DATA TO EXCEL BY MONTH AND YEAR</p></center>
             <div class="card-header flex-container">
-                <form action="" method="get">
+                <form action="{{ route('export.reservasi.ruangan') }}" method="get">
                     <label for="bulan">Bulan</label>
                     <select class="form-select" name="bulan" id="bulan">
                         @for ($i = 1; $i <= 12; $i++)

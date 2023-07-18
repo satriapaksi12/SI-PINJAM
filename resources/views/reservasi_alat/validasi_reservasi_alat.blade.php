@@ -143,13 +143,13 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset class="form-group">
-                                                <input type="radio" name="status" id="status-proses" value="Proses Validasi" <?php echo ($reservasi_ruang->status === 'Proses Validasi') ? ' checked' : ''; ?>>
+                                                <input type="radio" name="status" id="status-proses" value="Proses Validasi" <?php echo ($reservasi_alat->status === 'Proses Validasi') ? ' checked' : ''; ?>>
                                                 <label for="status-proses">Proses Validasi</label><br>
-                                                <input type="radio" name="status" id="status-disetujui" value="Disetujui" <?php echo ($reservasi_ruang->status === 'Disetujui') ? ' checked' : ''; ?>>
+                                                <input type="radio" name="status" id="status-disetujui" value="Disetujui" <?php echo ($reservasi_alat->status === 'Disetujui') ? ' checked' : ''; ?>>
                                                 <label for="status-disetujui">Disetujui</label><br>
-                                                <input type="radio" name="status" id="status-ditolak" value="Ditolak" <?php echo ($reservasi_ruang->status === 'Ditolak') ? ' checked' : ''; ?>>
+                                                <input type="radio" name="status" id="status-ditolak" value="Ditolak" <?php echo ($reservasi_alat->status === 'Ditolak') ? ' checked' : ''; ?>>
                                                 <label for="status-ditolak">Ditolak</label><br>
-                                                <input type="radio" name="status" id="status-dibatalkan" value="Dibatalkan" <?php echo ($reservasi_ruang->status === 'Dibatalkan') ? ' checked' : ''; ?>>
+                                                <input type="radio" name="status" id="status-dibatalkan" value="Dibatalkan" <?php echo ($reservasi_alat->status === 'Dibatalkan') ? ' checked' : ''; ?>>
                                                 <label for="status-dibatalkan">Dibatalkan</label><br>
                                             </fieldset>
                                         </div>

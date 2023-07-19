@@ -132,7 +132,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                {{-- <div class="col-4">
                                     <div class="card reservasi-card alat">
                                         <div class="card-body text-center">
                                             <svg class="bi mb-3" width="32" height="32" fill="currentColor">
@@ -155,7 +155,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-4">
                                     <div class="card reservasi-card kendaraan">
                                         <div class="card-body text-center">

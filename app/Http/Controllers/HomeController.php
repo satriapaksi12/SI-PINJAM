@@ -26,7 +26,7 @@ class HomeController extends Controller
         $jumlahKendaraan = Kendaraan::count();
         $jumlahRuangan = Ruang::count();
         $jumlahAlat = Alat::count();
-
+        //ruang
         $user =  Auth::user()->id;
         $reservasi_ruang = Reservasi_ruang::with('unit', 'ruang.gedung.lokasi', 'user', 'sesi', 'jenis_acara', 'periode')->where('user_id', $user)->get();
         $jumlahreservasiRuang = count($reservasi_ruang);
@@ -40,20 +40,20 @@ class HomeController extends Controller
             ->where('status', 'Ditolak')
             ->get();
         $jumlahtolakRuang = count($tolakRuang);
-
-        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->where('user_id', $user)->get();
-        $jumlahreservasiAlat = count($reservasi_alat);
-        $setujuiAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
-            ->where('user_id', $user)
-            ->where('status', 'Disetujui')
-            ->get();
-        $jumlahsetujuiAlat = count($setujuiAlat);
-        $tolakAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
-            ->where('user_id', $user)
-            ->where('status', 'Ditolak')
-            ->get();
-        $jumlahtolakAlat = count($tolakAlat);
-
+        // alat
+        // $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->where('user_id', $user)->get();
+        // $jumlahreservasiAlat = count($reservasi_alat);
+        // $setujuiAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
+        //     ->where('user_id', $user)
+        //     ->where('status', 'Disetujui')
+        //     ->get();
+        // $jumlahsetujuiAlat = count($setujuiAlat);
+        // $tolakAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
+        //     ->where('user_id', $user)
+        //     ->where('status', 'Ditolak')
+        //     ->get();
+        // $jumlahtolakAlat = count($tolakAlat);
+        //kendaraan
         $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->where('user_id', $user)->get();
         $jumlahreservasiKendaraan = count($reservasi_kendaraan);
         $setujuiKendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')
@@ -66,7 +66,7 @@ class HomeController extends Controller
             ->where('status', 'Ditolak')
             ->get();
         $jumlahtolakKendaraan = count($tolakKendaraan);
-        return view('dashboard', compact('jumlahKendaraan', 'jumlahRuangan', 'jumlahAlat', 'jumlahreservasiRuang', 'jumlahreservasiAlat', 'jumlahreservasiKendaraan', 'jumlahsetujuiRuang', 'jumlahtolakRuang', 'jumlahsetujuiAlat', 'jumlahtolakAlat', 'jumlahsetujuiKendaraan', 'jumlahtolakKendaraan'));
+        return view('dashboard', compact('jumlahKendaraan', 'jumlahRuangan', 'jumlahAlat', 'jumlahreservasiRuang',  'jumlahreservasiKendaraan', 'jumlahsetujuiRuang', 'jumlahtolakRuang',  'jumlahsetujuiKendaraan', 'jumlahtolakKendaraan'));
     }
 
     /**
@@ -76,7 +76,5 @@ class HomeController extends Controller
      */
     public function grafik()
     {
-
-
     }
 }

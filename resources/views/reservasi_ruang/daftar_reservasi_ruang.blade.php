@@ -25,6 +25,11 @@
                 <a href="/reservasi-ruang" class="btn btn-primary">Add Data</a>
             </div>
             <div class="card-body">
+                <?php
+                date_default_timezone_set('Asia/Jakarta');
+                setlocale(LC_TIME, 'id_ID.utf8');
+                $bulanIndonesia = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                ?>
                 <table class="table" id="table1">
                     <thead>
                         <tr>
@@ -33,8 +38,7 @@
                             <th>Periode</th>
                             <th>No Ruangan</th>
                             <th>Nama Ruangan</th>
-                            <th>Tanggal Mulai</th>
-                            <th>Tanggal Selesai</th>
+                            <th>Tanggal Reservasi</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -47,8 +51,14 @@
                                 <td>{{ $data->periode->tahun_periode }} - {{ $data->periode->semester }}</td>
                                 <td>{{ $data->ruang->no_ruang}}</td>
                                 <td>{{ $data->ruang->nama_ruang}}</td>
-                                <td>{{ $data->tanggal_mulai }}</td>
-                                <td>{{ $data->tanggal_selesai }}</td>
+                                <td>{{ strftime('%d', strtotime($data->tanggal_mulai)) }}
+                                    {{ $bulanIndonesia[intval(strftime('%m', strtotime($data->tanggal_mulai))) - 1] }}
+                                    {{ strftime('%Y', strtotime($data->tanggal_mulai)) }}
+                                    -
+                                    {{ strftime('%d', strtotime($data->tanggal_selesai)) }}
+                                    {{ $bulanIndonesia[intval(strftime('%m', strtotime($data->tanggal_selesai))) - 1] }}
+                                    {{ strftime('%Y', strtotime($data->tanggal_selesai)) }}
+                                </td>
                                 <td>
                                     @if ($data->status == 'Proses Validasi')
                                     <span class="badge bg-warning">Proses Validasi</span>
@@ -59,6 +69,9 @@
                                     @if ($data->status == 'Ditolak')
                                     <span class="badge bg-danger">Ditolak</span>
                                     @endif
+                                    @if ($data->status == 'Dibatalkan')
+                                    <span class="badge bg-secondary ">Dibatalkan</span>
+                                @endif
                                 </td>
                                 <td>
                                     <a href="/detail-reservasi-ruang/{{ $data->id }}" class="btn icon btn-primary" title="Detail"><i

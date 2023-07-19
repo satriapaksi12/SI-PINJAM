@@ -37,7 +37,8 @@ class ReservasiAlatController extends Controller
         $user = User::with('unit')->get();
         $unit = Unit::all();
         $alat = Alat::with('gedung.lokasi', 'foto_alat')->findOrFail($id);
-        return view('reservasi_alat.tambah_reservasi_alat', ['user' => $user, 'unit' => $unit, 'alat' => $alat]);
+        $selectedAlats = json_decode($responseJSON, true);
+        return view('reservasi_alat.tambah_reservasi_alat', ['user' => $user, 'unit' => $unit, 'alat' => $alat,'selectedAlats' => $selectedAlats]);
     }
     public function store(StoreReservasi_alatRequest $request)
     {
@@ -162,6 +163,17 @@ class ReservasiAlatController extends Controller
 
         return response()->json($result);
     }
+
+    public function getReservasiAlatData($alatIDs)
+    {
+        $alatIDsArray = explode(',', $alatIDs);
+
+        // Get alat data based on the IDs
+        $alats = Alat::whereIn('id', $alatIDsArray)->with('gedung.lokasi')->get();
+
+        return response()->json($alats);
+    }
+
 
     public function exportReservasiAlats()
     {

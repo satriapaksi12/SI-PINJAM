@@ -124,13 +124,15 @@
                                                     <th scope="col">Lokasi</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
+                                            <tbody id="selectedAlatTableBody">
+                                                @foreach ($selectedAlats as $selectedAlat)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $selectedAlat['no_inventaris'] }}</td>
+                                                        <td>{{ $selectedAlat['nama_alat'] }}</td>
+                                                        <td>{{ $selectedAlat['gedung']['lokasi']['nama_lokasi'] }}</td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                         <div class="col-sm-12 d-flex justify-content-end">
@@ -146,7 +148,55 @@
             </div>
         </div>
     </section>
+    <script>
+        // Ambil parameter ID alat dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedAlatIDs = urlParams.get('id');
 
+        // Set nilai input tersembunyi dengan ID alat yang sudah dipilih
+        $('#selectedAlatIDs').val(selectedAlatIDs);
+
+
+        $(document).ready(function() {
+            // Mengambil nilai ID alat yang dipilih dari input tersembunyi
+            var selectedAlatIDs = $('#selectedAlatIDs').val().split(',');
+
+            // Mendapatkan data alat berdasarkan ID yang dipilih
+            var selectedAlats = [];
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/get-reservasi-alat-api', // Ganti URL dengan endpoint API yang sesuai
+                method: 'GET',
+                success: function(response) {
+                    // Iterate over the response data and filter the selected alats
+                    $.each(response, function(index, data) {
+                        if (selectedAlatIDs.includes(data.id.toString())) {
+                            selectedAlats.push(data);
+                        }
+                    });
+
+                    // Generate the HTML content for selected alats
+                    var tableContent = '';
+                    $.each(selectedAlats, function(index, alat) {
+                        tableContent += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${alat.no_inventaris}</td>
+                        <td>${alat.nama_alat}</td>
+                        <td>${alat.nama_lokasi}</td>
+                    </tr>
+                `;
+                    });
+
+                    // Update the table body with the selected alats
+                    $('#selectedAlatTableBody').html(tableContent);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    </script>
 
 
 @endsection

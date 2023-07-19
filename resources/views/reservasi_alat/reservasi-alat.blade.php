@@ -1,4 +1,3 @@
-
 @extends('layouts.app2')
 
 @section('title', 'Reservasi Alat')
@@ -131,15 +130,45 @@
                                         selectedItems.push($(this).val());
                                     });
 
-                                    // Log the selected items
-                                    console.log(selectedItems);
+                                    // Update the hidden input value with the selected IDs
+                                    $('#selectedAlatIDs').val(selectedItems.join(','));
 
                                     // Construct the redirect URL with the selected IDs
                                     var redirectURL = 'http://127.0.0.1:8000/reservasi-alat-add/' + selectedItems[0] + '?id=' +
                                         selectedItems.slice(1).join(',');
+                                    // Submit the form
+                                    $('#cekKetersediaanForm').submit();
+                                    // // Log the selected items
+                                    // console.log(selectedItems);
+                                    // Fetch data alat based on selected IDs
+                                    $.ajax({
+                                        url: 'http://127.0.0.1:8000/get-reservasi-alat-data/' + selectedItems.join(','),
+                                        method: 'GET',
+                                        success: function(response) {
+                                            // Clear previous table content
+                                            $('#selectedAlatTableBody').empty();
 
-                                    // Redirect to the specified URL
-                                    window.location.href = redirectURL;
+                                            // Iterate over the response data and create table rows
+                                            $.each(response, function(index, data) {
+                                                var tableRow = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${data.no_inventaris}</td>
+                            <td>${data.nama_alat}</td>
+                            <td>${data.gedung.lokasi.nama_lokasi}</td>
+                        </tr>
+                    `;
+                                                $('#selectedAlatTableBody').append(tableRow);
+                                            });
+
+                                            // Redirect to the specified URL
+                                            window.location.href = redirectURL;
+                                        },
+                                        error: function(error) {
+                                            console.log(error);
+                                        }
+                                    });
+
                                 });
                             });
                         </script>
@@ -151,4 +180,5 @@
             <div class="row" id="cardContainer">
             </div>
         </div>
+        <input type="hidden" id="selectedAlatIDs" name="selected_alat_ids" value="">
     @endsection

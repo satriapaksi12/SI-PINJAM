@@ -62,6 +62,14 @@
                 </button>
             </div>
             <div class="card-body">
+                <?php
+                date_default_timezone_set('Asia/Jakarta');
+                setlocale(LC_TIME, 'id_ID.utf8');
+                $bulanIndonesia = [
+                    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                ];
+                ?>
                 <table class="table" id="table1">
                     <thead>
                         <tr>
@@ -69,10 +77,8 @@
                             <th>No Reservasi</th>
                             <th>No Polisi</th>
                             <th>Jenis Kendaraan</th>
-                            <th>Tanggal Mulai</th>
-                            <th>Tanggal Selesai</th>
-                            <th>Jam Mulai</th>
-                            <th>Jam Selesai</th>
+                            <th>Tanggal Reservasi</th>
+                            <th>Jam Reservasi</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -84,10 +90,15 @@
                                 <td>{{ $data->no_reservasi }}</td>
                                 <td>{{ $data->kendaraan->no_polisi }}</td>
                                 <td>{{ $data->kendaraan->jenis_kendaraan->nama_jenis_kendaraan }}</td>
-                                <td>{{ $data->tanggal_mulai }}</td>
-                                <td>{{ $data->tanggal_selesai }}</td>
-                                <td>{{ $data->jam_mulai }}</td>
-                                <td>{{ $data->jam_selesai }}</td>
+                                <td>{{ strftime('%d', strtotime($data->tanggal_mulai)) }}
+                                    {{ $bulanIndonesia[intval(strftime('%m', strtotime($data->tanggal_mulai))) - 1] }}
+                                    {{ strftime('%Y', strtotime($data->tanggal_mulai)) }}
+                                    -
+                                    {{ strftime('%d', strtotime($data->tanggal_selesai)) }}
+                                    {{ $bulanIndonesia[intval(strftime('%m', strtotime($data->tanggal_selesai))) - 1] }}
+                                    {{ strftime('%Y', strtotime($data->tanggal_selesai)) }}
+                                </td>
+                                <td>{{ $data->jam_mulai }} - {{ $data->jam_selesai }}</td>
                                 <td>
                                     @if ($data->status == 'Proses Validasi')
                                         <span class="badge bg-warning">Proses Validasi</span>

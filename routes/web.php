@@ -230,7 +230,6 @@ Route::post('/import-alat', [AlatController::class, 'importAlats'])->middleware(
 
 
 //Reservasi  alat
-Route::get('/get-reservasi-alat/{alatIDs}', [ReservasiAlatController::class, 'getReservasiAlatData'])->middleware(['auth', 'forbidden-umum'])->name('get-reservasi-alat');
 Route::get('/reservasi-alat', [ReservasiAlatController::class, 'index'])->middleware(['auth', 'forbidden-umum']);
 Route::get('/reservasi-alat-add/{id}', [ReservasiAlatController::class, 'create'])->middleware(['auth', 'forbidden-umum']);
 Route::post('/reservasi-alat', [ReservasiAlatController::class, 'store'])->middleware(['auth', 'forbidden-umum']);

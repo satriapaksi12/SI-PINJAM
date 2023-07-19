@@ -21,7 +21,7 @@
                                             <b><input type="text"name="no_reservasi"id="no_reservasi" class="form-control"
                                                 value="{{ $reservasi_alat->no_reservasi }}" readonly></b>
                                         </div>
-                                        <div class="col-md-4">
+                                        {{-- <div class="col-md-4">
                                             <label>Nomor Inventaris</label>
                                         </div>
                                         <div class="col-md-8 form-group">
@@ -50,7 +50,7 @@
                                             <input type="text"name="gedung_id"id="gedung_id" class="form-control"
                                                 value="{{ $reservasi_alat->alat->gedung->nama_gedung }} - {{ $reservasi_alat->alat->gedung->lokasi->nama_lokasi }}"
                                                 readonly>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-4">
                                             <label>Peminjam</label>
                                         </div>
@@ -152,6 +152,28 @@
                                             <input type="text" name="status"id="status"
                                             class="form-control" value="{{ $reservasi_alat->alasan }}" readonly>
                                         </div>
+
+                                        <div class="col-md-4">
+                                            <label>Daftar ALat </label>
+                                        </div>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">No Inventaris</th>
+                                                    <th scope="col">Nama Alat</th>
+                                                    <th scope="col">Lokasi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>{{ $reservasi_alat->no_inventaris }}</td>
+                                                    <td>{{ $reservasi_alat->nama_alat }}</td>
+                                                    {{-- <td>{{ $reservasi_alat->gedung->nama_gedung }} - {{ $reservasi_alat->gedung->lokasi->nama_lokasi }}</td> --}}
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <a href="/detail-reservasi-alat-cetak/{{$reservasi_alat->id}}" ><button type="submit" class="btn btn-primary me-1 mb-1">Cetak Bukti Reservasi</button></a>
                                         </div>

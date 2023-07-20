@@ -41,18 +41,18 @@ class HomeController extends Controller
             ->get();
         $jumlahtolakRuang = count($tolakRuang);
         // alat
-        // $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->where('user_id', $user)->get();
-        // $jumlahreservasiAlat = count($reservasi_alat);
-        // $setujuiAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
-        //     ->where('user_id', $user)
-        //     ->where('status', 'Disetujui')
-        //     ->get();
-        // $jumlahsetujuiAlat = count($setujuiAlat);
-        // $tolakAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
-        //     ->where('user_id', $user)
-        //     ->where('status', 'Ditolak')
-        //     ->get();
-        // $jumlahtolakAlat = count($tolakAlat);
+        $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->where('user_id', $user)->get();
+        $jumlahreservasiAlat = count($reservasi_alat);
+        $setujuiAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
+            ->where('user_id', $user)
+            ->where('status', 'Disetujui')
+            ->get();
+        $jumlahsetujuiAlat = count($setujuiAlat);
+        $tolakAlat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')
+            ->where('user_id', $user)
+            ->where('status', 'Ditolak')
+            ->get();
+        $jumlahtolakAlat = count($tolakAlat);
         //kendaraan
         $reservasi_kendaraan = Reservasi_kendaraan::with('unit', 'kendaraan.gedung.lokasi', 'user')->where('user_id', $user)->get();
         $jumlahreservasiKendaraan = count($reservasi_kendaraan);
@@ -66,7 +66,7 @@ class HomeController extends Controller
             ->where('status', 'Ditolak')
             ->get();
         $jumlahtolakKendaraan = count($tolakKendaraan);
-        return view('dashboard', compact('jumlahKendaraan', 'jumlahRuangan', 'jumlahAlat', 'jumlahreservasiRuang',  'jumlahreservasiKendaraan', 'jumlahsetujuiRuang', 'jumlahtolakRuang',  'jumlahsetujuiKendaraan', 'jumlahtolakKendaraan'));
+        return view('dashboard', compact('jumlahKendaraan', 'jumlahRuangan', 'jumlahAlat', 'jumlahreservasiRuang',  'jumlahreservasiKendaraan', 'jumlahsetujuiRuang', 'jumlahtolakRuang',  'jumlahsetujuiKendaraan', 'jumlahtolakKendaraan','jumlahreservasiAlat','jumlahsetujuiAlat', 'jumlahtolakAlat'));
     }
 
     /**

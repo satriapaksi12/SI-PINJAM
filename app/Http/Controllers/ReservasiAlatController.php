@@ -37,12 +37,7 @@ class ReservasiAlatController extends Controller
     {
         $user = User::with('unit')->get();
         $unit = Unit::all();
-        // $alat = Alat::with('gedung.lokasi', 'foto_alat')->findOrFail($id);
-        // $alat = Alat::with('gedung.lokasi', 'foto_alat')->where('id', $id)->get(); // Fetch data based on the provided $id
-        // $selectedIDs = ['1', '2']; // Data dummy, Anda bisa sesuaikan dengan data yang diinginkan
-        $selectedIDs = explode(',', request('id')); // Memisahkan ID yang dikirim melalui URL berdasarkan tanda koma
-        // var_dump($selectedIDs);
-        // Ambil data Alat berdasarkan beberapa ID yang diberikan
+        $selectedIDs = explode(',', request('id'));
         $alat = Alat::with('gedung.lokasi', 'foto_alat')->whereIn('id', $selectedIDs)->get();
         return view('reservasi_alat.tambah_reservasi_alat', ['user' => $user, 'unit' => $unit, 'alat' => $alat]);
     }
@@ -59,7 +54,6 @@ class ReservasiAlatController extends Controller
             'length' => '12',
             'prefix' => 'SV02-',
         ];
-
         // Buat data reservasi alat
         $no_reservasi = IdGenerator::generate($config);
         $reservasi_alat = new Reservasi_alat();
@@ -124,7 +118,7 @@ class ReservasiAlatController extends Controller
         }
 
         return view('reservasi_alat.detail_reservasi_alat', ['reservasi_alat' => $reservasi_alat]);
-     
+
     }
 
     public function cetakReservasi(Reservasi_alat $reservasi_alat, $id)
@@ -149,31 +143,6 @@ class ReservasiAlatController extends Controller
         $reservasi_alat = Reservasi_alat::with('unit', 'alat.gedung.lokasi', 'user')->latest()->get();
         return view('reservasi_alat.cekJadwal_alat', ['reservasi_alat' => $reservasi_alat]);
     }
-
-    // public function cekKesediaan(Request $request)
-    // {
-    //     $startDate = $request->cek_tanggal_mulai; // Replace with the desired start date
-    //     $endDate = $request->cek_tanggal_selesai; // Replace with the desired end date
-    //     $startTime = $request->cek_jam_mulai; // Replace with the desired start time
-    //     $endTime = $request->cek_jam_selesai; // Replace with the desired end time
-    //     $unavailableToolIds = Reservasi_alat::where(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
-    //         $query->where(function ($query) use ($startDate, $endDate, $startTime) {
-    //             $query->where('tanggal_mulai', '=', $startDate)
-    //                 ->where('jam_selesai', '>', $startTime);
-    //         })->orWhere(function ($query) use ($startDate, $endDate, $endTime) {
-    //             $query->where('tanggal_selesai', '=', $endDate)
-    //                 ->where('jam_mulai', '<', $endTime);
-    //         })->orWhere(function ($query) use ($startDate, $endDate, $startTime, $endTime) {
-    //             $query->where('tanggal_mulai', '<', $endDate)
-    //                 ->where('tanggal_selesai', '>', $startDate);
-    //         });
-    //     })->where('status', '=', 'Disetujui')->pluck('alat_id');
-    //     $availableTools = Alat::with('foto_alat', 'gedung.lokasi')
-    //         ->whereNotIn('id', $unavailableToolIds)
-    //         ->get();
-    //         // dd($availableTools);
-    //     return response()->json($availableTools);
-    // }
 
     public function cekKesediaan(Request $request)
     {

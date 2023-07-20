@@ -10,6 +10,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
+
                             <form action="/validasi-reservasi-alat/{{ $reservasi_alat->id }}" method="post">
                                 @csrf
                                 @method('PUT')
@@ -23,45 +24,19 @@
                                             <b><input type="text"name="no_reservasi"id="no_reservasi" class="form-control"
                                                 value="{{ $reservasi_alat->no_reservasi }}" readonly></b>
                                         </div>
-                                        {{-- <div class="col-md-4">
-                                            <label>Nama Alat</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <fieldset disabled>
-                                            <input type="text"name="nama_alat"id="nama_alat" class="form-control"
-                                                value="{{ $reservasi_alat->alat->nama_alat }}" readonly>
-                                            <input type="text"name="alat_id"id="alat_id" class="form-control"
-                                                value="{{ $reservasi_alat->alat->id }}" hidden>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Nomor Inventaris</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <fieldset disabled>
-                                            <input type="text" name="no_inventaris" id="no_inventaris"
-                                                class="form-control" value="{{ $reservasi_alat->alat->no_inventaris }}"
-                                                readonly>
-                                            <input type="text"name="alat_id"id="alat_id" class="form-control"
-                                                value="{{ $reservasi_alat->alat->id }}" hidden>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Lokasi</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <fieldset disabled>
-                                            <input type="text"name="gedung_id"id="gedung_id" class="form-control"
-                                                value="{{ $reservasi_alat->alat->gedung->nama_gedung }} - {{ $reservasi_alat->alat->gedung->lokasi->nama_lokasi }}"
-                                                readonly>
-                                        </div> --}}
                                         <div class="col-md-4">
                                             <label>Peminjam</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <fieldset disabled>
-                                            <input type="text" name="user_id"id="user_id" class="form-control"
-                                                value="{{ $reservasi_alat->user->nama }}"readonly>
-                                            <input type="text"name="user_id"id="user_id" class="form-control"
+                                            @if ($reservasi_alat->user)
+                                            <input type="text" name="user_id" id="user_id" class="form-control"
+                                                value="{{ $reservasi_alat->user->nama }}" readonly>
+                                            <input type="text" name="user_id" id="user_id" class="form-control"
                                                 value="{{ $reservasi_alat->user->id }}" hidden>
+                                        @else
+                                            <input type="text" class="form-control" value="Peminjam Tidak Ditemukan"
+                                                readonly>
+                                        @endif
                                         </div>
                                         <div class="col-md-4">
                                             <label>Penanggungjawab</label>
@@ -86,10 +61,16 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <fieldset disabled>
-                                            <input type="text"name="unit_id"id="unit_id" class="form-control"
-                                                value="{{ $reservasi_alat->unit->nama_unit }}" readonly>
-                                            <input type="text"name="unit_id"id="unit_id" class="form-control"
-                                                value="{{ $reservasi_alat->unit->id }}" hidden>
+                                                @if ($reservasi_alat->unit)
+                                                    <input type="text" name="unit_id" id="unit_id" class="form-control"
+                                                        value="{{ $reservasi_alat->unit->nama_unit }}" readonly>
+                                                    <input type="text" name="unit_id" id="unit_id" class="form-control"
+                                                        value="{{ $reservasi_alat->unit->id }}" hidden>
+                                                @else
+                                                    <input type="text" class="form-control" value="Unit Tidak Ditemukan"
+                                                        readonly>
+                                                @endif
+                                            </fieldset>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Kegiatan</label>
@@ -138,24 +119,37 @@
                                         <div class="col-md-8 form-group">
                                             <a href="{{ asset($reservasi_alat->surat) }}" target="_blank" class="btn icon icon-left btn-info"><i data-feather="file"></i> Lihat Surat</a>
                                         </div>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">No</th>
-                                                    <th scope="col">No Inventaris</th>
-                                                    <th scope="col">Nama Alat</th>
-                                                    <th scope="col">Lokasi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>{{ $reservasi_alat->no_inventaris }}</td>
-                                                    <td>{{ $reservasi_alat->nama_alat }}</td>
-                                                    {{-- <td>{{ $reservasi_alat->gedung->nama_gedung }} - {{ $reservasi_alat->gedung->lokasi->nama_lokasi }}</td> --}}
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="col-md-4">
+                                            <label>Daftar Alat</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card">
+                                                <div class="card-content">
+                                                    <div class="card-body">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">No</th>
+                                                                    <th scope="col">No Inventaris</th>
+                                                                    <th scope="col">Nama Alat</th>
+                                                                    <th scope="col">Lokasi</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($reservasi_alat->alat as $index => $alat)
+                                                                    <tr>
+                                                                        <td>{{ $index + 1 }}</td>
+                                                                        <td>{{ $alat->no_inventaris }}</td>
+                                                                        <td>{{ $alat->nama_alat }}</td>
+                                                                        <td>{{ $alat->gedung->nama_gedung }} - {{ $alat->gedung->lokasi->nama_lokasi }}</td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>Status</label>
                                         </div>
@@ -188,6 +182,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 
 
